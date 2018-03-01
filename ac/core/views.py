@@ -2,15 +2,21 @@ from django.shortcuts import render
 
 # Create your views here.
 def events(request):
-    pass
+    return render(request, 'events.html',{})
 
 def gallery(request):
-    pass
+    return render(request, 'gallery.html',{})
  
 def index(request):
-    pass
+    return render(request, 'index.html',{})
 
 def maps(request):
+    return render(request,'map.html',{})
+
+def mapsd(request):
+    return render(request,'3dmap.html',{})
+
+def login(request):
     pass
 
 def signin(request):
@@ -20,10 +26,10 @@ def signup(request):
     pass
 
 def social(request):
-    pass
+    return render(request, 'social.html',{})
 
-def sponsers(request):
-    pass
+def sponsors(request):
+    return render(request, 'sponsors.html',{})
 
 def team(request):
-    pass
+    return render(request, 'team.html',{})

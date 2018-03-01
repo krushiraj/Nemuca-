@@ -1,0 +1,4 @@
+return render(request, 'social.html',{})
+return render(request, 'social.html',{})
+return render(request, 'sponsors.html',{})
+return render(request, 'team.html',{})
