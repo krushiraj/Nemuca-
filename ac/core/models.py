@@ -1,12 +1,12 @@
 from django.db.models import Model
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-	
+
 
 # START
 
 class Events(Model):
-		
+
 		eventid=models.CharField(max_length=5)
 		eventname=models.CharField(max_length=50)
 
@@ -14,12 +14,12 @@ class Events(Model):
 			return self.eventname
 
 class EventDetails(Model):
-		
+
 		Running = 'R'
 		Played ='P'
-		
+
 		STATUS_CHOICES=((Running,'Running'),(Played,'Played'))
-			
+
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
 		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
@@ -30,7 +30,7 @@ class EventDetails(Model):
 
 
 class RegistrationsAndParticipations(Model):
-	
+
 		QId = models.OneToOneField('Profile', max_length=5, on_delete='CASCADE')
 		paid = ArrayField(models.CharField(max_length=5))
 		unpaid = ArrayField(models.CharField(max_length=5))
@@ -38,7 +38,7 @@ class RegistrationsAndParticipations(Model):
 
 
 class Hits(Model):
-		
+
 		count = models.IntegerField()
 
 
@@ -50,7 +50,3 @@ class Media(Model):
 
 class Profile(Model):
     QId = models.CharField(max_length=5)
-
-
-
-
