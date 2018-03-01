@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>
+    Title
+  </title>
+</head>
+<body>
+<h1> Login Form </h1>
+
+<form action="{% url 'loginvalidate' %}" method="post">
+{% csrf_token %}
+ID <input type="text" name="user"><br><br>
+Password    <input type="password" name="password" ><br><br>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
