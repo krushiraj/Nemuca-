@@ -17,7 +17,7 @@ def mapsd(request):
     return render(request,'3dmap.html',{})
 
 def login(request):
-    pass
+    return render(request, 'registration.html', {})
 
 def signin(request):
     pass
