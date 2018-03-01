@@ -1,5 +1,3 @@
-"""
-
 from django.db.models import Model
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
@@ -54,5 +52,3 @@ class Profile(Model):
     QId = models.CharField(max_length=5)
 
 
-
-"""
