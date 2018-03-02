@@ -4,18 +4,223 @@
     <head>
 		<meta charset="UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Gallery | ACUMEN IT</title>
         <meta name="description" content="Gallery Acumen IT 2K18"/>
         <meta name="keywords" content="html5, responsive, image gallery, masonry, picture, images, sizes, fluid, history api, visibility api"/>
         <meta name="author" content="Krushi Mahendra"/>
         <link rel="shortcut icon" href="{% static '/favicon.ico' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/gal-style.css'%}"/>
-		<script src="{% static 'js/gal-modernizr.custom.70736.js' %}"></script>
-		<noscript><link rel="stylesheet" type="text/css" href="{% static 'css/gal-noJS.css' %}"/></noscript>
 		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    </head>
+		<style>
+				@import url(https://fonts.googleapis.com/css?family=Varela+Round|Comfortaa:400,700,300);
+				body,
+				html {
+				  display: -webkit-box;
+				  display: -ms-flexbox;
+				  display: flex;
+				  -webkit-box-pack: center;
+					  -ms-flex-pack: center;
+						  justify-content: center;
+				  -webkit-box-align: center;
+					  -ms-flex-align: center;
+						  align-items: center;
+				  position: relative;
+				  width: 100%;
+				  height: 100%;
+				  background: black;
+				  font-size: 13px;
+				  font-family: Comfortaa;
+				  padding: 0;
+				  margin: 0;
+				}
+				@supports (display: grid) {
+				  body,
+				  html {
+					display: block;
+				  }
+				}
+				
+				.message {
+				  border: 1px solid #d2d0d0;
+				  padding: 2em;
+				  font-size: 1.7vw;
+				  -webkit-box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+						  box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+				}
+				@supports (display: grid) {
+				  .message {
+					display: none;
+				  }
+				}
+				
+				.section {
+				  display: none;
+				  padding: 2rem;
+				}
+				@media screen and (min-width: 768px) {
+				  .section {
+					padding: 4rem;
+				  }
+				}
+				@supports (display: grid) {
+				  .section {
+					display: block;
+				  }
+				}
+				
+				h1 {
+				  font-size: 2rem;
+				  margin: 0 0 1.5em;
+				}
+				
+				.grid {
+				  display: grid;
+				  grid-gap: 30px;
+				  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				  grid-auto-rows: 150px;
+				  grid-auto-flow: row dense;
+				}
+				
+				.item {
+				  position: relative;
+				  display: -webkit-box;
+				  display: -ms-flexbox;
+				  display: flex;
+				  -webkit-box-orient: vertical;
+				  -webkit-box-direction: normal;
+					  -ms-flex-direction: column;
+						  flex-direction: column;
+				  -webkit-box-pack: end;
+					  -ms-flex-pack: end;
+						  justify-content: flex-end;
+				  -webkit-box-sizing: border-box;
+						  box-sizing: border-box;
+				  background: #0c9a9a;
+				  color: #fff;
+				  grid-column-start: auto;
+				  grid-row-start: auto;
+				  color: #fff;
+				  background: url("https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				  background-size: cover;
+				  background-position: center;
+				  -webkit-box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+						  box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+				  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+				  transition: -webkit-transform 0.3s ease-in-out;
+				  transition: transform 0.3s ease-in-out;
+				  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+				  cursor: pointer;
+				  counter-increment: item-counter;
+				}
+				.item:nth-of-type(3n) {
+				  background-image: url("https://images.unsplash.com/photo-1422255198496-21531f12a6e8?dpr=2&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=");
+				}
+				.item:nth-of-type(4n) {
+				  background-image: url("https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?dpr=2&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=");
+				}
+				.item:nth-of-type(5n) {
+				  background-image: url("https://images.unsplash.com/photo-1476097297040-79e9e1603142?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				}
+				.item:nth-of-type(6n) {
+				  background-image: url("https://images.unsplash.com/photo-1464652149449-f3b8538144aa?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				}
+				.item:after {
+				  content: '';
+				  position: absolute;
+				  width: 100%;
+				  height: 100%;
+				  background-color: black;
+				  opacity: 0.3;
+				  -webkit-transition: opacity 0.3s ease-in-out;
+				  transition: opacity 0.3s ease-in-out;
+				}
+				.item:hover {
+				  -webkit-transform: scale(1.05);
+						  transform: scale(1.05);
+				}
+				.item:hover:after {
+				  opacity: 0;
+				}
+				.item--medium {
+				  grid-row-end: span 2;
+				}
+				.item--large {
+				  grid-row-end: span 3;
+				}
+				.item--full {
+				  grid-column-end: auto;
+				}
+				@media screen and (min-width: 768px) {
+				  .item--full {
+					grid-column: 1/-1;
+					grid-row-end: span 2;
+				  }
+				}
+				.item__details {
+				  position: relative;
+				  z-index: 1;
+				  padding: 15px;
+				  color: #444;
+				  background: #fff;
+				  text-transform: lowercase;
+				  letter-spacing: 1px;
+				  color: #828282;
+				}
+				.item__details:before {
+				  content: counter(item-counter);
+				  font-weight: bold;
+				  font-size: 1.1rem;
+				  padding-right: 0.5em;
+				  color: #444;
+				}
+				
+				#head {
+					margin: 0;
+					background-color: white;
+					text-align: center;
+					font-size: 2em;
+					padding: 1em;
+				}
+	
+				.hidden {
+					display: none;
+				}
+				
+				button:focus {
+					outline: none !important;
+				}
+	
+				.dummy-menu {
+					border: 0;
+					background: none;
+					padding: 0;
+					margin: 1.5em 1.2em 0 0;
+					position: fixed;
+					top: 0;
+					right: 0;
+					font-size: 0.85em;
+					color: white;
+					cursor: pointer;
+					z-index: 1000;
+				}
+	
+				.icon {
+					display: block;
+					width: 2em;
+					height: 2em;
+					margin: 0 auto;
+					fill: #bcbcbc;
+				}
+				.block {
+					margin: 0.5em;
+					padding: 0.5em;
+				}
+				.icon:hover {
+					fill: gray;
+				}
+		</style>
+	</head>
     <body>
         <svg class="hidden">
 			<symbol id="icon-cross" viewBox="0 0 24 24">
@@ -36,374 +241,94 @@
                 </g>
 			</symbol>
 			<!-- Magnifier by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar -->
-    </svg>
-        <div class="container">
-
-
-			<div class="main">
-				<header class="clearfix">
-
-					<h1>Acumen IT Gallery</h1>
-                    <button class="dummy-menu" onclick="window.location.href='/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
-                    </button>
-
-				</header>
-
-				<div class="gamma-container gamma-loading" id="gamma-container">
-
-					<ul class="gamma-gallery">
-
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="300"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="1000"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="700"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="300"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="200"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}" data-min-width="140"></div>
-								<div data-src="{% static 'img/gallery/1.jpg' %}"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/2.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/2.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/2.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/2.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/2.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/2.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/2.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/4.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/4.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/4.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/4.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/4.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/4.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/4.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/5.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/5.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/5.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/5.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/5.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/5.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/5.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/6.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/6.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/6.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/6.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/6.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/6.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/6.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-						<li>
-							<div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350">
-								<div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div>
-								<div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div>
-								<div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div>
-								<div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div>
-								<div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div>
-								<div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div>
-								<div data-src="../img/gallery/xsmall/3.jpg"></div>
-								<noscript>
-									<img src="../img/gallery/xsmall/3.jpg" alt="img03"/>
-								</noscript>
-							</div>
-						</li>
-					</ul>
-
-					<div class="gamma-overlay"></div>
-
-					<div id="loadmore" class="loadmore">Example for loading more items...</div>
-
+	</svg>
+	<header id="head">
+			<h1>Sponsor for Acumen IT 2K18</h1>
+			<button class="dummy-menu" onclick="window.location.href='/#nav' "><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
+					</button>
+		</header>
+	<div class="message">
+			Sorry, your browser does not support CSS Grid. 😅
+		  </div>
+		  <section class="section">
+			<h1>Acumen IT Gallery</h1>
+			<div class="grid">
+			  <div class="item">
+				<div class="item__details">
+				  jelly-o brownie sweet
 				</div>
-
-			</div><!--/main-->
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="../js/gal-jquery.masonry.min.js"></script>
-		<script src="../js/gal-jquery.history.js"></script>
-		<script src="../js/gal-js-url.min.js"></script>
-		<script src="../js/gal-jquerypp.custom.js"></script>
-		<script src="../js/gal-gamma.js"></script>
-		<script type="text/javascript">
-
-			$(function() {
-
-				var GammaSettings = {
-						// order is important!
-						viewport : [ {
-							width : 1200,
-							columns : 5
-						}, {
-							width : 900,
-							columns : 4
-						}, {
-							width : 500,
-							columns : 3
-						}, {
-							width : 320,
-							columns : 2
-						}, {
-							width : 0,
-							columns : 2
-						} ]
-				};
-
-				Gamma.init( GammaSettings, fncallback );
-
-
-				// Example how to add more items (just a dummy):
-
-				var page = 0,
-					items = ['<li><div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350"><div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div><div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div><div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div><div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div><div data-src="../img/gallery/xsmall/3.jpg"></div><noscript><img src="../img/gallery/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350"><div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div><div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div><div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div><div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div><div data-src="../img/gallery/xsmall/3.jpg"></div><noscript><img src="../img/gallery/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350"><div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div><div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div><div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div><div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div><div data-src="../img/gallery/xsmall/3.jpg"></div><noscript><img src="../img/gallery/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350"><div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div><div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div><div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div><div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div><div data-src="../img/gallery/xsmall/3.jpg"></div><noscript><img src="../img/gallery/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Acumen-It</h3>" data-max-width="1800" data-max-height="1350"><div data-src="../img/gallery/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="../img/gallery/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="../img/gallery/xlarge/3.jpg" data-min-width="700"></div><div data-src="../img/gallery/large/3.jpg" data-min-width="300"></div><div data-src="../img/gallery/medium/3.jpg" data-min-width="200"></div><div data-src="../img/gallery/small/3.jpg" data-min-width="140"></div><div data-src="../img/gallery/xsmall/3.jpg"></div><noscript><img src="../img/gallery/xsmall/3.jpg" alt="img03"/></noscript></div></li>']
-
-				function fncallback() {
-
-					$( '#loadmore' ).show().on( 'click', function() {
-
-						++page;
-						var newitems = items[page-1]
-						if( page <= 1 ) {
-
-							Gamma.add( $( newitems ) );
-
-						}
-						if( page === 1 ) {
-
-							$( this ).remove();
-
-						}
-
-					} );
-
-				}
-
-			});
-
-		</script>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  Muffin jelly gingerbread 
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  sesame snaps chocolate
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  Oat cake
+				</div>
+			  </div>
+			  <div class="item item--full">
+				<div class="item__details">
+				   jujubes cheesecake
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  Dragée pudding brownie
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  Oat cake
+				</div>
+			  </div>
+			  <div class="item">
+				<div class="item__details">
+				  powder toffee
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  pudding cheesecake
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  toffee bear claw 
+				</div>
+			  </div>
+			  <div class="item">
+				<div class="item__details">
+				  cake cookie croissant
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  liquorice sweet roll
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  chocolate marzipan
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  danish dessert lollipop
+				</div>
+			  </div>
+			  <div class="item">
+				<div class="item__details">
+				  sugar plum dragée
+				</div>
+			  </div>
+			</div>
+		  </div>
 	</body>
 </html>
