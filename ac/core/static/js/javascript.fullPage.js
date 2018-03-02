@@ -1008,6 +1008,8 @@
     function touchMoveHandler(event){
 
         var e = window.event || event || event.originalEvent;
+        
+        if(e.target.id == "menu") return;
 
         if(isReallyTouch(e)){
             if(options.autoScrolling){
