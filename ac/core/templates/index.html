@@ -465,7 +465,7 @@
 </script>
 <script type="text/javascript">
     $(window).on('load', function(e){
-        while((!$("#section1").hasClass("active"))&&(window.location.hash != "")){}
+        if(window.location.hash == "#nav")while((!$("#section1").hasClass("active"))){}
         $('#fullpage').show();
     });
 </script>
