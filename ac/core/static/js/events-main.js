@@ -341,8 +341,9 @@
     var heightLeast = document.querySelector('.details__bg--up').clientHeight + 
         document.querySelector('.details__bg--down').clientHeight + (window.innerHeight*0.1);
     //to restrict extra scrolling
-    window.onscroll = function()
+    window.onscroll = function(e)
     {
+        e.preventDefault();
         var heightLeast = document.querySelector('.details__bg--up').clientHeight + 
         document.querySelector('.details__bg--down').clientHeight - window.innerHeight;
         if(DOM.grid.style.visibility == 'hidden' && window.scrollY >= heightLeast)
