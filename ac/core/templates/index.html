@@ -280,7 +280,7 @@
             #content-text {
                 margin: 0.5em;
                 padding: 0;
-                font-size: 0.72em;
+                font-size: 0.6em;
             }
         }
 	</style>
@@ -465,6 +465,7 @@
 </script>
 <script type="text/javascript">
     $(window).on('load', function(e){
+        while(!$("#section1").hasClass("active")){}
         $('#fullpage').show();
     });
 </script>
