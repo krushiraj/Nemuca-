@@ -87,8 +87,8 @@
             height: 40%;
             top: 0;
             bottom: 0;
-            border-radius: 50%;
             margin: 0 0 2em 0;
+            background: black;
         }
         #rotButtonr {
             color: white;
@@ -260,7 +260,7 @@
         {
             #svgbox {
                 transform:  scale(0.75);
-                height: 100%;
+                height: 60%;
             }
             #sd-indicator0 {
                 right: 0;
@@ -287,7 +287,7 @@
 </head>
 <body>
 <div id="fullpage">
-	<div class="section " id="section0">
+	<div class="section" id="section0">
 		<div id="logo">
             <h1>Acumen IT 2K18</h1>
 			<h1>Here comes our logo and animation for landing page</h1>
@@ -295,13 +295,15 @@
 		</div>
 	</div>
 	<div class="section" id="section1">
-		 <div id="svgbox">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns:xlink="http://www.w3.org/1999/xlink" id="menu">
+		 <div id="svgbox" class="no-scroll">
+            <svg class="no-scroll" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice" xmlns:xlink="http://www.w3.org/1999/xlink" id="menu">
             <style>
                 #menu {
                 display: block;
                 margin: auto;
                 position: absolute;
+                background: black;
+                border-radius: 50%; 
             }
                 .sector {
                     opacity: 0;
@@ -358,48 +360,48 @@
                 <symbol class="icon icon-" id="icon-8" viewBox="0 0 2304 1792"><path d="M192 1152q40 0 56-32t0-64-56-32-56 32 0 64 56 32zm1473-58q-10-13-38.5-50t-41.5-54-38-49-42.5-53-40.5-47-45-49l-125 140q-83 94-208.5 92t-205.5-98q-57-69-56.5-158t58.5-157l177-206q-22-11-51-16.5t-47.5-6-56.5.5-49 1q-92 0-158 66l-158 158h-155v544q5 0 21-.5t22 0 19.5 2 20.5 4.5 17.5 8.5 18.5 13.5l297 292q115 111 227 111 78 0 125-47 57 20 112.5-8t72.5-85q74 6 127-44 20-18 36-45.5t14-50.5q10 10 43 10 43 0 77-21t49.5-53 12-71.5-30.5-73.5zm159 58h96v-512h-93l-157-180q-66-76-169-76h-167q-89 0-146 67l-209 243q-28 33-28 75t27 75q43 51 110 52t111-49l193-218q25-23 53.5-21.5t47 27 8.5 56.5q16 19 56 63t60 68q29 36 82.5 105.5t64.5 84.5q52 66 60 140zm288 0q40 0 56-32t0-64-56-32-56 32 0 64 56 32zm192-576v640q0 26-19 45t-45 19h-434q-27 65-82 106.5t-125 51.5q-33 48-80.5 81.5t-102.5 45.5q-42 53-104.5 81.5t-128.5 24.5q-60 34-126 39.5t-127.5-14-117-53.5-103.5-81l-287-282h-358q-26 0-45-19t-19-45v-672q0-26 19-45t45-19h421q14-14 47-48t47.5-48 44-40 50.5-37.5 51-25.5 62-19.5 68-5.5h117q99 0 181 56 82-56 181-56h167q35 0 67 6t56.5 14.5 51.5 26.5 44.5 31 43 39.5 39 42 41 48 41.5 48.5h355q26 0 45 19t19 45z"/></symbol>
 
             </g>
-            <g id="itemsContainer" data-svg-origin="250 250" transform="matrix(0.38734, -0.92193, 0.92193, 0.38734, -77.3193578290572, 383.64893561257276)">
-                <a class="item" id="item-1" xlink:href=" " xlink:title=" " transform="matrix(1,0,0,1,0,0)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-1" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+            <g id="itemsContainer" class="no-scroll" data-svg-origin="250 250" transform="matrix(0.38734, -0.92193, 0.92193, 0.38734, -77.3193578290572, 383.64893561257276)">
+                <a class="item no-scroll" href="#nav" id="item-1" xlink:href=" " xlink:title=" " transform="matrix(1,0,0,1,0,0)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-1" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  href="{% url 'sponsors' %}" class="item" id="item-2" xlink:href=" " xlink:title=" " transform="matrix(0.7071,-0.7071,0.7071,0.7071,-103.55339059327378,249.99999999999997)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-8" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  href="{% url 'sponsors' %}" class="item no-scroll" id="item-2" xlink:href=" " xlink:title=" " transform="matrix(0.7071,-0.7071,0.7071,0.7071,-103.55339059327378,249.99999999999997)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-8" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
 
-                <a  href="{% url 'loginpage' %}" class="item" id="item-3" xlink:href=" " xlink:title=" " transform="matrix(0,-1,1,0,0,500)" data-svg-origin="250 250">
-                    <circle class="sector" cx="250" cy="250" r="40" />
-                    <use xlink:href="#icon-5" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  href="{% url 'loginpage' %}" class="item no-scroll" id="item-3" xlink:href=" " xlink:title=" " transform="matrix(0,-1,1,0,0,500)" data-svg-origin="250 250">
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" />
+                    <use class="no-scroll" xlink:href="#icon-5" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  class="item" id="item-4" href="{% url 'events' %}" xlink:href=" " xlink:title=" " transform="matrix(-0.7071,-0.7071,0.7071,-0.7071,249.99999999999997,603.5533905932738)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-4" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  class="item no-scroll" id="item-4" href="{% url 'events' %}" xlink:href=" " xlink:title=" " transform="matrix(-0.7071,-0.7071,0.7071,-0.7071,249.99999999999997,603.5533905932738)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-4" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  class="item" id="item-5" href="{% url 'maps' %}" xlink:href=" " xlink:title=" " transform="matrix(-1,0,0,-1,500,500)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-7" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  class="item no-scroll" id="item-5" href="{% url 'maps' %}" xlink:href=" " xlink:title=" " transform="matrix(-1,0,0,-1,500,500)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-7" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  class="item" id="item-6" href="{% url 'team' %}" xlink:href=" " xlink:title=" " transform="matrix(-0.7071,0.7071,-0.7071,-0.7071,603.5533905932738,250.00000000000006)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-6" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  class="item no-scroll" id="item-6" href="{% url 'team' %}" xlink:href=" " xlink:title=" " transform="matrix(-0.7071,0.7071,-0.7071,-0.7071,603.5533905932738,250.00000000000006)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-6" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  class="item" id="item-7" href="{% url 'social' %}" xlink:href=" " xlink:title=" " transform="matrix(0,1,-1,0,500.00000000000006,0)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-3" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  class="item no-scroll" id="item-7" href="{% url 'social' %}" xlink:href=" " xlink:title=" " transform="matrix(0,1,-1,0,500.00000000000006,0)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-3" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
-                <a  class="item" id="item-8" href="{% url 'gallery' %}" xlink:href=" " xlink:title=" " transform="matrix(0.7071,0.7071,-0.7071,0.7071,250.00000000000009,-103.55339059327378)" data-svg-origin="250 250" >
-                    <circle class="sector" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
-                    <use xlink:href="#icon-2" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
+                <a  class="item no-scroll" id="item-8" href="{% url 'gallery' %}" xlink:href=" " xlink:title=" " transform="matrix(0.7071,0.7071,-0.7071,0.7071,250.00000000000009,-103.55339059327378)" data-svg-origin="250 250" >
+                    <circle class="sector no-scroll" cx="250" cy="250" r="40" style="filter:url(#glow)"/>
+                    <use class="no-scroll" xlink:href="#icon-2" width="40" height="40" x="394.4505615234375" y="161.88233947753906" transform="rotate(67.5 414.4505615234375 181.88233947753906)"></use>
                 </a>
             </g>
-            <g id="trigger" class="trigger menu-trigger">
-                <circle id="animCircle" cx = "50%" cy = "50%" r = "80" fill="none" style="stroke-width:3px" stroke="#ada4a4">
+            <g id="trigger" class="trigger menu-trigger no-scroll">
+                <circle class="no-scroll" id="animCircle" cx = "50%" cy = "50%" r = "80" fill="none" style="stroke-width:3px" stroke="#ada4a4">
                     <animate attributeName="r" begin="0s" dur="1.2s" repeatCount="indefinite" from="55" to="65"/>
                 </circle>
-                <circle id="outer" cx="250" cy="250" r="85" fill="#0b6887"></circle>
-                <circle id="inner" cx="250" cy="250" r="80" fill="#000"></circle>
-                <text id="label" text-anchor="middle" transform="rotate(0,250,250)" alignment-baseline="central" x="250" y="250" fill="#000" font-size="1.5em">Home</text>
+                <circle class="no-scroll" id="outer" cx="250" cy="250" r="85" fill="#0b6887"></circle>
+                <circle class="no-scroll" id="inner" cx="250" cy="250" r="80" fill="#000"></circle>
+                <text class="no-scroll" id="label" text-anchor="middle" transform="rotate(0,250,250)" alignment-baseline="central" x="250" y="250" fill="#000" font-size="1.5em">Home</text>
             </g>
                 <animateTransform
                        xlink:href="#menu"

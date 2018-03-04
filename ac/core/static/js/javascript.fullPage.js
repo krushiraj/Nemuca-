@@ -92,6 +92,9 @@
     var activeAnimation;
     var originals;
     var container;
+    
+    var svg = document.getElementById("menu");
+
 
     //easeInOutCubic animation included in the plugin
     Math.easeInOutCubic = function (t, b, c, d) {
@@ -1006,11 +1009,10 @@
     * used one to determine the direction.
     */
     function touchMoveHandler(event){
-
+        console.log("jsfull start "+event.target.classList);
+        if(event.target.classList.contains("no-scroll")){ event.stopPropogation(); return;}
         var e = window.event || event || event.originalEvent;
         
-        if(e.target.id == "menu") return;
-
         if(isReallyTouch(e)){
             if(options.autoScrolling){
                 //preventing the easing on iOS devices
@@ -1068,6 +1070,8 @@
     * Handler for the touch start event.
     */
     function touchStartHandler(event){
+        console.log("jsfull start "+event.target.classList);
+        if(event.target.classList.contains("no-scroll")){ event.stopPropogation(); return;}
         var e = window.event || event || event.originalEvent;
 
         //stopping the auto scroll to adjust to a section

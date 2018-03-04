@@ -22,6 +22,7 @@ var lastLabel,
     navScrolled = false,
     restrictScroll = true;
 
+    
 if((window.location.hash!="#nav")||(window.location.hash==="")) {
     closeNav();
 }
@@ -135,8 +136,6 @@ svg.addEventListener("touchstart", touchDown, false);
 //svg.addEventListener("mousedown", pointDown, false);
 
 function pointDown(e) {
-    console.log(e.currentTarget.id)
-    if(e.currentTarget.id == "svgbox") e.stopPropagation();
     if(open) {    
         x1 = e.screenX;
         y1 = e.screenY;
@@ -144,19 +143,19 @@ function pointDown(e) {
 }
 
 function touchDown(e) {
-    console.log(this.id)
-    if(this.id == "menu") e.stopPropagation();
+    console.log("start"+e.target.classList);
     if(open) {    
         x1 = e.changedTouches[0].screenX;
         y1 = e.changedTouches[0].screenY;
     }
+
 }
 
 svg.addEventListener("touchmove",function(e) { e.preventDefault()}, false);
 svg.addEventListener("mousemove",function(e) { e.preventDefault()}, false);
-//svg.addEventListener("pointermove",function(e) { e.preventDefault()}, false);
+//svgbox.addEventListener("pointermove",function(e) { e.preventDefault()}, false);
 
-//svg.addEventListener("pointerup", pointUp, false);
+//svgbox.addEventListener("pointerup", pointUp, false);
 svg.addEventListener("touchend", touchUp, false);
 svg.addEventListener("mouseup", pointUp, false);
 
@@ -186,7 +185,6 @@ function diff(a,b)
 }
 
 function pointUp(e) {
-    
     if(open) { 
         x2 = e.screenX;
         y2 = e.screenY;
@@ -210,8 +208,7 @@ function pointUp(e) {
 }
 
 function touchUp(e) {
-    console.log(e.currentTarget.id)
-    if(e.currentTarget.id == "menu") e.stopPropagation();
+    console.log("End"+e.target.classList);
     if(open) { 
         x2 = e.changedTouches[0].screenX;
         y2 = e.changedTouches[0].screenY;

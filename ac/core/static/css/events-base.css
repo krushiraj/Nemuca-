@@ -31,14 +31,14 @@ audio:not([controls]) {
 }
 
 html {
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
 }
 
 a:focus {
@@ -83,7 +83,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
     font-size: 1em;
 }
 
@@ -142,7 +142,7 @@ button,
 input,
 select,
 textarea {
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
     font-size: 100%;
     margin: 0;
 }
@@ -240,7 +240,7 @@ body {
     --color-bg-magnifier: #000;
     --color-magnifier: #fff;
     --color-btn-hover: #c1b3b1;
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
     min-height: 100vh;
     color: #fff;
     color: var(--color-text);
@@ -424,7 +424,7 @@ main {
     top: -5em;
     font-size: 1.75em;
     color: var(--color-event-title);
-    font-family:  Comfortaa
+    font-family:  Comfortaa;
     font-weight: 700;
 }
 
