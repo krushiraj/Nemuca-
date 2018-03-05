@@ -16,12 +16,8 @@ def index(request):
     return render(request, 'index.html',{})
 
 def home(request):
-<<<<<<< HEAD
-    return render(request, 'home.html',{})
-
-=======
     return render(request,'home.html',{})
->>>>>>> d28b9109d366137e9efa1651651fb4d50c65f496
+    
 def maps(request):
     return render(request,'map.html',{})
 
