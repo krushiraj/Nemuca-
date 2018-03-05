@@ -1,8 +1,11 @@
-from django.shortcuts import render
+# from django.shortcuts import render
+# from rest_framework.generics import ListAPIView
+# from core.models import Events, EventDetails
+# from .serializers import EventsSerializer
 
-# Create your views here.
+# class EventsView(ListAPIView):
+#     queryset = EventDetails.objects.all().order_by('-eventname')
+#     serializer_class = EventsSerializer
 
-def first_task(request):
-    pass
 
  

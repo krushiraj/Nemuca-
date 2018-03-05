@@ -7,8 +7,8 @@ from django.contrib.postgres.fields import ArrayField
 
 class Events(Model):
 
-		eventid=models.CharField(max_length=5)
-		eventname=models.CharField(max_length=50)
+		eventid = models.CharField(max_length=5)
+		eventname = models.CharField(max_length=50)
 
 		def __str__(self):
 			return self.eventname
@@ -24,8 +24,7 @@ class EventDetails(Model):
 		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
 		QId=models.OneToOneField('Profile', max_length=5,on_delete='CASCADE')
-		Total=models.IntegerField()
-		#status=models.ChoiceField()
+		Total=models.IntegerField(default = 0)
 		date_time=models.DateTimeField('Date Published', auto_now=True)
 
 
@@ -33,7 +32,7 @@ class RegistrationsAndParticipations(Model):
 
 		QId = models.OneToOneField('Profile', max_length=5, on_delete='CASCADE')
 		paid = ArrayField(models.CharField(max_length=5))
-		unpaid = ArrayField(models.CharField(max_length=5))
+		registered = ArrayField(models.CharField(max_length=5))
 		participated = ArrayField(models.CharField(max_length=5))
 
 
