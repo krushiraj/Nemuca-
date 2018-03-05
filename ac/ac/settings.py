@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'ac.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 # Hosting Version
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -85,6 +86,8 @@ DATABASES = {
         'PORT': '10690',
     }
 }
+
+
 #Testing Purupose
 # DATABASES = {
 #     'default': {
