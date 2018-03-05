@@ -1,17 +1,17 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Events | Acumen IT 2K18</title>
-    <meta name="description" content="A page that contains the list of events that are being conducted in Acumen IT" />
-    <meta name="keywords" content="events,acumen,it,fest, tech fest, technical, information, technology, challengica" />
-    <meta name="author" content="Krushi Mahendra" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/events-base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="../css/events-base.css" />
     
     <script>
         document.documentElement.className = "js";
@@ -46,20 +46,23 @@
 			<!-- Magnifier by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar -->
     </svg>
     <main>
-        <div class="content">
+        <div class="content" >
             <div id="head">
                 <h1 style="color:black;background-color: white; padding: 1em;margin: 0">Events of Acumen IT</h1>
-                <button class="dummy-menu" onclick="window.location.href='/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg></button>
+                <button class="dummy-menu" onclick="window.location.href='../index.php#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg></button>
             </div>
-        <div class="content">
+            <div class="content">
             <div class="grid">
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/event_454766458.jpeg' %}" alt="Event 01" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 01" />
                         <h2 class="event__title">Paper Presentation</h2>
-                        <h3 class="event__subtitle"></h3>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Shubham: 9676451889<br>
+                        Vishnu:  9985999968<br> </h3>
                         <p class="event__description">
+                         A platform to exhibit your paper to the world. Start sending your abstract to <a href="mailto:acumenitpaper@gmail.com">our mail</a> by March 11 
                         </p>
                         <div class="event__price">Fee: Rs. 100</div>
                     </div>
@@ -67,140 +70,166 @@
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/event_454766458.jpeg' %}" alt="Event 02" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 02" />
                         <h2 class="event__title">Poster Presentation</h2>
-                        <h3 class="event__subtitle"></h3>
-                        <p class="event__description"></p>
-                        <div class="event__price">Free: Rs. 100</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Pavan:    9542722608<br>
+                        Sachith:  8008145344<br> </h3>
+                        <p class="event__description">All the right ideas. Start sending your abstract to <a href="mailto:acumenitposter@gmail.com">our mail</a> by March 11</p>
+                        <div class="event__price">Fee: Rs. 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">Challengica</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Krushi Raj: 8143827431   <br>
+                        Mahendra:   9700183746<br> </h3>
+                        <p class="event__description">Test your detective skills on a web based platform with 7 fun and logical questions</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">BeyCode</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Pranay:  8179802146   <br>
+                        Pallavi: 9441960698<br> </h3>
+                        <p class="event__description">Unleash your inner Software Engineer by looking  for code in the least suspecting places. Soon you'll be seeing code everywhere!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">Anwesha</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Aishwarya: 9700515340   <br>
+                        Harshini:  8008588602<br> </h3>
+                        <p class="event__description">Answer questions on sticky notes that are randomly assigned to you through an application</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">Deal or no deal</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Abishek Vanam: 8977912697   <br>
+                        A. Vaishnavi Devi: 9848511860<br> </h3>
+                        <p class="event__description">Recreate the classic Deal or No Deal game that captivated audience for years, with an exciting new code twist!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">Dextra</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Sai Kiran: 8686408175   <br>
+                        Vineeth:   9550266821<br> </h3>
+                        <p class="event__description">Darts, Buzzers and Crosswords, we have them all for you to experience!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">Al'Patch'ino</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        G. Yashaswini: 9515734227   <br>
+                        G Rohan:   9542707797<br> </h3>
+                        <p class="event__description">Wander dangerous mazes, compete against the organisers and go on a treasure hunt to become Al Pacino himself!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">TechTrix</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        JVS Aditya:     8328501553   <br>
+                        Sai Abhishek:   9573177082<br> </h3>
+                        <p class="event__description">Build a Jenga tower by successfully answering questions, whilst making sure the tower is not disturbed</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">Aeroplane Chess</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Priyanka Nahata: 9866345703   <br>
+                        Sowmya Parsi: 7095904848<br> </h3>
+                        <p class="event__description">How is Chess related to Ludo? Well, how is Ludo related to Coding?! And where do the aeroplanes come from? Participate and find out in Aeroplane Chess!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">Cryptothon</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Sowmya Byatha: 9701540521   <br>
+                        Pavana: 8897090066<br></h3>
+                        <p class="event__description">Decrypt, unlock and solve questions to find out the ultimate secret that might just win you the prize!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">Knock Off Tournament</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Misbah Shareef: 9052536501   <br>
+                        Supriya: 9705709704<br></h3>
+                        <p class="event__description">As contestants proceed to knock out each other, only one will survive and be crowned as the Code Emperor!</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/logo_mmts_2018.png' %}" alt="Event 03" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 03" />
                         <h2 class="event__title">Criminal Case</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 03 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Bhargav: 9640535034   <br>
+                        Akhil: 9010914571<br></h3>
+                        <p class="event__description">Prevent a murder, find the criminal, and detect where the kidnapping victim is using an instrinsic set of clues</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
                 <div class="grid__item">
                     <div class="event">
                         <div class="event__bg"></div>
-                        <img class="event__img" src="{% static 'img/events/embl-course-introduction-to-omics-data-integration-290495.png' %}" alt="Event 04" />
+                        <img class="event__img" src="{% static 'img/events/1.jpg' %}" alt="Event 04" />
                         <h2 class="event__title">A Walk in the Dark</h2>
-                        <h3 class="event__subtitle">Caption</h3>
-                        <p class="event__description">Event 04 Description</p>
-                        <div class="event__price">Fee: Rs. TBD</div>
+                        <h3 class="event__subtitle">Contact: <br>
+                        Anuja Reddy: 9492639705   <br>
+                        Vaishnavi: 9705830425<br></h3>
+                        <p class="event__description">Navigate a dark room using nothing but your instincts and a poorly made map to collect things you need for your survival in this harsh and punishing game.</p>
+                        <div class="event__price">Fee: 100</div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     </main>
-    <script src="{% static 'js/events-imagesloaded.pkgd.min.js' %}"></script>
-    <script src="{% static 'js/events-anime.min.js' %}"></script>
-    <script src="{% static 'js/events-main.js' %}"></script>
+    <script src="../js/events-imagesloaded.pkgd.min.js"></script>
+    <script src="../js/events-anime.min.js"></script>
+    <script src="../js/events-main.js"></script>
 </body>
 
 </html>
