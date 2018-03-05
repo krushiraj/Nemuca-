@@ -151,14 +151,21 @@ canvas {
     
    
 }
-
+BODY.enterPage{
+    cursor:hand;
+}
 
 
 
   
 </style>
+   <script>
+   function goto(){
+       location.href = "gallery.html"
+   }
+</script>
     </head>
-<body>
+<body class="enterPage"  onclick="goto();">
     <canvas id="c"></canvas>
 <div id="light">
 
