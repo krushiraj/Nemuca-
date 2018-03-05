@@ -127,14 +127,14 @@
         <button class="dummy-menu" onclick="window.location.href='/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
         </button>
         <div class="tab">
-        <button class="tablinks active" onclick="openMap(event, 'map')"><strong>Location on Map</strong></button>
-        <button class="tablinks" onclick="openMap(event, '3dmap')"><strong>3D Interative Map</strong></button>
+        <button class="tablinks active" onclick="openMap(event, '3dmap')"><strong>3D Interative Map</strong></button>
+        <button class="tablinks" onclick="openMap(event, 'map')"><strong>Location on Map</strong></button>
         </div>
     </header>
-    <div id="map" class="tabcontent"></div>
     <div id="3dmap" class="tabcontent">
         <iframe height="100%" width="100%" src="{% url 'mapsd' %}"></iframe>
     </div>
+    <div id="map" class="tabcontent"></div>
     <script>
       function initMap() {
         var uluru = {lat: 17.3801435, lng: 78.382533};
@@ -161,8 +161,8 @@
             document.getElementById(mapType).style.display = "inline-block";
             evt.currentTarget.className += " active";
         }
-        document.getElementById("map").style.display = "inline-block";
-        document.getElementById("map").className += " active";
+        document.getElementById("3dmap").style.display = "inline-block";
+        document.getElementById("3dmap").className += " active";
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPjdHSTJrWzHgsupDElC4QhL1PnBZP1b4&callback=initMap">
