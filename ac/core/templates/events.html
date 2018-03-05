@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -11,7 +11,7 @@
     <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/events-base.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/events-base.css' %}" />
     
     <script>
         document.documentElement.className = "js";
@@ -227,9 +227,9 @@
         </div>
     </div>
     </main>
-    <script src="../js/events-imagesloaded.pkgd.min.js"></script>
-    <script src="../js/events-anime.min.js"></script>
-    <script src="../js/events-main.js"></script>
+    <script src="{% static 'js/events-imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/events-anime.min.js' %}"></script>
+    <script src="{% static 'js/events-main.js' %}"></script>
 </body>
 
 </html>

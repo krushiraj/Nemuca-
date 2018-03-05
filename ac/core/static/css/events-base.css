@@ -434,7 +434,8 @@ main {
     margin: 0;
     text-transform: uppercase;
     color: var(--color-event-subtitle);
-    font-size: 0.85em;
+    font-size: 0;
+    opacity: 0;
     letter-spacing: 0.115em;
 }
 

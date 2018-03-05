@@ -11,7 +11,7 @@ def events(request):
 def gallery(request):
     return render(request, 'gallery.html',{})
  
-@login_required(redirect_field_name='loginpage')
+#@login_required(redirect_field_name='loginpage')
 def index(request):
     return render(request, 'index.html',{})
 
@@ -44,7 +44,7 @@ def signin(request):
     pass
 
 def signup(request):
-    pass
+     return render(request, 'registration.html',{})
 
 def social(request):
     return render(request, 'social.html',{})
