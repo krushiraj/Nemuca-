@@ -73,7 +73,10 @@
         open(data) {
             if ( this.isAnimating ) return false;
             this.isAnimating = true;
-
+            
+            var b = document.body;
+            b.style.overflow = "hidden";
+            
             this.DOM.details.classList.add('details--open');
             
             this.DOM.eventBg = data.eventBg;
@@ -145,6 +148,8 @@
             if ( this.isAnimating ) return false;
             this.isAnimating = true;
             
+            var b = document.body;
+            b.style.overflow = "visible";
             this.DOM.details.classList.remove('details--open');
             window.scrollTo(0, lastScrolledHeight);
             DOM.grid.style.visibility = 'visible';
@@ -341,9 +346,8 @@
     var heightLeast = document.querySelector('.details__bg--up').clientHeight + 
         document.querySelector('.details__bg--down').clientHeight + (window.innerHeight*0.1);
     //to restrict extra scrolling
-    window.onscroll = function(e)
+    window.onscroll = function()
     {
-        e.preventDefault();
         var heightLeast = document.querySelector('.details__bg--up').clientHeight + 
         document.querySelector('.details__bg--down').clientHeight - window.innerHeight;
         if(DOM.grid.style.visibility == 'hidden' && window.scrollY >= heightLeast)

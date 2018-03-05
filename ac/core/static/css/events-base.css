@@ -38,7 +38,7 @@ html {
 
 body {
     margin: 0;
-    font-family:  Comfortaa;
+    font-family:  Comfortaa
 }
 
 a:focus {
@@ -393,7 +393,7 @@ main {
 
 .event {
     height: 100%;
-    padding-top: 10em;
+    padding-top: 5em;
     position: relative;
     cursor: pointer;
 }
@@ -545,7 +545,7 @@ main {
     top: -30vh;
     line-height: 1.5;
     font-weight: bold;
-    max-width: 50%;
+    width: 90%;
     margin: 2em 0 0 0;
     color: var(--color-details-desc);
     padding: 10px;
@@ -693,46 +693,46 @@ main {
     }
     .event__subtitle {
         top: -7em;
-        font-size: 0.75em;
+        font-size: 0em;
+        opacity: 0;
     }
     .details {
         padding: 0;
-        position: absolute;
-        top: -15vh;
     }
     .details-open{
         padding: 0;
     }
     .details__bg--down {
-        position: absolute;
-        top: 0vh;
-        height: 100vh;
+        
     }
     .details__title {
-        position: absolute;
-        font-size: 2em;
+        position: relative;
+        font-size: 1.5em;
         max-width: 70vw;
-        top: 2vh;
+        top: -4.5em;
     }
     .details__subtitle {
-        position: absolute;
-        top: 2vh;
+        position: relative;
+        top: -6.5em;
         font-size: 1em;
+        padding: 10px 0;
     }
     .details__price {
-        position: absolute;
-        top: 5vh;
-        font-size: 1em;
+        position: relative;
+        top: -4.5em;
+        font-size: 1.5em;
+        padding: 10px 0;
     }
     .details__description {
-        position: absolute;
-        top: 2vh;
-        max-width: 70vw;
+        position: relative;
+        top: -17vh;
+        max-width: 90vw;
         font-size: 0.85em;
+        margin: 20px 0 0 0;
     }
     .details__deco {
-        position: absolute;
-        top: 0vh;
+        position: relative;
+        top: -7em;
         height: 7px;
         width: 70vw;
     }
@@ -742,8 +742,8 @@ main {
         height: 30vw;
     }
     .details__addtocart{
-        position: absolute;
-        top: 60vh;
+        position: relative;
+        top: -10vh;
         
     }
     .details__magnifier {
