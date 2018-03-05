@@ -15,6 +15,9 @@ def gallery(request):
 def index(request):
     return render(request, 'index.html',{})
 
+def home(request):
+    return render(request, 'home.html',{})
+
 def maps(request):
     return render(request,'map.html',{})
 
