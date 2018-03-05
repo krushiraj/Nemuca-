@@ -27,8 +27,14 @@
 	}
 
 	ol, ul {
-		list-style: none
-		word-wrap: break-word;
+		list-style: none;
+	}
+
+	/*Trying flexbox*/
+	ul
+	{
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	blockquote, q {
@@ -126,7 +132,6 @@
 		font-weight: 300;
 		font-size: 1rem;
 		line-height: 1.65;
-		word-wrap: break-word;
 	}
 
 	a {
@@ -1275,17 +1280,16 @@
 			display: -webkit-flex;
 			display: -ms-flex;
 			display: flex;
+			flex: 1 1 150px;
+			flex-wrap: wrap;
+			justify-content: center;
 			margin-bottom: 0;
 			list-style: none;
-			padding-left: 1px;
-			border: solid 1px #ffffff;
-			border-radius: 4px;
+			padding-left: 0;
 		}
 
 			#header nav ul li {
-				padding-left: 1px;
-				border-left: solid 1px #ffffff;
-				word-wrap: break-word;
+				padding-left: 0;
 			}
 
 				#header nav ul li:first-child {
@@ -1320,7 +1324,6 @@
 			left: calc(50% - 1px);
 			width: 1px;
 			height: 100%;
-			background: #ffffff;
 		}
 
 		#header nav.use-middle ul li.is-middle {
