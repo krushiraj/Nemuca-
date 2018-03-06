@@ -11,7 +11,7 @@ def events(request):
 def gallery(request):
     return render(request, 'gallery.html',{})
 
-#@login_required(redirect_field_name='loginpage')
+@login_required(redirect_field_name='loginpage')
 def index(request):
     return render(request, 'index.html',{})
 
@@ -25,7 +25,7 @@ def mapsd(request):
     return render(request,'3dmap.html',{})
 
 def loginpage(request):
-    return render(request,'login.html',{})
+    return render(request,'registration.html',{})
 
 def loginvalidate(request):
     if request.method == 'POST':
