@@ -33,6 +33,7 @@ def endGame(request):
 
 #Generates unique GID which doesn't occur in the data base
 def generateGID():
+    #Emo lol em chestunam ida naku telidu, If its random write a checking function to check for duplicates
     pass
 
 #Creates a New Game with a single Qid
@@ -47,7 +48,7 @@ def newGame(request):
             status = 'waiting'
             obj = EventDetails( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
             obj.save()
-            
+
         else:
             message = 'Not Applicable'
     else:
