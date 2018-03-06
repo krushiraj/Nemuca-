@@ -133,7 +133,7 @@
             
             <div id="head">
                 <h1>ACUMEN IT TEAM</h1>
-                <button class="dummy-menu" onclick="window.location.href='/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg></button>
+                <button class="dummy-menu" onclick="window.location.href=`{% url 'home' %}`"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg></button>
             </div>
             <div class="block">
             <h1 style="color: white">Organizers</h1>
@@ -142,13 +142,7 @@
                     <div id="mem-img">
                         <img src="{% static 'img/team/prabhas.png' %}" >
                     </div>
-                    <div id="details">
-                        <h2>Shishir Halaharvi</h2>
-                        <p>Android Development</p>
-                        <p>Contact: </p>
-                    </div>
-
-                    <div id="details">
+                <div id="details">
                         <h2>Thrinath Ikkurthi</h2>
                         <p>Designation</p>
                         <p>Contact</p>

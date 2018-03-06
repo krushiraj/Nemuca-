@@ -289,13 +289,13 @@ function toggleMenu(event) {
         switch(label.innerHTML)
         {
             case 'Home': closeNav();outer.style.filter = "none"; return; 
-            case 'Sponsors': window.location.href = 'pages/sponsors.html';return;
-            case 'Registration': window.location.href = 'pages/registration.html';return;
-            case 'Events': window.location.href = 'pages/events.html';return;
-            case 'Map': window.location.href = 'pages/map.html';return;
-            case 'Team': window.location.href = 'pages/team.html';return;
-            case 'Social': window.location.href = 'pages/social.html';return;
-            case 'Gallery': window.location.href = 'pages/gallery.html';return;
+            case 'Sponsors': window.location.href = "{% url 'sponsors' %}";return;
+            case 'Registration': window.location.href = "{% url 'signup' %}";return;
+            case 'Events': window.location.href = "{% url 'events' %}";return;
+            case 'Map': window.location.href = "{% url 'maps' %}";return;
+            case 'Team': window.location.href = "{% url 'team' %}";return;
+            case 'Social': window.location.href = "{% url 'social' %}";return;
+            case 'Gallery': window.location.href = "{% url 'gallery' %}";return;
         }
   }
   

@@ -6,17 +6,18 @@ from django.urls import reverse
 
 # Create your views here.
 def events(request):
-    return render(request, 'events.html',{})
+    return render(request, 'eventre.html',{})
 
 def gallery(request):
     return render(request, 'gallery.html',{})
- 
+
 #@login_required(redirect_field_name='loginpage')
 def index(request):
     return render(request, 'index.html',{})
 
 def home(request):
     return render(request,'home.html',{})
+
 def maps(request):
     return render(request,'map.html',{})
 
