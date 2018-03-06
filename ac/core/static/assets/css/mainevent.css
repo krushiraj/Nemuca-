@@ -1424,7 +1424,7 @@
 					}
 
 						#header nav ul li:first-child {
-							border-top: 0;
+							border: solid 1px #ffffff;
 						}
 
 						#header nav ul li a {
