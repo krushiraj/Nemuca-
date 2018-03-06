@@ -130,7 +130,45 @@ body{
       }
 }
 
-
+@media screen 
+  and (min-device-width: 1800px) 
+  and (max-device-width:2500px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+      body
+        {
+            background:linear-gradient(#000005, #050520);
+        }
+      .st0
+      {
+          stroke-width:3;
+      }
+      #svgtext
+      {
+         
+          transform: translate(3%,-50%) scale(0.5);
+           
+      }
+     img
+      {     
+          transform: translate(65%,5%) scale(1);
+          transition-delay: 10s;
+    }
+    #svg
+    {
+      transform: translateY(-160%);
+      opacity: 0.4;
+    }
+      
+      
+      #Layer_0
+      {
+          transform: translateY(80%);
+      }
+      #Layer_1
+      {
+          transform: translateY(40%);
+      }
+}
 
 
 canvas {
