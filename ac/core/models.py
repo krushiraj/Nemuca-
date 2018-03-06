@@ -7,18 +7,19 @@ from django.contrib.postgres.fields import ArrayField
 
 class Events(Model):
 
-		eventid = models.CharField(max_length=5)
-		eventname = models.CharField(max_length=50)
+		eId = models.CharField(max_length=5)
+		eName = models.CharField(max_length=50)
 
 		def __str__(self):
 			return self.eventname
 
 class EventDetails(Model):
 
+		Waiting = 'W'
 		Running = 'R'
 		Played ='P'
 
-		STATUS_CHOICES=((Running,'Running'),(Played,'Played'))
+		STATUS_CHOICES=((Running,'Running'),(Played,'Played'),(Waiting,'Waiting'))
 
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
 		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')

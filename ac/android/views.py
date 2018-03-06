@@ -28,7 +28,7 @@ def add_participant(request):
         if queryset:
             if request.POST.get('eId') in queryset.paid:
                 if request.POST.get('eId') in queryset.participated:
-                    return render(request,'',{'error_message' = error_message})
+                    #return render(request,'',{'error_message' = error_message})
                 else:
                     gameId = get_random_string(length = 5)
                     dup_game = EventDetails.objects.get(gId = get_random_string(length = 5))
