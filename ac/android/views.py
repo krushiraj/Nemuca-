@@ -16,8 +16,11 @@ from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
 
-#Registrations App
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
+#Results Fetch
+
+#Use this function to get end results, Need to modify based upon various filters
 def showEventdetails(request):
     if request.method == 'POST':
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
@@ -28,7 +31,34 @@ def showEventdetails(request):
 #----------------------------------------------------------------------------------------------------------------------
 # Events App
 
+#Takes Existing Gid and adds Players
+def appendGame(request):
+    pass
 
+#Ends the game adding score and updating participated
+def endGame(request):
+    pass
+
+#Generates unique GID which doesn't occur in the data base
+def generateGID():
+    pass
+
+#Creates a New Game with a single Qid
+def newGame(request):
+    pass
+
+#Authenticates user to the game
+#Checks if the user is playing for the first time or not! ^.^
+def validateGame():
+    pass
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
+#Registrations
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#This is your code , appending the written code into templates can help us sort it out
 def add_participant(request):
     if request.method == 'POST':
         queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
@@ -53,7 +83,7 @@ def add_participant(request):
         # json_data = serializers.serialize('json', queryset)
         # return HttpResponse(json_data, content_type = "application/json")
 
-
+#This will be final request, where 
 def add_scores(request):
     if request.method = 'POST':
         queryset1 = EventDetails.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
