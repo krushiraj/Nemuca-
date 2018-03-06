@@ -707,19 +707,19 @@ button:focus {
 
 .grouped-by-category [data-category='1']:first-child::before,
 .grouped-by-category :not([data-category='1']) + [data-category='1']::before {
-	content: 'Nourish & Refresh';
+	content: 'Lab Events';
 	color: #7cbf7f;
 }
 
 .grouped-by-category [data-category='2']:first-child::before,
 .grouped-by-category :not([data-category='2']) + [data-category='2']::before {
-	content: 'Learn & Create';
+	content: 'Non lab events';
 	color: #6584c7;
 }
 
 .grouped-by-category [data-category='3']:first-child::before,
 .grouped-by-category :not([data-category='3']) + [data-category='3']::before {
-	content: 'Swap & Give';
+	content: 'Presentation Events';
 	color: #dc4b7c;
 }
 
@@ -848,7 +848,7 @@ button:focus {
 }
 
 .pin--active .icon--pin {
-	stroke: #515158;
+	stroke: gold;
 	stroke-width: 15px;
 }
 
