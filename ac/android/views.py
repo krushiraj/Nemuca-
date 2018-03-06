@@ -25,6 +25,14 @@ def showEventdetails(request):
 
 #Takes Existing Gid and adds Players
 def appendPlayers(request):
+    message = 'Err'
+    if request.method == 'POST':
+        qID = request.post.get('qId')
+        gID = request.post.get('gId')
+
+        queryset = RegistrationsAndParticipations.objects.all.filter(gId = gID)
+        # append this eId to the query and submit it. Idk how to append
+
     pass
 
 #Ends the game adding score and updating participated
@@ -40,13 +48,13 @@ def generateGID():
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
-        eId = request.post.get('eId')
-        qId = request.post.get('qId')
+        eID = request.post.get('eId')
+        qID = request.post.get('qId')
        
         if validateGame(qId,eId):
-            gId = generateGID()
+            gID = generateGID()
             status = 'waiting'
-            obj = EventDetails( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
 
         else:
