@@ -29,8 +29,11 @@ def appendPlayers(request):
     if request.method == 'POST':
         qID = request.post.get('qId').split(',')
         gID = request.post.get('gId')
-        queryset = EventDetails.objects.all.filter(gId = gID)
+        # Got data
+        queryset = EventDetails.objects.filter(gId = gID)
+        #If this game even exists
         if queryset:
+            #Check for list of qID's are valid or not
             for s in qID:
                 if not validate(queryset.eID,s):
                     message.append(s)
@@ -47,18 +50,16 @@ def appendPlayers(request):
     
     return HttpResponse(message, content_type = "text/plain")
             
-                
 
-
-
-        
-        # append this eId to the query and submit it. Idk how to append
-
-    pass
 
 #Ends the game adding score and updating participated
 def endGame(request):
-    pass
+    message = 'Err'
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return HttpResponse(message, content_type = "text/plain")
 
 #Generates unique GID which doesn't occur in the data base
 def generateGID():
@@ -71,12 +72,17 @@ def newGame(request):
     if request.method == 'POST':
         eID = request.post.get('eId')
         qID = request.post.get('qId')
-       
+        #Collected Required Data
+        #Checking for valid QID for this game
         if validateGame(qId,eId):
+            #Generating New Game ID
             gID = generateGID()
+
             status = 'waiting'
+            #Creating New Row
             obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
+            #commiting the row 
             message = 'Success'
         else:
             message = 'Not Applicable'
@@ -90,11 +96,15 @@ def newGame(request):
 
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
-def validateGame(eId,qId):
+def validateGame(eId,qID):
     flag = False
-    check = RegistrationsAndParticipations.objects.all().get(qId = qId)
-    if eId in check.paid and check.participated:
+    #Get the row in this model for the corresponding user
+    check = RegistrationsAndParticipations.objects.all().get(qId = qID)
+
+    #Check if user elgible ie. paid and not participated and registered
+    if eId in check.paid and check.registered and not in check.participated:
         flag = True
+
     return flag
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
