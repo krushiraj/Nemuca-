@@ -25,7 +25,7 @@ def showEventdetails(request):
 
 #Takes Existing Gid and adds Players
 def appendPlayers(request):
-    message = 'Err'
+    message = 'Err '
     if request.method == 'POST':
         qID = request.post.get('qId').split(',')
         gID = request.post.get('gId')
@@ -39,6 +39,7 @@ def appendPlayers(request):
             # Append qID ( list ) to queryset
 
             queryset.status = 'Running'
+            queryset.save()
             message = 'Success'
             #Anthe I guess
     else:
