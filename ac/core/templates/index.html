@@ -1,25 +1,26 @@
-{% load static %}
+{% load staticfiles %}
 <html>
 <head>
-<style>
 
+<style>
+  
 
 body{
     width: 100%;
     height: 100vh;
-
+    
     position: fixed;
     top: 0;
     bottom: 0;
     }
    path
     {   stroke:#fff;
-
+        
         stroke-dasharray:1800;
         opacity:1;
         animation: animate 3s ease-in;
     }
-
+    
     @keyframes animate
     {
         0%
@@ -27,19 +28,19 @@ body{
             opacity:0;
             fill:none;
             stroke-dashoffset:1800;
-
+            
         }
         50%
         {
             opacity:10;
             fill:none;
             stroke-dashoffset:1800;
-
+            
         }
-
+    
         100%
         {
-
+            
             stroke-dashoffset:0;
         }
     }
@@ -52,25 +53,25 @@ body{
         0%
         {
             opacity:0;
-
+            
         }
-
+        
         100%
         {
             opacity:1;
         }
     }
-
+    
     #Layer_0
     {    transform: scale(0.5);
-        transform: translate(5%,40%);
+        transform: translate(5%,180%);
     }
     #Layer_1
     {    transform: scale(0.5);
-        transform: translate(5%,-5%);
+        transform: translate(5%,135%);
     }
-
-
+    
+    
     @media only screen and (min-width:250px) and (max-width:1180px)
     {    body
         {
@@ -78,60 +79,20 @@ body{
         }
         #svgtext
         {
-            transform: translateY(20%);
-
+            transform: translate(-5%,0%);
+           
         }
-        #svg
-        { transform: scale(2);
-            transform: translateY(-400%);
-            opacity:1;
-
-        }
+        
         img
     {
-        transform: translate(30%,30%) scale(1.5);
+       transform: translate(29%,60%) scale(2.5);
     }
     }
+    
 
-
-    @media screen
-  and (min-device-width: 1200px)
-  and (max-device-width: 1600px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-      body
-        {
-            background:linear-gradient(#000005, #050520);
-        }
-      .st0
-      {
-          stroke-width:3;
-      }
-      #svgtext
-      {
-
-          transform: translate(0%,-50%) scale(0.5);
-
-      }
-     img
-      {
-          transform: translateX(60%);
-
-    }
-
-
-      #Layer_0
-      {
-          transform: translateY(80%);
-      }
-      #Layer_1
-      {
-          transform: translateY(40%);
-      }
-}
-
-@media screen 
-  and (min-device-width: 1800px) 
-  and (max-device-width:2500px) 
+    @media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width:1700px) 
   and (-webkit-min-device-pixel-ratio: 1) { 
       body
         {
@@ -170,6 +131,42 @@ body{
 }
 
 
+@media screen 
+  and (min-device-width: 1800px) 
+  and (max-device-width:2500px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+      body
+        {
+            background:linear-gradient(#000005, #050520);
+        }
+      .st0
+      {
+          stroke-width:3;
+      }
+      #svgtext
+      {
+         
+          transform: translate(3%,-50%) scale(0.5);
+           
+      }
+     img
+      {     
+          transform: translate(105%,5%) scale(2);
+          transition-delay: 10s;
+    }
+   
+      
+      #Layer_0
+      {
+          transform: translate(-7%,160%);
+      }
+      #Layer_1
+      {
+          transform: translate(-7%,120%);
+      }
+}
+
+
 canvas {
   display: block;
 }
@@ -187,9 +184,10 @@ canvas {
   width:100%;
   text-align:center;
   margin:0;
-
-
+    
+   
 }
+
 BODY.enterPage{
     cursor:hand;
 }
@@ -209,8 +207,8 @@ BODY.enterPage{
 <div id="light">
 
 
-   <img src="{% static 'img/1.png' %}" height="400px" width="600px" >
-
+   <img src="{% static 'img/1.png' %}" height="400px" width="600px" > 
+ 
 <div class="svg" id="svgtext">
 <svg version="1.1" id="Layer_0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 615 173" style="enable-background:new 0 0 615 173;" xml:space="preserve">
@@ -246,7 +244,7 @@ BODY.enterPage{
 </g>
 
 </svg>
-
+  
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 615 173" style="enable-background:new 0 0 615 173;" xml:space="preserve">
 <style type="text/css">
@@ -267,11 +265,11 @@ BODY.enterPage{
 
 </svg>
 
+    </div> 
     </div>
-    </div>
+    
 
-<!--
-<div id="svg">
+<!--<div id="svg">
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-1.2 -1.2 2.2 2.2">
 <g fill="hsla(203, 85%, 95%, .01)" stroke="hsla(255,255%,255%,.12)" stroke-width="0.01">
@@ -345,6 +343,7 @@ BODY.enterPage{
 
 </div>
   -->
+   
     <script>
     window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
 
@@ -353,18 +352,18 @@ var ctx = c.getContext('2d');
 var cw = c.width = window.innerWidth;
 var ch = c.height = window.innerHeight*1;
 var rand = function(a,b){return ~~((Math.random()*(b-a+1))+a);}
-
+    
 updateAll = function(a){
   var i = a.length;
   while(i--){
-    a[i].update(i);
+    a[i].update(i);  
   }
 }
-
+      
 renderAll = function(a){
   var i = a.length;
   while(i--){
-    a[i].render(i);
+    a[i].render(i);  
   }
 }
 
@@ -378,7 +377,7 @@ Star = function(x, y, radius, speed){
   this.saturation = (20+(this.radius)*20);
   this.lightness = (8+this.radius*40);
 }
-
+  
 Star.prototype = {
   update: function(i){
     this.x += this.speed;
@@ -395,7 +394,7 @@ render: function(){
   ctx.fill();
   }
 }
-
+    
 makeStarfield = function(){
   var base = .75;
   var inc = .2;
@@ -414,13 +413,13 @@ makeStarfield = function(){
 var loop = function(){
   window.requestAnimFrame(loop);
   updateAll(stars);
-  ctx.clearRect(0, 0, cw, ch);
+  ctx.clearRect(0, 0, cw, ch);  
   renderAll(stars);
 }
-
-makeStarfield();
+    
+makeStarfield();      
 loop();</script>
-
-
-
+    
+ 
+   
     </body>

@@ -16,11 +16,18 @@ from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
 
-
+#Registrations App
+#-----------------------------------------------------------------------------------------------------------------------------------------
 def showEventdetails(request):
     if request.method == 'POST':
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
+
+
+
+#----------------------------------------------------------------------------------------------------------------------
+# Events App
+
 
 def add_participant(request):
     if request.method == 'POST':
@@ -28,7 +35,7 @@ def add_participant(request):
         if queryset:
             if request.POST.get('eId') in queryset.paid:
                 if request.POST.get('eId') in queryset.participated:
-                    return render(request,'',{'error_message' = error_message})
+                    #return render(request,'',{'error_message' = error_message})
                 else:
                     gameId = get_random_string(length = 5)
                     dup_game = EventDetails.objects.get(gId = get_random_string(length = 5))
@@ -46,6 +53,7 @@ def add_participant(request):
         # json_data = serializers.serialize('json', queryset)
         # return HttpResponse(json_data, content_type = "application/json")
 
+
 def add_scores(request):
     if request.method = 'POST':
         queryset1 = EventDetails.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
@@ -56,27 +64,50 @@ def add_scores(request):
         json_data = serializers.serialize('json', queryset2)
         return HttpResponse(json_data, content_type = "application/json")
 
-def register(request):
-    if request.method = 'POST':
-        queryset = Profile.objects.get(QId = request.POST.get('QId'))
-        if queryset:
-            queryset1 = RegistrationsAndParticipations.objects.get(QId = queryset.QId)
-            Events = request.POST.get('eId')
-            queryset1.paid.append(Events)
-            json_data = serializers.serialize('json', queryset1)
-            return HttpResponse(json_data, content_type = "application/json")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def register(request):
+#     if request.method = 'POST':
+#         queryset = Profile.objects.get(QId = request.POST.get('QId'))
+#         if queryset:
+#             queryset1 = RegistrationsAndParticipations.objects.get(QId = queryset.QId)
+#             Events = request.POST.get('eId')
+#             queryset1.paid.append(Events)
+#             json_data = serializers.serialize('json', queryset1)
+#             return HttpResponse(json_data, content_type = "application/json")
         
-        # else:
+#         # else:
         
-        # 	Profile.objects.create()
-        # 	q1 = Profile.objects.get(QId)
-        # 	events = request.POST.eId
-        # 	e1 = RegistrationsAndParticipations.objects.get(QId = q1.QId)
-        # 	e1.paid.append(events)
+#         # 	Profile.objects.create()
+#         # 	q1 = Profile.objects.get(QId)
+#         # 	events = request.POST.eId
+#         # 	e1 = RegistrationsAndParticipations.objects.get(QId = q1.QId)
+#         # 	e1.paid.append(events)
         
-        else:
-            #messages.error(request, 'ERR
-            return render(request,'',{'error_message' = error_message})a
+#         else:
+#             #messages.error(request, 'ERR
+#             return render(request,'',{'error_message' = error_message})a
 
 
 
