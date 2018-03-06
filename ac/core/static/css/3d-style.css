@@ -566,6 +566,7 @@ button:focus {
 	margin: 0;
 	font-size: 0.85em;
 	line-height: 1.5;
+	color: black;
 }
 
 .content__meta-item {
@@ -581,6 +582,7 @@ button:focus {
 .content__desc {
 	text-align: left;
 	margin: 7vmin 0 0 0;
+	color: black;
 }
 
 .content__button {
