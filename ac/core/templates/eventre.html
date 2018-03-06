@@ -13,8 +13,33 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/eventre-ie9.css" /><![endif]-->
 		<noscript><link rel="stylesheet" href="{% static 'assets/css/eventre-noscript.css' %}" /></noscript>
 	</head>
+	<style>
+    
+        .dummy-menu {
+    border: 0;
+    background: none;
+    padding: 0;
+    margin: 1.5em 1.2em 0 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 0.40em;
+    color: var(--color-close);
+    cursor: pointer;
+    z-index: 1000;
+}
+    button:focus {
+    outline: none !important;
+}
+    
+    
+    </style>
 	<body>
-
+	
+	<header>
+<button class="dummy-menu" onclick="window.location.href='/home/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
+                </button>
+                </header>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
