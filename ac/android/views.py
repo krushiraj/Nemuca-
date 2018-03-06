@@ -1,12 +1,3 @@
-# from django.shortcuts import render
-# from rest_framework.generics import ListAPIView
-# from core.models import Events, EventDetails
-# from .serializers import EventsSerializer
-
-# class EventsView(ListAPIView):
-#     queryset = EventDetails.objects.all().order_by('-eventname')
-#     serializer_class = EventsSerializer
-
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
@@ -16,8 +7,12 @@ from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
 
-#Registrations App
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
+#Results Fetch
+
+#Use this function to get end results, Need to modify based upon various filters
 def showEventdetails(request):
     if request.method == 'POST':
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
@@ -28,7 +23,58 @@ def showEventdetails(request):
 #----------------------------------------------------------------------------------------------------------------------
 # Events App
 
+#Takes Existing Gid and adds Players
+def appendPlayers(request):
+    pass
 
+#Ends the game adding score and updating participated
+def endGame(request):
+    pass
+
+#Generates unique GID which doesn't occur in the data base
+def generateGID():
+    #Emo lol em chestunam ida naku telidu, If its random write a checking function to check for duplicates
+    pass
+
+#Creates a New Game with a single Qid
+def newGame(request):
+    message = 'Err'
+    if request.method == 'POST':
+        eId = request.post.get('eId')
+        qId = request.post.get('qId')
+       
+        if validateGame(qId,eId):
+            gId = generateGID()
+            status = 'waiting'
+            obj = EventDetails( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            obj.save()
+
+        else:
+            message = 'Not Applicable'
+    else:
+        message = 'Not a Valid Request'
+
+    return HttpResponse(message, content_type = "text/plain")
+        
+    
+    
+
+#Authenticates user to the game
+#Checks if the user is playing for the first time or not! ^.^
+def validateGame(eId,qId):
+    flag = False
+    check = RegistrationsAndParticipations.objects.all().get(qId = qId)
+    if eId in check.paid and check.participated:
+        flag = True
+    return flag
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
+#Registrations
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#This is your code , appending the written code into templates can help us sort it out
 def add_participant(request):
     if request.method == 'POST':
         queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
@@ -53,7 +99,7 @@ def add_participant(request):
         # json_data = serializers.serialize('json', queryset)
         # return HttpResponse(json_data, content_type = "application/json")
 
-
+#This will be final request, where 
 def add_scores(request):
     if request.method = 'POST':
         queryset1 = EventDetails.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
