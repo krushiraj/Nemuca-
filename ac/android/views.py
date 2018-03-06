@@ -37,12 +37,33 @@ def generateGID():
 
 #Creates a New Game with a single Qid
 def newGame(request):
-    pass
+    message = 'Err'
+    if request.method == 'POST':
+        eId = request.post.get('eId')
+        qId = request.post.get('qId')
+       
+        if validateGame(qId,eId):
+            gId = generateGID()
+            status = 'waiting'
+        
+        else:
+            message = 'Not Applicable'
+    else:
+        message = 'Not a Valid Request'
+
+    return HttpResponse(message, content_type = "text/plain")
+        
+    
+    
 
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
-def validateGame():
-    pass
+def validateGame(eId,qId):
+    flag = False
+    check = RegistrationsAndParticipations.objects.all().get(qId = qId)
+    if eId in check.paid and check.participated:
+        flag = True
+    return flag
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
