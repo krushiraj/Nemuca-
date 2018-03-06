@@ -25,7 +25,7 @@ def mapsd(request):
     return render(request,'3dmap.html',{})
 
 def loginpage(request):
-    return render(request,'registration.html',{})
+    return render(request,'login.html',{})
 
 def loginvalidate(request):
     if request.method == 'POST':
