@@ -27,10 +27,30 @@ def showEventdetails(request):
 def appendPlayers(request):
     message = 'Err'
     if request.method == 'POST':
-        qID = request.post.get('qId')
+        qID = request.post.get('qId').split(',')
         gID = request.post.get('gId')
+        queryset = EventDetails.objects.all.filter(gId = gID)
+        if queryset:
+            for s in qID:
+                if not validate(queryset.eID,s):
+                    message.append(s)
+                    return HttpResponse(message, content_type = "text/plain")
+            
+            # Append qID ( list ) to queryset
 
-        queryset = RegistrationsAndParticipations.objects.all.filter(gId = gID)
+            queryset.status = 'Running'
+            message = 'Success'
+            #Anthe I guess
+    else:
+        message = 'Invalid Request'
+    
+    return HttpResponse(message, content_type = "text/plain")
+            
+                
+
+
+
+        
         # append this eId to the query and submit it. Idk how to append
 
     pass
@@ -56,7 +76,7 @@ def newGame(request):
             status = 'waiting'
             obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
-
+            message = 'Success'
         else:
             message = 'Not Applicable'
     else:
