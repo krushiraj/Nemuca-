@@ -95,13 +95,12 @@ body{
     }
     }
 
+
     @media screen 
   and (min-device-width: 1200px) 
-  and (max-device-width: 2200px) 
+  and (max-device-width: 1700px) 
   and (-webkit-min-device-pixel-ratio: 1) { 
 
-
-    
       body
         {
             background:linear-gradient(#000005, #050520);
@@ -116,20 +115,30 @@ body{
           transform: translate(0%,-50%) scale(0.5);
 
       }
-     img
-      {
-          transform: translateX(60%);
-
-    }
+    div.shadow {
+    position:absolute;
+    max-width:45%;
+    max-height:45%;
+    top:50%;
+    left:50%;
+    overflow:visible;
+}
+img.logo {
+    position:relative;
+    max-width:100%;
+    max-height:100%;
+    margin-top:-50%;
+    margin-left:-50%;
+}
 
 
       #Layer_0
       {
-          transform: translateY(80%);
+          transform: translateY(310%);
       }
       #Layer_1
       {
-          transform: translateY(40%);
+          transform: translateY(260%);
       }
 }
 
@@ -172,11 +181,11 @@ BODY.enterPage{
     </head>
 <body class="enterPage"  onclick="goto();">
     <canvas id="c"></canvas>
-<div id="light">
+    <div id="light">
+<div class="shadow">
 
-
-   <img src="{% static 'img/1.png' %}" height="400px" width="600px" >
-
+   <img class="logo" src="{% static 'img/1.png' %}"  >
+        </div>
 <div class="svg" id="svgtext">
 <svg version="1.1" id="Layer_0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 615 173" style="enable-background:new 0 0 615 173;" xml:space="preserve">
@@ -234,10 +243,7 @@ BODY.enterPage{
 </svg>
 
     </div>
-<<<<<<< HEAD
-    
 
-=======
     </div>
 
 <!--
