@@ -24,16 +24,21 @@ def showEventdetails(request):
 
 def add_participant(request):
     if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.QId)
+        queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
         if queryset:
-            if request.POST.eId in queryset.paid:
-                if request.POST.eId in queryset.participated:
+            if request.POST.get('eId') in queryset.paid:
+                if request.POST.get('eId') in queryset.participated:
                     return render(request,'',{'error_message' = error_message})
                 else:
-                    nEvent = EventDetails(status = "Running", eId = request.POST.get('eId'), gId, QId = request.POST.get('QId'), Total = 0)
-                    nEvent.save()
-                    json_data = serializers.serialize('json',nEvent)
-                    return HttpResponse(json_data, content_type = "application/json")
+                    gameId = get_random_string(length = 5)
+                    dup_game = EventDetails.objects.get(gId = get_random_string(length = 5))
+                    if dup_game:
+                        return render(request,'',{'error_message' = error_message})
+                    else:
+                        nEvent = EventDetails(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
+                        nEvent.save()
+                        json_data = serializers.serialize('json',nEvent)
+                        return HttpResponse(json_data, content_type = "application/json")
             else:
                 return render(request,'',{'error_message' = error_message})
     else:
@@ -43,7 +48,7 @@ def add_participant(request):
 
 def add_scores(request):
     if request.method = 'POST':
-        queryset1 = EventDetails.objects.filter(gId = request.POST.gId).update(status = "Played", Total = request.POST.Total)
+        queryset1 = EventDetails.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
         queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
         for obj in queryset2:
             obj.participated.append(queryset1.eId)
@@ -53,10 +58,10 @@ def add_scores(request):
 
 def register(request):
     if request.method = 'POST':
-        queryset = Profile.objects.get(QId = request.POST.QId)
+        queryset = Profile.objects.get(QId = request.POST.get('QId'))
         if queryset:
             queryset1 = RegistrationsAndParticipations.objects.get(QId = queryset.QId)
-            Events = request.POST.eId
+            Events = request.POST.get('eId')
             queryset1.paid.append(Events)
             json_data = serializers.serialize('json', queryset1)
             return HttpResponse(json_data, content_type = "application/json")
