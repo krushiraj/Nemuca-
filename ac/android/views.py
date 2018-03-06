@@ -45,7 +45,9 @@ def newGame(request):
         if validateGame(qId,eId):
             gId = generateGID()
             status = 'waiting'
-        
+            obj = EventDetails( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            obj.save()
+            
         else:
             message = 'Not Applicable'
     else:
