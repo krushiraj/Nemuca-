@@ -1,12 +1,3 @@
-# from django.shortcuts import render
-# from rest_framework.generics import ListAPIView
-# from core.models import Events, EventDetails
-# from .serializers import EventsSerializer
-
-# class EventsView(ListAPIView):
-#     queryset = EventDetails.objects.all().order_by('-eventname')
-#     serializer_class = EventsSerializer
-
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
@@ -15,6 +6,7 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
+
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -32,7 +24,7 @@ def showEventdetails(request):
 # Events App
 
 #Takes Existing Gid and adds Players
-def appendGame(request):
+def appendPlayers(request):
     pass
 
 #Ends the game adding score and updating participated
