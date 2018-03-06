@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+<!--{% load staticfiles %}-->
 <html lang="en">
     <head>
 		<meta charset="UTF-8"/>
@@ -113,18 +113,34 @@
 				  cursor: pointer;
 				  counter-increment: item-counter;
 				}
-				.item:nth-of-type(3n) {
-				  background-image: url("https://images.unsplash.com/photo-1422255198496-21531f12a6e8?dpr=2&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=");
+                .item:nth-of-type(1) {
+				  background-image: url("../static/img/gallery/2.jpg");
 				}
-				.item:nth-of-type(4n) {
-				  background-image: url("https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?dpr=2&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=");
+             .item:nth-of-type(2) {
+				  background-image: url("../static/img/gallery/1.jpg");
+				}
+				.item:nth-of-type(3n) {
+				  background-image: url("../static/img/gallery/10.jpg");
+				}
+				.item:nth-of-type(4n) {background-image: url("../static/img/gallery/4.jpg");
 				}
 				.item:nth-of-type(5n) {
-				  background-image: url("https://images.unsplash.com/photo-1476097297040-79e9e1603142?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				  background-image: url("../static/img/gallery/5.jpg");
 				}
 				.item:nth-of-type(6n) {
-				  background-image: url("https://images.unsplash.com/photo-1464652149449-f3b8538144aa?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				  background-image: url("../static/img/gallery/3.jpg");
 				}
+                .item:nth-of-type(7n) {
+				  background-image: url("../static/img/gallery/7.jpg");
+				}
+                .item:nth-of-type(13)
+            {
+                background-image: url("../static/img/gallery/8.jpg");
+            }
+            .item:nth-of-type(11)
+            {
+                background-image: url("../static/img/gallery/9.jpg");
+            }
 				.item:after {
 				  content: '';
 				  position: absolute;
@@ -168,7 +184,7 @@
 				  color: #828282;
 				}
 				.item__details:before {
-				  content: counter(item-counter);
+				  
 				  font-weight: bold;
 				  font-size: 1.1rem;
 				  padding-right: 0.5em;
@@ -260,77 +276,77 @@
 			<div class="grid">
 			  <div class="item">
 				<div class="item__details">
-				  jelly-o brownie sweet
+				  
 				</div>
 			  </div>
 			  <div class="item item--large">
 				<div class="item__details">
-				  Muffin jelly gingerbread 
+				  
 				</div>
 			  </div>
 			  <div class="item item--medium">
 				<div class="item__details">
-				  sesame snaps chocolate
+				 
 				</div>
 			  </div>
 			  <div class="item item--large">
 				<div class="item__details">
-				  Oat cake
+				  
 				</div>
 			  </div>
 			  <div class="item item--full">
 				<div class="item__details">
-				   jujubes cheesecake
+				   
 				</div>
 			  </div>
 			  <div class="item item--medium">
 				<div class="item__details">
-				  Dragée pudding brownie
+				 
 				</div>
 			  </div>
 			  <div class="item item--large">
 				<div class="item__details">
-				  Oat cake
+				 
 				</div>
 			  </div>
 			  <div class="item">
 				<div class="item__details">
-				  powder toffee
+				  
 				</div>
 			  </div>
 			  <div class="item item--medium">
 				<div class="item__details">
-				  pudding cheesecake
+				  
 				</div>
 			  </div>
 			  <div class="item item--large">
 				<div class="item__details">
-				  toffee bear claw 
+				  
 				</div>
 			  </div>
 			  <div class="item">
 				<div class="item__details">
-				  cake cookie croissant
+				  
 				</div>
 			  </div>
 			  <div class="item item--medium">
 				<div class="item__details">
-				  liquorice sweet roll
+				  
 				</div>
 			  </div>
 			  <div class="item item--medium">
 				<div class="item__details">
-				  chocolate marzipan
+				  
 				</div>
 			  </div>
 			  <div class="item item--large">
 				<div class="item__details">
-				  danish dessert lollipop
+				  
 				</div>
 			  </div>
 			  <div class="item">
 				<div class="item__details">
-				  sugar plum dragée
+				  
 				</div>
 			  </div>
 			</div>
