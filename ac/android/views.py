@@ -6,6 +6,7 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
+from django.db.models import F
 
 
 
@@ -40,6 +41,8 @@ def appendPlayers(request):
                     return HttpResponse(message, content_type = "text/plain")
             
             # Append qID ( list ) to queryset
+                else:
+                    queryset.QId.append(s)
 
             queryset.status = 'Running'
             queryset.save()
@@ -56,15 +59,22 @@ def appendPlayers(request):
 def endGame(request):
     message = 'Err'
     if request.method == 'POST':
+        GID =  request.POST.get('gId')
+        score = request.POST.get('Total')
+        queryset = EventDetails.objects.get(gId = GID)
+        
         pass
     else:
         pass
     return HttpResponse(message, content_type = "text/plain")
 
 #Generates unique GID which doesn't occur in the data base
-def generateGID():
-    #Emo lol em chestunam ida naku telidu, If its random write a checking function to check for duplicates
-    pass
+def generateGID(eID):
+    game = Events.objects.get(eId = eID)
+    game.eCount = F('eCount')+1
+    game.save()
+    return "%s%s" %(eID,game.eCount)
+
 
 #Creates a New Game with a single Qid
 def newGame(request):
@@ -76,7 +86,7 @@ def newGame(request):
         #Checking for valid QID for this game
         if validateGame(qId,eId):
             #Generating New Game ID
-            gID = generateGID()
+            gID = generateGID(eID)
 
             status = 'waiting'
             #Creating New Row
