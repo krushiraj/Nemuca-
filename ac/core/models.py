@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 
 # START
 
-class Events(Model):
+class Event(Model):
 
 		eId = models.CharField(max_length=3,default = "NULL")
 		eName = models.CharField(max_length=50)
@@ -26,7 +26,7 @@ class Details(Model):
 		STATUS_CHOICES=((Running,'Running'),(Played,'Played'),(Waiting,'Waiting'))
 
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
-		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')
+		eId=models.OneToOneField('Event', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
 		QId=ArrayField(models.CharField(max_length = 5))
 		Total=models.IntegerField(default = 0)
