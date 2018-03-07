@@ -144,8 +144,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'core','static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'core','static'),
+# )
 
-STATIC_ROOT = "/home/acumenit/Nemuca-/ac/core/static/"
+# STATIC_ROOT = "/home/acumenit/Nemuca-/ac/core/static/"

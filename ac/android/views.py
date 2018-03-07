@@ -146,7 +146,7 @@ def validateGame(eId,qID):
     check = RegistrationsAndParticipations.objects.get(qId = qID)
 
     #Check if user elgible ie. paid and not participated and registered
-    if eId in check.paid and check.registered:
+    if eId in check.paid and eId in check.registered:
         if eID not in check.participated:
             flag = True
 
