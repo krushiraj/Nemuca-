@@ -22,7 +22,7 @@ from django.views.decorators.csrf import csrf_exempt
 #BYC  -  BEYCODE
 #CHL - CHALLENGICA
 #CRC  - CRIMINAL CASE
-#CRY  -  CRYPTOTHON
+#CRP  -  CRYPTOTHON
 #DXT  - DEXTRA
 #KOT  -  KNOCK OFF TOURNAMENT
 #TTX  - TECHTRIX
