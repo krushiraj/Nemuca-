@@ -18,11 +18,12 @@ from django.views.decorators.csrf import csrf_exempt
 #Results Fetch
 
 #Use this function to get end results, Need to modify based upon various filters
+@csrf_exempt
 def showEventdetails(request):
     if request.method == 'POST':
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
-
+@csrf_exempt
 def showRegistrationsAndParticipations(request):
     queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
     json_data = serializers.serialize('json',queryset)
@@ -32,6 +33,7 @@ def showRegistrationsAndParticipations(request):
 # Events App
 
 #Takes Existing Gid and adds Players
+@csrf_exempt
 def appendPlayers(request):
     message = 'Err '
     if request.method == 'POST':
@@ -68,6 +70,7 @@ def appendPlayers(request):
 
 
 #Ends the game adding score and updating participated
+@csrf_exempt
 def endGame(request):
     message = 'Err'
     if request.method == 'POST':
@@ -94,6 +97,7 @@ def endGame(request):
     return HttpResponse(message, content_type = "text/plain")
 
 #Generates unique GID which doesn't occur in the data base
+@csrf_exempt
 def generateGID(eID):
     game = Events.objects.get(eId = eID)
     game.eCount = F('eCount')+1
@@ -102,6 +106,7 @@ def generateGID(eID):
 
 
 #Creates a New Game with a single Qid
+@csrf_exempt
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
@@ -134,6 +139,7 @@ def newGame(request):
 
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
+@csrf_exempt
 def validateGame(eId,qID):
     flag = False
     #Get the row in this model for the corresponding user
@@ -148,7 +154,7 @@ def validateGame(eId,qID):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
-
+@csrf_exempt
 def getUserEvents(request):
     message = 'Err'
     if request.method == 'POST':
@@ -163,6 +169,7 @@ def getUserEvents(request):
         return HttpResponse(message , content_type = "text/plain")
 
 #Replace 
+@csrf_exempt
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
     if request.method == 'POST':
