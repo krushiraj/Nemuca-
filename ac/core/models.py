@@ -86,7 +86,7 @@ class Profile(Model):
     Name = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
     roll = models.CharField(max_length= 12)
-    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, defualt = "I")
+    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, default = "I")
     Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES, default = "IT")
     College = models.CharField(max_length=50,choices = COLLEGE_CHOICES, default = "VCE")
     Phone_number =models.CharField(max_length=10)
