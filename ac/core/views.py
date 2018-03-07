@@ -55,7 +55,7 @@ def signin(request):
 
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
-     return render(request, 'registration.html',{})
+     return render(request, 'registrations.html',{})
 
 #@login_required(redirect_field_name='loginpage')
 def social(request):
