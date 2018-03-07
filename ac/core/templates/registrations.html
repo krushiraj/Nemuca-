@@ -4,10 +4,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
 		<title>Fullscreen Form Interface</title>
-		<meta name="description" content="Fullscreen Form Interface: A distraction-free form concept with fancy animations" />
-		<meta name="keywords" content="fullscreen form, css animations, distraction-free, web design" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/r-normalize.css' %}" />
@@ -103,8 +101,15 @@
 			})();
 			function validate()
 			{
-
+				
 			}
+			//code for disabling all inputs
+			var inps = document.getElementsByTagName("input");
+			for(var i = 0; i < inps.length; i++){
+				inps[i].disabled = true;
+			}
+			alert("Registrations will be open soon! Please stay tuned.");
+			//code for disabling all inputs
 		</script>
 	</body>
 </html>
