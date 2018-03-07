@@ -4,8 +4,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 import datetime
 from django.core import serializers
-from .models import Details
-from .models import RegistrationsAndParticipations
+from core.models import Details
+from core.models import RegistrationsAndParticipations
+from core.models import Event
+from core.models import Profile
 from django.db.models import F
 from itertools import chain
 from django.core import serializers
@@ -59,15 +61,15 @@ def showEvent(request):
 def appendPlayers(request):
     message = 'Err '
     if request.method == 'POST':
-        qID = request.post.get('qId').split(',')
-        gID = request.post.get('gId')
+        qID = request.POST.get('qId').split(',')
+        gID = request.POST.get('gId')
         # Got data
         queryset = Details.objects.filter(gId = gID)
         #If this game even exists
         if queryset:
             #Check for list of qID's are valid or not
             for s in qID:
-                if not validate(queryset.eID,s):
+                if not validateGame(queryset.eID,s):
                     user = Profile.objects.get(qId = qID)
                     json_data = sorted(chain(user, queryset))
                     #json_data = user | obj
@@ -134,8 +136,8 @@ def generateGID(eID):
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
-        eID = request.post.get('eId')
-        qID = request.post.get('qId')
+        eID = request.POST.get('eId')
+        qID = request.POST.get('qId')
         #Collected Required Data
         #Checking for valid QID for this game
         if validateGame(qId,eId):
@@ -185,7 +187,7 @@ def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
-        query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
 
         #Need to remove participated column
         
@@ -200,11 +202,11 @@ def getUserEvent(request):
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
     if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        queryset = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
         #Fetch request Data
         #pariticapted = request.post.get('participated')
-        registered = request.post.get('registered')
-        paid = request.post.get('paid')
+        registered = request.POST.get('registered')
+        paid = request.POST.get('paid')
         #look and replace the fields
         #Removing Current Data
         queryset.paid = []
@@ -213,6 +215,7 @@ def modifyRegistrationsAndParticipations(request):
         #queryset.paid = paid
         #queryset.registered = registered
                
+
         
         for s in paid:
             queryset.paid.append(s)  
@@ -234,40 +237,40 @@ def modifyRegistrationsAndParticipations(request):
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #This is your code , appending the written code into templates can help us sort it out
-def add_participant(request):
-    if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
-        if queryset:
-            if request.POST.get('eId') in queryset.paid:
-                if request.POST.get('eId') in queryset.participated:
-                    #return render(request,'',{'error_message' = error_message})
-                else:
-                    gameId = get_random_string(length = 5)
-                    dup_game = Details.objects.get(gId = get_random_string(length = 5))
-                    if dup_game:
-                        return render(request,'',{'error_message' = error_message})
-                    else:
-                        nEvent = Details(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
-                        nEvent.save()
-                        json_data = serializers.serialize('json',nEvent)
-                        return HttpResponse(json_data, content_type = "application/json")
-            else:
-                return render(request,'',{'error_message' = error_message})
-    else:
-        return render(request,'',{'error_message' = error_message})
-        # json_data = serializers.serialize('json', queryset)
-        # return HttpResponse(json_data, content_type = "application/json")
+# def add_participant(request):
+#     if request.method == 'POST':
+#         queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
+#         if queryset:
+#             if request.POST.get('eId') in queryset.paid:
+#                 if request.POST.get('eId') in queryset.participated:
+#                     #return render(request,'',{'error_message' = error_message})
+#                 else:
+#                     gameId = get_random_string(length = 5)
+#                     dup_game = Details.objects.get(gId = get_random_string(length = 5))
+#                     if dup_game:
+#                         return render(request,'',{'error_message' = error_message})
+#                     else:
+#                         nEvent = Details(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
+#                         nEvent.save()
+#                         json_data = serializers.serialize('json',nEvent)
+#                         return HttpResponse(json_data, content_type = "application/json")
+#             else:
+#                 return render(request,'',{'error_message' = error_message})
+#     else:
+#         return render(request,'',{'error_message' = error_message})
+#         # json_data = serializers.serialize('json', queryset)
+#         # return HttpResponse(json_data, content_type = "application/json")
 
-#This will be final request, where 
-def add_scores(request):
-    if request.method = 'POST':
-        queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
-        queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
-        for obj in queryset2:
-            obj.participated.append(queryset1.eId)
-            obj.save()
-        json_data = serializers.serialize('json', queryset2)
-        return HttpResponse(json_data, content_type = "application/json")
+# #This will be final request, where 
+# def add_scores(request):
+#     if request.method = 'POST':
+#         queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
+#         queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
+#         for obj in queryset2:
+#             obj.participated.append(queryset1.eId)
+#             obj.save()
+#         json_data = serializers.serialize('json', queryset2)
+#         return HttpResponse(json_data, content_type = "application/json")
 
 
 

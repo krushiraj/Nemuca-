@@ -15,5 +15,6 @@ urlpatterns = [
     path('social/', views.social, name = 'social'),
     path('events/', views.events , name = 'events'),
     path('signup/', views.signup , name = 'signup'),
+    path('signup/confirm', views.signupconfirm, name = 'signupconfirm'),
     path('secretpath/',views.secret, name = 'secret'),
 ]
