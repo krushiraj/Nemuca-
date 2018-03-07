@@ -148,4 +148,4 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'core','static'),
 # )
 
-# STATIC_ROOT = "/home/acumenit/Nemuca-/ac/core/static/"
+STATIC_ROOT = "/home/acumenit/Nemuca-/ac/core/static/"
