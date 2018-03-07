@@ -7,12 +7,15 @@ from django.contrib.postgres.fields import ArrayField
 
 class Events(Model):
 
-		eId = models.CharField(max_length=5)
+		eId = models.CharField(max_length=3)
 		eName = models.CharField(max_length=50)
 		eCount = models.IntegerField(default = 0)
 
 		def __str__(self):
 			return self.eName
+                
+        #def get_gameId(self):
+            #return "%s %s" %(self.eId,self.eCount)
 
 class EventDetails(Model):
 
@@ -25,7 +28,7 @@ class EventDetails(Model):
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
 		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
-		QId=models.OneToOneField('Profile', max_length=5,on_delete='CASCADE')
+		QId=ArrayField(models.CharField(max_length = 5))
 		Total=models.IntegerField(default = 0)
 		date_time=models.DateTimeField('Date Published', auto_now=True)
 

@@ -6,6 +6,11 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
+from django.db.models import F
+from itertools import chain
+from django.core import serializers
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -13,17 +18,22 @@ from .models import RegistrationsAndParticipations
 #Results Fetch
 
 #Use this function to get end results, Need to modify based upon various filters
+@csrf_exempt
 def showEventdetails(request):
     if request.method == 'POST':
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
-
-
+@csrf_exempt
+def showRegistrationsAndParticipations(request):
+    queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
+    json_data = serializers.serialize('json',queryset)
+    return HttpResponse(json_data, content_type = "json/application")
 
 #----------------------------------------------------------------------------------------------------------------------
 # Events App
 
 #Takes Existing Gid and adds Players
+@csrf_exempt
 def appendPlayers(request):
     message = 'Err '
     if request.method == 'POST':
@@ -36,10 +46,17 @@ def appendPlayers(request):
             #Check for list of qID's are valid or not
             for s in qID:
                 if not validate(queryset.eID,s):
+                    user = Profile.objects.get(qId = qID)
+                    json_data = sorted(chain(user, queryset))
+                    #json_data = user | obj
+                    json_data = serializers.serialize('json',user)
+                    return HttpResponse(user, content_type = "json/application")
                     message.append(s)
-                    return HttpResponse(message, content_type = "text/plain")
+                    #return HttpResponse(message, content_type = "text/plain")
             
             # Append qID ( list ) to queryset
+                else:
+                    queryset.QId.append(s)
 
             queryset.status = 'Running'
             queryset.save()
@@ -53,20 +70,43 @@ def appendPlayers(request):
 
 
 #Ends the game adding score and updating participated
+@csrf_exempt
 def endGame(request):
     message = 'Err'
     if request.method == 'POST':
+        GID =  request.POST.get('gId')
+        score = request.POST.get('Total')
+        #fetch the row with give gId
+        queryset = EventDetails.objects.get(gId = GID)
+        #update status and score
+        queryset.update(status = 'Played',Total = score)
+        #append to participated list
+        EID = queryset.eId
+        list = queryset.QId
+        for q in list:
+            c = RegistrationsAndParticipations.object.get(QId = q)
+            c.participated.append(EID)
+            c.save()
+    
+        queryset.save()
+        message = 'Done'
         pass
     else:
+        message = 'Invalid Request'
         pass
     return HttpResponse(message, content_type = "text/plain")
 
 #Generates unique GID which doesn't occur in the data base
-def generateGID():
-    #Emo lol em chestunam ida naku telidu, If its random write a checking function to check for duplicates
-    pass
+@csrf_exempt
+def generateGID(eID):
+    game = Events.objects.get(eId = eID)
+    game.eCount = F('eCount')+1
+    game.save()
+    return "%s%s" %(eID,game.eCount)
+
 
 #Creates a New Game with a single Qid
+@csrf_exempt
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
@@ -76,14 +116,17 @@ def newGame(request):
         #Checking for valid QID for this game
         if validateGame(qId,eId):
             #Generating New Game ID
-            gID = generateGID()
-
-            status = 'waiting'
+            gID = generateGID(eID)
             #Creating New Row
             obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
             #commiting the row 
             message = 'Success'
+            user = Profile.objects.get(qId = qID)
+            json_data = sorted(chain(user, obj))
+            #json_data = user | obj
+            json_data = serializers.serialize('json',user)
+            return HttpResponse(user, content_type = "json/application")
         else:
             message = 'Not Applicable'
     else:
@@ -96,19 +139,69 @@ def newGame(request):
 
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
+@csrf_exempt
 def validateGame(eId,qID):
     flag = False
     #Get the row in this model for the corresponding user
-    check = RegistrationsAndParticipations.objects.all().get(qId = qID)
+    check = RegistrationsAndParticipations.objects.get(qId = qID)
 
     #Check if user elgible ie. paid and not participated and registered
-    if eId in check.paid and check.registered and not in check.participated:
-        flag = True
+    if eId in check.paid and check.registered:
+        if eID not in check.participated:
+            flag = True
 
     return flag
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
+@csrf_exempt
+def getUserEvents(request):
+    message = 'Err'
+    if request.method == 'POST':
+        # Fetch Registrations and participations for paid registered and participated
+        query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+
+        #Need to remove participated column
+        
+        json_data = serializers.serialize('json',query)
+        return HttpResponse(json_data,content_type = "json/application")
+    else:
+        return HttpResponse(message , content_type = "text/plain")
+
+#Replace 
+@csrf_exempt
+def modifyRegistrationsAndParticipations(request):
+    message = 'Err'
+    if request.method == 'POST':
+        queryset = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        #Fetch request Data
+        #pariticapted = request.post.get('participated')
+        registered = request.post.get('registered')
+        paid = request.post.get('paid')
+        #look and replace the fields
+        #Removing Current Data
+        queryset.paid = []
+        queryset.registered = []
+        #Adding new data
+        queryset.paid = paid
+        queryset.registered = registered
+               
+        
+        for s in paid:
+            queryset.paid.append(s)  
+        for s in registered:
+            queryset.registered.append(s)
+        
+        #all operations done
+        queryset.save()
+
+        message = 'Success' 
+
+    else:
+        message ='Invalid Request'
+
+    return HttpResponse(message, content_type = "text/plain")
+        
 
 
 

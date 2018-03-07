@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
- Create your views here.
+#Create your views here.
 @login_required(redirect_field_name='loginpage')
 def events(request):
     return render(request, 'eventre.html',{})
