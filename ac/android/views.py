@@ -6,9 +6,8 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
-
 from django.db.models import F
-
+from itertools import chain
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -24,7 +23,10 @@ def showEventdetails(request):
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
 
-
+def showRegistrationsAndParticipations(request):
+    queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
+    json_data = serializers.serialize('json',queryset)
+    return HttpResponse(json_data, content_type = "json/application")
 
 #----------------------------------------------------------------------------------------------------------------------
 # Events App
@@ -97,6 +99,11 @@ def newGame(request):
             obj.save()
             #commiting the row 
             message = 'Success'
+            user = Profile.objects.get(qId = qID)
+            json_data = sorted(chain(user, obj))
+            #json_data = user | obj
+            json_data = serializers.serialize('json',user)
+            return HttpResponse(user, content_type = "json/application")
         else:
             message = 'Not Applicable'
     else:
