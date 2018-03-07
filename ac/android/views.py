@@ -6,9 +6,8 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
-
 from django.db.models import F
-
+from itertools import chain
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -24,7 +23,10 @@ def showEventdetails(request):
         queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
 
-
+def showRegistrationsAndParticipations(request):
+    queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
+    json_data = serializers.serialize('json',queryset)
+    return HttpResponse(json_data, content_type = "json/application")
 
 #----------------------------------------------------------------------------------------------------------------------
 # Events App
@@ -42,8 +44,13 @@ def appendPlayers(request):
             #Check for list of qID's are valid or not
             for s in qID:
                 if not validate(queryset.eID,s):
+                    user = Profile.objects.get(qId = qID)
+                    json_data = sorted(chain(user, queryset))
+                    #json_data = user | obj
+                    json_data = serializers.serialize('json',user)
+                    return HttpResponse(user, content_type = "json/application")
                     message.append(s)
-                    return HttpResponse(message, content_type = "text/plain")
+                    #return HttpResponse(message, content_type = "text/plain")
             
             # Append qID ( list ) to queryset
                 else:
@@ -105,13 +112,16 @@ def newGame(request):
         if validateGame(qId,eId):
             #Generating New Game ID
             gID = generateGID(eID)
-
-            status = 'waiting'
             #Creating New Row
             obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
             #commiting the row 
             message = 'Success'
+            user = Profile.objects.get(qId = qID)
+            json_data = sorted(chain(user, obj))
+            #json_data = user | obj
+            json_data = serializers.serialize('json',user)
+            return HttpResponse(user, content_type = "json/application")
         else:
             message = 'Not Applicable'
     else:
@@ -144,10 +154,47 @@ def getUserEvents(request):
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
         query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+
         #Need to remove participated column
-        return HttpResponse(query,content_type = "json/application")
+        
+        json_data = serializers.serialize('json',query)
+        return HttpResponse(json_data,content_type = "json/application")
     else:
         return HttpResponse(message , content_type = "text/plain")
+
+#Replace 
+def modifyRegistrationsAndParticipations(request):
+    message = 'Err'
+    if request.method == 'POST':
+        queryset = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        #Fetch request Data
+        #pariticapted = request.post.get('participated')
+        registered = request.post.get('registered')
+        paid = request.post.get('paid')
+        #look and replace the fields
+        #Removing Current Data
+        queryset.paid = []
+        queryset.registered = []
+        #Adding new data
+        queryset.paid = paid
+        queryset.registered = registered
+               
+        
+        for s in paid:
+            queryset.paid.append(s)  
+        for s in registered:
+            queryset.registered.append(s)
+        
+        #all operations done
+        queryset.save()
+
+        message = 'Success' 
+
+    else:
+        message ='Invalid Request'
+
+    return HttpResponse(message, content_type = "text/plain")
+        
 
 
 
