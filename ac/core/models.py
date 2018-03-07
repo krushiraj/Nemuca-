@@ -81,7 +81,7 @@ class Profile(Model):
     
     COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default = User.objects.filter(username = "falssse"))
     QId = models.CharField(max_length=5, default = "NOQID")
     Name = models.CharField(max_length=20, default = "No Name Given")
     email = models.CharField(max_length=50, default = "noemail@entered.com")
