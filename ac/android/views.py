@@ -22,7 +22,7 @@ from django.views.decorators.csrf import csrf_exempt
 #BYC  -  BEYCODE
 #CHL - CHALLENGICA
 #CRC  - CRIMINAL CASE
-#CRY  -  CRYPTOTHON
+#CRP  -  CRYPTOTHON
 #DXT  - DEXTRA
 #KOT  -  KNOCK OFF TOURNAMENT
 #TTX  - TECHTRIX
@@ -35,10 +35,18 @@ from django.views.decorators.csrf import csrf_exempt
 def showDetails(request):
     if request.method == 'POST':
         queryset = Details.objects.filter(eId = request.POST.get('eId'))
-        return render(request,'',{'queryset':queryset})
+        json_data = serializers.serialize('json',queryset)
+        return HttpResponse(json_data, content_type = "json/application")
+
+
 @csrf_exempt
 def showRegistrationsAndParticipations(request):
     queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
+    json_data = serializers.serialize('json',queryset)
+    return HttpResponse(json_data, content_type = "json/application")
+
+def showEvent(request):
+    queryset = Event.object.all.order_by('pk')
     json_data = serializers.serialize('json',queryset)
     return HttpResponse(json_data, content_type = "json/application")
 
@@ -46,6 +54,7 @@ def showRegistrationsAndParticipations(request):
 # Event App
 
 #Takes Existing Gid and adds Players
+# URL @ events/addplayer  
 @csrf_exempt
 def appendPlayers(request):
     message = 'Err '
@@ -83,6 +92,7 @@ def appendPlayers(request):
 
 
 #Ends the game adding score and updating participated
+# URL events/endgame
 @csrf_exempt
 def endGame(request):
     message = 'Err'
@@ -119,6 +129,7 @@ def generateGID(eID):
 
 
 #Creates a New Game with a single Qid
+# URL events/newgame
 @csrf_exempt
 def newGame(request):
     message = 'Err'
@@ -167,6 +178,8 @@ def validateGame(eId,qID):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
+
+# URL register/fetch
 @csrf_exempt
 def getUserEvent(request):
     message = 'Err'
@@ -182,6 +195,7 @@ def getUserEvent(request):
         return HttpResponse(message , content_type = "text/plain")
 
 #Replace 
+# URL register/push
 @csrf_exempt
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
