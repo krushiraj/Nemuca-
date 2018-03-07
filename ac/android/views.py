@@ -43,7 +43,7 @@ def showRegistrationsAndParticipations(request):
     return HttpResponse(json_data, content_type = "json/application")
 
 #----------------------------------------------------------------------------------------------------------------------
-# Events App
+# Event App
 
 #Takes Existing Gid and adds Players
 @csrf_exempt
@@ -112,7 +112,7 @@ def endGame(request):
 #Generates unique GID which doesn't occur in the data base
 @csrf_exempt
 def generateGID(eID):
-    game = Events.objects.get(eId = eID)
+    game = Event.objects.get(eId = eID)
     game.eCount = F('eCount')+1
     game.save()
     return "%s%s" %(eID,game.eCount)
@@ -168,7 +168,7 @@ def validateGame(eId,qID):
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
 @csrf_exempt
-def getUserEvents(request):
+def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
@@ -283,8 +283,8 @@ def add_scores(request):
 #         queryset = Profile.objects.get(QId = request.POST.get('QId'))
 #         if queryset:
 #             queryset1 = RegistrationsAndParticipations.objects.get(QId = queryset.QId)
-#             Events = request.POST.get('eId')
-#             queryset1.paid.append(Events)
+#             Event = request.POST.get('eId')
+#             queryset1.paid.append(Event)
 #             json_data = serializers.serialize('json', queryset1)
 #             return HttpResponse(json_data, content_type = "application/json")
         
@@ -292,9 +292,9 @@ def add_scores(request):
         
 #         # 	Profile.objects.create()
 #         # 	q1 = Profile.objects.get(QId)
-#         # 	events = request.POST.eId
+#         # 	Event = request.POST.eId
 #         # 	e1 = RegistrationsAndParticipations.objects.get(QId = q1.QId)
-#         # 	e1.paid.append(events)
+#         # 	e1.paid.append(Event)
         
 #         else:
 #             #messages.error(request, 'ERR
