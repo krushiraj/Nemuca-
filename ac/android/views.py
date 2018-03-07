@@ -6,7 +6,12 @@ import datetime
 from django.core import serializers
 from .models import EventDetails
 from .models import RegistrationsAndParticipations
+
 from django.db.models import F
+
+from django.core import serializers
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -112,13 +117,24 @@ def validateGame(eId,qID):
     check = RegistrationsAndParticipations.objects.all().get(qId = qID)
 
     #Check if user elgible ie. paid and not participated and registered
-    if eId in check.paid and check.registered and not in check.participated:
-        flag = True
+    if eId in check.paid and check.registered:
+        if eID not in check.participated:
+            flag = True
 
     return flag
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 #Registrations
+
+def getUserEvents(request):
+    message = 'Err'
+    if request.method == 'POST':
+        # Fetch Registrations and participations for paid registered and participated
+        query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        #Need to remove participated column
+        return HttpResponse(query,content_type = "json/application")
+    else:
+        return HttpResponse(message , content_type = "text/plain")
 
 
 
