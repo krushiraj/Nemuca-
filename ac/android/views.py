@@ -4,24 +4,37 @@ from django.http import HttpResponse
 from django.contrib import messages
 import datetime
 from django.core import serializers
-from .models import EventDetails
+from .models import Details
 from .models import RegistrationsAndParticipations
 from django.db.models import F
 from itertools import chain
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
+#-----------------------------------------------------------------------------------------------------------------------------------------
+#EVENT-IDS
 
 
+#AWD  -  A WALK IN THE DARK
+#AER  -  AEROPLANE CHESS
+#ALP    -  ALPATCHINO
+#ANW  -  ANWEHSA
+#BYC  -  BEYCODE
+#CHL - CHALLENGICA
+#CRC  - CRIMINAL CASE
+#CRY  -  CRYPTOTHON
+#DXT  - DEXTRA
+#KOT  -  KNOCK OFF TOURNAMENT
+#TTX  - TECHTRIX
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 #Results Fetch
 
 #Use this function to get end results, Need to modify based upon various filters
 @csrf_exempt
-def showEventdetails(request):
+def showDetails(request):
     if request.method == 'POST':
-        queryset = EventDetails.objects.filter(eId = request.POST.get('eId'))
+        queryset = Details.objects.filter(eId = request.POST.get('eId'))
         return render(request,'',{'queryset':queryset})
 @csrf_exempt
 def showRegistrationsAndParticipations(request):
@@ -40,7 +53,7 @@ def appendPlayers(request):
         qID = request.post.get('qId').split(',')
         gID = request.post.get('gId')
         # Got data
-        queryset = EventDetails.objects.filter(gId = gID)
+        queryset = Details.objects.filter(gId = gID)
         #If this game even exists
         if queryset:
             #Check for list of qID's are valid or not
@@ -77,7 +90,7 @@ def endGame(request):
         GID =  request.POST.get('gId')
         score = request.POST.get('Total')
         #fetch the row with give gId
-        queryset = EventDetails.objects.get(gId = GID)
+        queryset = Details.objects.get(gId = GID)
         #update status and score
         queryset.update(status = 'Played',Total = score)
         #append to participated list
@@ -118,7 +131,7 @@ def newGame(request):
             #Generating New Game ID
             gID = generateGID(eID)
             #Creating New Row
-            obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
+            obj = Details( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
             #commiting the row 
             message = 'Success'
@@ -183,8 +196,8 @@ def modifyRegistrationsAndParticipations(request):
         queryset.paid = []
         queryset.registered = []
         #Adding new data
-        queryset.paid = paid
-        queryset.registered = registered
+        #queryset.paid = paid
+        #queryset.registered = registered
                
         
         for s in paid:
@@ -216,11 +229,11 @@ def add_participant(request):
                     #return render(request,'',{'error_message' = error_message})
                 else:
                     gameId = get_random_string(length = 5)
-                    dup_game = EventDetails.objects.get(gId = get_random_string(length = 5))
+                    dup_game = Details.objects.get(gId = get_random_string(length = 5))
                     if dup_game:
                         return render(request,'',{'error_message' = error_message})
                     else:
-                        nEvent = EventDetails(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
+                        nEvent = Details(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
                         nEvent.save()
                         json_data = serializers.serialize('json',nEvent)
                         return HttpResponse(json_data, content_type = "application/json")
@@ -234,7 +247,7 @@ def add_participant(request):
 #This will be final request, where 
 def add_scores(request):
     if request.method = 'POST':
-        queryset1 = EventDetails.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
+        queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
         queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
         for obj in queryset2:
             obj.participated.append(queryset1.eId)
