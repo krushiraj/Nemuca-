@@ -44,8 +44,13 @@ def appendPlayers(request):
             #Check for list of qID's are valid or not
             for s in qID:
                 if not validate(queryset.eID,s):
+                    user = Profile.objects.get(qId = qID)
+                    json_data = sorted(chain(user, queryset))
+                    #json_data = user | obj
+                    json_data = serializers.serialize('json',user)
+                    return HttpResponse(user, content_type = "json/application")
                     message.append(s)
-                    return HttpResponse(message, content_type = "text/plain")
+                    #return HttpResponse(message, content_type = "text/plain")
             
             # Append qID ( list ) to queryset
                 else:
@@ -136,7 +141,9 @@ def getUserEvents(request):
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
         query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+
         #Need to remove participated column
+        
         json_data = serializers.serialize('json',query)
         return HttpResponse(json_data,content_type = "json/application")
     else:
