@@ -234,40 +234,40 @@ def modifyRegistrationsAndParticipations(request):
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #This is your code , appending the written code into templates can help us sort it out
-def add_participant(request):
-    if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
-        if queryset:
-            if request.POST.get('eId') in queryset.paid:
-                if request.POST.get('eId') in queryset.participated:
-                    #return render(request,'',{'error_message' = error_message})
-                else:
-                    gameId = get_random_string(length = 5)
-                    dup_game = Details.objects.get(gId = get_random_string(length = 5))
-                    if dup_game:
-                        return render(request,'',{'error_message' = error_message})
-                    else:
-                        nEvent = Details(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
-                        nEvent.save()
-                        json_data = serializers.serialize('json',nEvent)
-                        return HttpResponse(json_data, content_type = "application/json")
-            else:
-                return render(request,'',{'error_message' = error_message})
-    else:
-        return render(request,'',{'error_message' = error_message})
-        # json_data = serializers.serialize('json', queryset)
-        # return HttpResponse(json_data, content_type = "application/json")
+# def add_participant(request):
+#     if request.method == 'POST':
+#         queryset = RegistrationsAndParticipations.objects.all().get(Qid = request.POST.get('QId'))
+#         if queryset:
+#             if request.POST.get('eId') in queryset.paid:
+#                 if request.POST.get('eId') in queryset.participated:
+#                     #return render(request,'',{'error_message' = error_message})
+#                 else:
+#                     gameId = get_random_string(length = 5)
+#                     dup_game = Details.objects.get(gId = get_random_string(length = 5))
+#                     if dup_game:
+#                         return render(request,'',{'error_message' = error_message})
+#                     else:
+#                         nEvent = Details(status = "Running", eId = request.POST.get('eId'), gId = gameId, QId = request.POST.get('QId'), Total = 0)
+#                         nEvent.save()
+#                         json_data = serializers.serialize('json',nEvent)
+#                         return HttpResponse(json_data, content_type = "application/json")
+#             else:
+#                 return render(request,'',{'error_message' = error_message})
+#     else:
+#         return render(request,'',{'error_message' = error_message})
+#         # json_data = serializers.serialize('json', queryset)
+#         # return HttpResponse(json_data, content_type = "application/json")
 
-#This will be final request, where 
-def add_scores(request):
-    if request.method = 'POST':
-        queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
-        queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
-        for obj in queryset2:
-            obj.participated.append(queryset1.eId)
-            obj.save()
-        json_data = serializers.serialize('json', queryset2)
-        return HttpResponse(json_data, content_type = "application/json")
+# #This will be final request, where 
+# def add_scores(request):
+#     if request.method = 'POST':
+#         queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
+#         queryset2 = RegistrationsAndParticipations.objects.filter(QId = queryset1.QId)
+#         for obj in queryset2:
+#             obj.participated.append(queryset1.eId)
+#             obj.save()
+#         json_data = serializers.serialize('json', queryset2)
+#         return HttpResponse(json_data, content_type = "application/json")
 
 
 
