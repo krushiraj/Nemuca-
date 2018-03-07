@@ -8,19 +8,14 @@ from django.urls import reverse
 #@login_required(redirect_field_name='loginpage')
 def events(request):
     return render(request, 'eventre.html',{})
-<<<<<<< HEAD
 
 #@login_required(redirect_field_name='loginpage')
-=======
-@login_required(redirect_field_name='loginpage')
->>>>>>> 54d2942a6022a78a4335aec81eb64290150367ee
 def gallery(request):
     return render(request, 'gallery.html',{})
 
 #@login_required(redirect_field_name='loginpage')
 def index(request):
     return render(request, 'index.html',{})
-<<<<<<< HEAD
 
 #@login_required(redirect_field_name='loginpage')
 def home(request):
@@ -31,15 +26,6 @@ def maps(request):
     return render(request,'map.html',{})
 
 #@login_required(redirect_field_name='loginpage')
-=======
-@login_required(redirect_field_name='loginpage')
-def home(request):
-    return render(request,'home.html',{})
-@login_required(redirect_field_name='loginpage')
-def maps(request):
-    return render(request,'map.html',{})
-@login_required(redirect_field_name='loginpage')
->>>>>>> 54d2942a6022a78a4335aec81eb64290150367ee
 def mapsd(request):
     return render(request,'3dmap.html',{})
 
@@ -66,7 +52,6 @@ def secret(request):
 
 def signin(request):
     pass
-<<<<<<< HEAD
 
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
@@ -81,17 +66,5 @@ def sponsors(request):
     return render(request, 'sponsors.html',{})
 
 #@login_required(redirect_field_name='loginpage')
-=======
-@login_required(redirect_field_name='loginpage')
-def signup(request):
-     return render(request, 'registration.html',{})
-@login_required(redirect_field_name='loginpage')
-def social(request):
-    return render(request, 'social.html',{})
-@login_required(redirect_field_name='loginpage')
-def sponsors(request):
-    return render(request, 'sponsors.html',{})
-@login_required(redirect_field_name='loginpage')
->>>>>>> 54d2942a6022a78a4335aec81eb64290150367ee
 def team(request):
     return render(request, 'team.html',{})
