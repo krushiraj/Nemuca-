@@ -7,7 +7,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Events(Model):
 
-		eId = models.CharField(max_length=3)
+		eId = models.CharField(max_length=3,default = "NNN")
 		eName = models.CharField(max_length=50)
 		eCount = models.IntegerField(default = 0)
 

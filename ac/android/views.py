@@ -11,8 +11,21 @@ from itertools import chain
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
+#-----------------------------------------------------------------------------------------------------------------------------------------
+#EVENT-IDS
 
 
+#AWD  -  A WALK IN THE DARK
+#AER  -  AEROPLANE CHESS
+#ALP    -  ALPATCHINO
+#ANW  -  ANWEHSA
+#BYC  -  BEYCODE
+#CHL - CHALLENGICA
+#CRC  - CRIMINAL CASE
+#CRY  -  CRYPTOTHON
+#DXT  - DEXTRA
+#KOT  -  KNOCK OFF TOURNAMENT
+#TTX  - TECHTRIX
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 #Results Fetch
@@ -183,8 +196,8 @@ def modifyRegistrationsAndParticipations(request):
         queryset.paid = []
         queryset.registered = []
         #Adding new data
-        queryset.paid = paid
-        queryset.registered = registered
+        #queryset.paid = paid
+        #queryset.registered = registered
                
         
         for s in paid:
