@@ -4,8 +4,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 import datetime
 from django.core import serializers
-from .models import Details
-from .models import RegistrationsAndParticipations
+from core.models import Details
+from core.models import RegistrationsAndParticipations
+from core.models import Event
+from core.models import Profile
 from django.db.models import F
 from itertools import chain
 from django.core import serializers
@@ -59,15 +61,15 @@ def showEvent(request):
 def appendPlayers(request):
     message = 'Err '
     if request.method == 'POST':
-        qID = request.post.get('qId').split(',')
-        gID = request.post.get('gId')
+        qID = request.POST.get('qId').split(',')
+        gID = request.POST.get('gId')
         # Got data
         queryset = Details.objects.filter(gId = gID)
         #If this game even exists
         if queryset:
             #Check for list of qID's are valid or not
             for s in qID:
-                if not validate(queryset.eID,s):
+                if not validateGame(queryset.eID,s):
                     user = Profile.objects.get(qId = qID)
                     json_data = sorted(chain(user, queryset))
                     #json_data = user | obj
@@ -134,8 +136,8 @@ def generateGID(eID):
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
-        eID = request.post.get('eId')
-        qID = request.post.get('qId')
+        eID = request.POST.get('eId')
+        qID = request.POST.get('qId')
         #Collected Required Data
         #Checking for valid QID for this game
         if validateGame(qId,eId):
@@ -185,7 +187,7 @@ def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
-        query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
 
         #Need to remove participated column
         
@@ -200,11 +202,11 @@ def getUserEvent(request):
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
     if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        queryset = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
         #Fetch request Data
         #pariticapted = request.post.get('participated')
-        registered = request.post.get('registered')
-        paid = request.post.get('paid')
+        registered = request.POST.get('registered')
+        paid = request.POST.get('paid')
         #look and replace the fields
         #Removing Current Data
         queryset.paid = []
@@ -213,6 +215,7 @@ def modifyRegistrationsAndParticipations(request):
         #queryset.paid = paid
         #queryset.registered = registered
                
+
         
         for s in paid:
             queryset.paid.append(s)  
