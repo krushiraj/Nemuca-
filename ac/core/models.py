@@ -53,4 +53,38 @@ class Media(Model):
 		link = models.TextField()
 
 class Profile(Model):
+    I = 'I'
+    II = 'II'
+    III = 'III'
+    IV = 'IV'
+    
+    YEAR_CHOICES=((I,'I'),(II,'II'),(III,'III'),(IV,'IV'))
+    
+    IT = 'IT'
+    EEE = 'EEE'
+    ECE = 'ECE'
+    CIVIL = 'CIVIL'
+    CSE = 'CSE'
+    MECH = 'MECH'
+    CHEMICAL = 'CHEMICAL'
+    EIE = 'EIE'
+    TEXTILE = 'TEXTILE'
+    
+    BRANCH_CHOICES=((IT,'Information Technology'),(EEE,'Electronics and Electrical Engineering'),(ECE,'Electronics and Communication Engineering'),(CIVIL,'Civil'),(CSE,'Computer Sciece'),(MECH,'Mechanical'),(CHEMICAL,'Chemical'),(EIE,'Electronics and Instrumentation Engineering'),(TEXTILE,'Textile'))
+    
+    VCE = 'VCE'
+    GRIET = 'GRIET'
+    CBIT = 'CBIT'
+    VNR = 'VNR'
+    MGIT = 'MGIT'
+    
+    COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
+    
     QId = models.CharField(max_length=5)
+    Name = models.CharField(max_length=20)
+    email = models.CharField(max_length=50)
+    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES)
+    Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES)
+    College = models.CharField(max_length=50,choices = COLLEGE_CHOICES)
+    Phone_number =models.CharField(max_length=10)
+
