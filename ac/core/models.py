@@ -28,7 +28,7 @@ class EventDetails(Model):
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
 		eId=models.OneToOneField('Events', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
-		QId=models.ArrayField(models.CharField(max_length = 5))
+		QId=ArrayField(models.CharField(max_length = 5))
 		Total=models.IntegerField(default = 0)
 		date_time=models.DateTimeField('Date Published', auto_now=True)
 
