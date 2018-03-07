@@ -66,10 +66,23 @@ def endGame(request):
     if request.method == 'POST':
         GID =  request.POST.get('gId')
         score = request.POST.get('Total')
+        #fetch the row with give gId
         queryset = EventDetails.objects.get(gId = GID)
-        
+        #update status and score
+        queryset.update(status = 'Played',Total = score)
+        #append to participated list
+        EID = queryset.eId
+        list = queryset.QId
+        for q in list:
+            c = RegistrationsAndParticipations.object.get(QId = q)
+            c.participated.append(EID)
+            c.save()
+    
+        queryset.save()
+        message = 'Done'
         pass
     else:
+        message = 'Invalid Request'
         pass
     return HttpResponse(message, content_type = "text/plain")
 
@@ -114,7 +127,7 @@ def newGame(request):
 def validateGame(eId,qID):
     flag = False
     #Get the row in this model for the corresponding user
-    check = RegistrationsAndParticipations.objects.all().get(qId = qID)
+    check = RegistrationsAndParticipations.objects.get(qId = qID)
 
     #Check if user elgible ie. paid and not participated and registered
     if eId in check.paid and check.registered:
