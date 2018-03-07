@@ -130,7 +130,8 @@ def getUserEvents(request):
         # Fetch Registrations and participations for paid registered and participated
         query = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
         #Need to remove participated column
-        return HttpResponse(query,content_type = "json/application")
+        json_data = serializers.serialize('json',query)
+        return HttpResponse(json_data,content_type = "json/application")
     else:
         return HttpResponse(message , content_type = "text/plain")
 
