@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import (
     Events,
-    EventDetails,
+    Details,
     RegistrationsAndParticipations,
     Hits,
     Media,
@@ -10,7 +10,7 @@ from .models import (
 # Register your models here.
 
 admin.site.register(Events)
-admin.site.register(EventDetails)
+admin.site.register(Details)
 admin.site.register(RegistrationsAndParticipations)
 admin.site.register(Hits)
 admin.site.register(Media)
