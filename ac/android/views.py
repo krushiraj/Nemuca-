@@ -92,8 +92,6 @@ def newGame(request):
         if validateGame(qId,eId):
             #Generating New Game ID
             gID = generateGID(eID)
-
-            status = 'waiting'
             #Creating New Row
             obj = EventDetails( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
@@ -135,6 +133,40 @@ def getUserEvents(request):
         return HttpResponse(query,content_type = "json/application")
     else:
         return HttpResponse(message , content_type = "text/plain")
+
+#Replace 
+def modifyRegistrationsAndParticipations(request):
+    message = 'Err'
+    if request.method == 'POST':
+        queryset = RegistrationsAndParticipations.objects.filter( qId = request.post.get('qId'))
+        #Fetch request Data
+        #pariticapted = request.post.get('participated')
+        registered = request.post.get('registered')
+        paid = request.post.get('paid')
+        #look and replace the fields
+        #Removing Current Data
+        queryset.paid = []
+        queryset.registered = []
+        #Adding new data
+        queryset.paid = paid
+        queryset.registered = registered
+               
+        
+        for s in paid:
+            queryset.paid.append(s)  
+        for s in registered:
+            queryset.registered.append(s)
+        
+        #all operations done
+        queryset.save()
+
+        message = 'Success' 
+
+    else:
+        message ='Invalid Request'
+
+    return HttpResponse(message, content_type = "text/plain")
+        
 
 
 
