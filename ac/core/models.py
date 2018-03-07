@@ -85,9 +85,10 @@ class Profile(Model):
     QId = models.CharField(max_length=5)
     Name = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
-    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES)
-    Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES)
-    College = models.CharField(max_length=50,choices = COLLEGE_CHOICES)
+    roll = models.CharField(max_length= 12)
+    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, defualt = "I")
+    Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES, default = "IT")
+    College = models.CharField(max_length=50,choices = COLLEGE_CHOICES, default = "VCE")
     Phone_number =models.CharField(max_length=10)
 
 # @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
