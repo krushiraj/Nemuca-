@@ -7,7 +7,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Events(Model):
 
-		eId = models.CharField(max_length=3,default = "NNN")
+		eId = models.CharField(max_length=3,default = "NULL")
 		eName = models.CharField(max_length=50)
 		eCount = models.IntegerField(default = 0)
 
@@ -17,7 +17,7 @@ class Events(Model):
         #def get_gameId(self):
             #return "%s %s" %(self.eId,self.eCount)
 
-class EventDetails(Model):
+class Details(Model):
 
 		Waiting = 'W'
 		Running = 'R'
