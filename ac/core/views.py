@@ -57,7 +57,7 @@ def signin(request):
 def signup(request):
      return render(request, 'registrations.html',{})
 
-def signupConfirm(request):
+def signupconfirm(request):
     return HttpResponse("success")
 #@login_required(redirect_field_name='loginpage')
 def social(request):
