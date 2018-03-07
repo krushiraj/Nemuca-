@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -57,6 +57,8 @@ def signin(request):
 def signup(request):
      return render(request, 'registrations.html',{})
 
+def signupConfirm(request):
+    return HttpResponse("success")
 #@login_required(redirect_field_name='loginpage')
 def social(request):
     return render(request, 'social.html',{})
