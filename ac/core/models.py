@@ -1,7 +1,8 @@
 from django.db.models import Model
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # START
 
@@ -80,6 +81,7 @@ class Profile(Model):
     
     COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
     
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     QId = models.CharField(max_length=5)
     Name = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
@@ -88,3 +90,9 @@ class Profile(Model):
     College = models.CharField(max_length=50,choices = COLLEGE_CHOICES)
     Phone_number =models.CharField(max_length=10)
 
+# @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
+# def save_profile(sender, instance, created, **kwargs):
+#     user = instance
+#     if created:
+#         profile = Profile(user=user)
+#     profile.save()
