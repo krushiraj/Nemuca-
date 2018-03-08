@@ -107,9 +107,11 @@ def endGame(request):
         queryset.update(status = 'Played',Total = score)
         #append to participated list
         EID = queryset.eId
-        list = queryset.QId
-        for q in list:
-            c = RegistrationsAndParticipations.object.get(QId = q)
+        lists = queryset.QId
+        for q in lists:
+            profile = Profile.objects.get(QId= q)
+            kp = profile.pk
+            c = RegistrationsAndParticipations.object.get(QId = kp)
             c.participated.append(EID)
             c.save()
 
@@ -169,7 +171,9 @@ def newGame(request):
 def validateGame(eId,qID):
     flag = False
     #Get the row in this model for the corresponding user
-    check = RegistrationsAndParticipations.objects.get(qId = qID)
+    profile = Profile.objects.get(QId= request.POST.get('qId'))
+    kp = profile.pk
+    check = RegistrationsAndParticipations.objects.get(QId = kp)
 
     #Check if user elgible ie. paid and not participated and registered
     if eId in check.paid and eId in check.registered:
@@ -204,7 +208,9 @@ def getUserEvent(request):
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
     if request.method == 'POST':
-        queryset = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
+        profile = Profile.objects.get(QId= request.POST.get('qId'))
+        kp = profile.pk
+        queryset = RegistrationsAndParticipations.objects.filter( QId = kp)
         #Fetch request Data
         #pariticapted = request.post.get('participated')
         registered = request.POST.get('registered')
