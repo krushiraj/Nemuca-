@@ -6,6 +6,7 @@ from .models import (
     RegistrationsAndParticipations,
     Hits,
     Media,
+    Profile,
 )
 # Register your models here.
 
@@ -14,4 +15,5 @@ admin.site.register(Details)
 admin.site.register(RegistrationsAndParticipations)
 admin.site.register(Hits)
 admin.site.register(Media)
+admin.site.register(Profile)
 

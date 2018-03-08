@@ -1,7 +1,8 @@
 from django.db.models import Model
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # START
 
@@ -55,10 +56,47 @@ class Media(Model):
 class Profile(Model):
     QId = models.CharField(max_length=5)
 """
-class User(Model):
-	email = models.EmailField(max_length=70,blank=True)
-	username = models.CharField(max_length=25,blank=True)
-	password1 = models.CharField(max_length=25,blank=True)
-	password2 = models.CharField(max_length=25,blank=True)
-	is_active = models.BooleanField(default = False)
+    I = 'I'
+    II = 'II'
+    III = 'III'
+    IV = 'IV'
+    
+    YEAR_CHOICES=((I,'I'),(II,'II'),(III,'III'),(IV,'IV'))
+    
+    IT = 'IT'
+    EEE = 'EEE'
+    ECE = 'ECE'
+    CIVIL = 'CIVIL'
+    CSE = 'CSE'
+    MECH = 'MECH'
+    CHEMICAL = 'CHEMICAL'
+    EIE = 'EIE'
+    TEXTILE = 'TEXTILE'
+    
+    BRANCH_CHOICES=((IT,'Information Technology'),(EEE,'Electronics and Electrical Engineering'),(ECE,'Electronics and Communication Engineering'),(CIVIL,'Civil'),(CSE,'Computer Sciece'),(MECH,'Mechanical'),(CHEMICAL,'Chemical'),(EIE,'Electronics and Instrumentation Engineering'),(TEXTILE,'Textile'))
+    
+    VCE = 'VCE'
+    GRIET = 'GRIET'
+    CBIT = 'CBIT'
+    VNR = 'VNR'
+    MGIT = 'MGIT'
+    
+    COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null = True)
+    QId = models.CharField(max_length=5, default = "NOQID")
+    Name = models.CharField(max_length=20, default = "No Name Given")
+    email = models.CharField(max_length=50, default = "noemail@entered.com")
+    roll = models.CharField(max_length= 12, default = "1602-70-700-777")
+    Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, default = "I")
+    Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES, default = "IT")
+    College = models.CharField(max_length=50,choices = COLLEGE_CHOICES, default = "VCE")
+    Phone_number =models.CharField(max_length=10, default ="NoNumber")
 """
+# @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
+# def save_profile(sender, instance, created, **kwargs):
+#     user = instance
+#     if created:
+#         profile = Profile(user=user)
+#     profile.save()
+

@@ -1,5 +1,11 @@
 from django.shortcuts import render, redirect
+
 from django.http import Http404, HttpResponseRedirect,HttpResponse
+
+from django.http import Http404, HttpResponseRedirect
+from .models import Profile
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.utils.crypto import get_random_string
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -104,12 +110,19 @@ def activate(request, uidb64, token):
 	if user is not None and account_activation_token.check_token(user, token):
 		user.is_active = True
 		user.save()
+		error_message = get_random_string(5).lower()
+		obj = Profile(QId = error_message)
+		obj.save()
 		login(request, user)
 		#return redirect('home')
 		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
 	else:
 		return HttpResponse('Activation link is invalid!')
-
+def test(request):
+	error_message = get_random_string(5).lower()
+	return HttpResponse(error_message, content_type='text/plain') 
+def signupconfirm(request):
+    return HttpResponse("success")
 #@login_required(redirect_field_name='loginpage')
 def social(request):
 	return render(request, 'social.html',{})

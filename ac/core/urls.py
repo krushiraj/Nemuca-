@@ -18,7 +18,9 @@ urlpatterns = [
     path('social/', views.social, name = 'social'),
     path('events/', views.events , name = 'events'),
     path('signup/', views.signup , name = 'signup'),
+    path('signup/confirm', views.signupconfirm, name = 'signupconfirm'),
     path('secretpath/',views.secret, name = 'secret'),
+    path('getqr/',views.test,name ='test'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 ]

@@ -22,7 +22,13 @@
 				<div class="fs-title">
 					<h1>Registration</h1>
 				</div>
+
 				<form id="myform" class="fs-form fs-form-full" autocomplete="off" method="POST">{% csrf_token %}
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'signup' %}">
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'signupconfirm' %}">
+
 					<ol class="fs-fields">
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
