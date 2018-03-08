@@ -81,11 +81,11 @@ def signup(request):
 			user.save()
 			current_site = get_current_site(request)
 			domain = current_site.domain
-			uid = urlsafe_base64_encode(force_bytes(user.pk))    
+			uid = urlsafe_base64_encode(force_bytes(user.pk))
 			token = account_activation_token.make_token(user)
 			mail_subject = 'Activate your AccumenIT account.'
 			message = render_to_string('acc_active_email.html', {
-				'activate_url' : 'http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)
+				'activate_url' : 'http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)
 			})
 			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
 			to_email = form.cleaned_data.get('email')
@@ -120,7 +120,7 @@ def activate(request, uidb64, token):
 def test(request):
 	error_message = get_random_string(5).lower()
 
-	return HttpResponse(error_message, content_type='text/plain') 
+	return HttpResponse(error_message, content_type='text/plain')
 def signupconfirm(request):
     return HttpResponse("success")
 

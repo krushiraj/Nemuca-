@@ -38,25 +38,25 @@ def showDetails(request):
     if request.method == 'POST':
         queryset = Details.objects.filter(eId = request.POST.get('eId'))
         json_data = serializers.serialize('json',queryset)
-        return HttpResponse(json_data, content_type = "json/application")
+        return HttpResponse(json_data, content_type = "application/json")
 
 
 @csrf_exempt
 def showRegistrationsAndParticipations(request):
     queryset = RegistrationsAndParticipations.objects.all().order_by('pk')
     json_data = serializers.serialize('json',queryset)
-    return HttpResponse(json_data, content_type = "json/application")
+    return HttpResponse(json_data, content_type = "application/json")
 
 def showEvent(request):
     queryset = Event.object.all.order_by('pk')
     json_data = serializers.serialize('json',queryset)
-    return HttpResponse(json_data, content_type = "json/application")
+    return HttpResponse(json_data, content_type = "application/json")
 
 #----------------------------------------------------------------------------------------------------------------------
 # Event App
 
 #Takes Existing Gid and adds Players
-# URL @ events/addplayer  
+# URL @ events/addplayer
 @csrf_exempt
 def appendPlayers(request):
     message = 'Err '
@@ -74,10 +74,10 @@ def appendPlayers(request):
                     json_data = sorted(chain(user, queryset))
                     #json_data = user | obj
                     json_data = serializers.serialize('json',user)
-                    return HttpResponse(user, content_type = "json/application")
+                    return HttpResponse(user, content_type = "application/json")
                     message.append(s)
                     #return HttpResponse(message, content_type = "text/plain")
-            
+
             # Append qID ( list ) to queryset
                 else:
                     queryset.QId.append(s)
@@ -88,9 +88,9 @@ def appendPlayers(request):
             #Anthe I guess
     else:
         message = 'Invalid Request'
-    
+
     return HttpResponse(message, content_type = "text/plain")
-            
+
 
 
 #Ends the game adding score and updating participated
@@ -112,7 +112,7 @@ def endGame(request):
             c = RegistrationsAndParticipations.object.get(QId = q)
             c.participated.append(EID)
             c.save()
-    
+
         queryset.save()
         message = 'Done'
         pass
@@ -146,21 +146,21 @@ def newGame(request):
             #Creating New Row
             obj = Details( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
             obj.save()
-            #commiting the row 
+            #commiting the row
             message = 'Success'
             user = Profile.objects.get(qId = qID)
             json_data = sorted(chain(user, obj))
             #json_data = user | obj
             json_data = serializers.serialize('json',user)
-            return HttpResponse(user, content_type = "json/application")
+            return HttpResponse(user, content_type = "application/json")
         else:
             message = 'Not Applicable'
     else:
         message = 'Not a Valid Request'
 
     return HttpResponse(message, content_type = "text/plain")
-        
-    
+
+
     
 
 #Authenticates user to the game
@@ -190,13 +190,13 @@ def getUserEvent(request):
         query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
 
         #Need to remove participated column
-        
+
         json_data = serializers.serialize('json',query)
-        return HttpResponse(json_data,content_type = "json/application")
+        return HttpResponse(json_data,content_type = "application/json")
     else:
         return HttpResponse(message , content_type = "text/plain")
 
-#Replace 
+#Replace
 # URL register/push
 @csrf_exempt
 def modifyRegistrationsAndParticipations(request):
@@ -214,24 +214,24 @@ def modifyRegistrationsAndParticipations(request):
         #Adding new data
         #queryset.paid = paid
         #queryset.registered = registered
-               
 
-        
+
+
         for s in paid:
-            queryset.paid.append(s)  
+            queryset.paid.append(s)
         for s in registered:
             queryset.registered.append(s)
-        
+
         #all operations done
         queryset.save()
 
-        message = 'Success' 
+        message = 'Success'
 
     else:
         message ='Invalid Request'
 
     return HttpResponse(message, content_type = "text/plain")
-        
+
 
 
 
@@ -261,7 +261,7 @@ def modifyRegistrationsAndParticipations(request):
 #         # json_data = serializers.serialize('json', queryset)
 #         # return HttpResponse(json_data, content_type = "application/json")
 
-# #This will be final request, where 
+# #This will be final request, where
 # def add_scores(request):
 #     if request.method = 'POST':
 #         queryset1 = Details.objects.filter(gId = request.POST.get('gId')).update(status = "Played", Total = request.POST.get('Total'))
@@ -304,20 +304,15 @@ def modifyRegistrationsAndParticipations(request):
 #             queryset1.paid.append(Event)
 #             json_data = serializers.serialize('json', queryset1)
 #             return HttpResponse(json_data, content_type = "application/json")
-        
+
 #         # else:
-        
+
 #         # 	Profile.objects.create()
 #         # 	q1 = Profile.objects.get(QId)
 #         # 	Event = request.POST.eId
 #         # 	e1 = RegistrationsAndParticipations.objects.get(QId = q1.QId)
 #         # 	e1.paid.append(Event)
-        
+
 #         else:
 #             #messages.error(request, 'ERR
 #             return render(request,'',{'error_message' = error_message})a
-
-
-
-
- 
