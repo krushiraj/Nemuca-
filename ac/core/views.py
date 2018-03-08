@@ -7,7 +7,7 @@ from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.utils.crypto import get_random_string
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from .forms import SignupForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
