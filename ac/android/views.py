@@ -161,7 +161,7 @@ def newGame(request):
     return HttpResponse(message, content_type = "text/plain")
 
 
-    
+
 
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
@@ -188,7 +188,8 @@ def getUserEvent(request):
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
         query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
-
+        if not query:
+            return HttpResponse("Nope",content_type="text/plain")
         #Need to remove participated column
 
         json_data = serializers.serialize('json',query)
