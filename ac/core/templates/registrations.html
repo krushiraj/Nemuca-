@@ -22,15 +22,15 @@
 				<div class="fs-title">
 					<h1>Registration</h1>
 				</div>
-				<form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'signup' %}">
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" method="POST">{% csrf_token %}
 					<ol class="fs-fields">
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
-							<input class="fs-anim-lower" id="q1" name="name" type="text" placeholder="Your Name" required/>
+							<input class="fs-anim-lower" id="q1" name="username" type="text" placeholder="Your Name" required/>
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q4">Mobile no.</label>
-							<input class="fs-anim-lower" id="q4" name="mobile" type="tel" placeholder="9876543210" required/>
+							<input class="fs-anim-lower" id="q4"  type="tel" placeholder="9876543210" required/>
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your email address?</label>
@@ -38,10 +38,11 @@
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q5" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Enter Password</label>
-							<input class="fs-anim-lower" id="q5" name="email" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+							<input class="fs-anim-lower" id="q5" name="password1" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
 							<label class="fs-field-label fs-anim-upper" for="q6" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Re-enter Password</label>
-							<input class="fs-anim-lower" id="q6" name="email" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+							<input class="fs-anim-lower" id="q6" name="password2" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
 						</li>
+<!--						
 						<li data-input-trigger>
 							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">What events are you looking to register yourself in?</label>
 							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
@@ -71,22 +72,22 @@
 								<option value="#FF0000" data-class="color-FF0000" data-color="#FF0000">IV</option>
 								<option value="#FFFF33" data-class="color-FFFF33" data-color="#FFFF33">V</option>
 							</select>
-						</li>
+						</li>-->
 					</ol><!-- /fs-fields -->
 					<button class="fs-submit" type="submit">Send answers</button>
 				</form><!-- /fs-form -->
 			</div><!-- /fs-form-wrap -->
 		</div><!-- /container -->
-		<script src="{% static 'js/classie.js' %}"></script>
-		<script src="{% static 'js/selectFx.js' %}"></script>
-		<script src="{% static 'js/fullscreenForm.js' %}"></script>
+		<script src="{% static 'js/r-classie.js' %}"></script>
+		<script src="{% static 'js/r-selectFx.js' %}"></script>
+		<script src="{% static 'js/r-fullscreenForm.js' %}"></script>
 		<script>
 			(function() {
 				var formWrap = document.getElementById( 'fs-form-wrap' );
 
 				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
 					new SelectFx( el, {
-						stickyPlaceholder: false,
+						stickyPlaceholder: true,
 						onChange: function(val){
 							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
 						}
@@ -106,9 +107,9 @@
 			//code for disabling all inputs
 			var inps = document.getElementsByTagName("input");
 			for(var i = 0; i < inps.length; i++){
-				inps[i].disabled = true;
+				inps[i].disabled = false;
 			}
-			alert("Registrations will be open soon! Please stay tuned.");
+//			alert("Registrations will be open soon! Please stay tuned.");
 			//code for disabling all inputs
 		</script>
 	</body>

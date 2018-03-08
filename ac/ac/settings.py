@@ -27,7 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+ALLOWED_HOSTS = ['*']
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vg18aditya@gmail.com'
+EMAIL_HOST_PASSWORD = 'godofwar3'
+EMAIL_PORT = 587
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'verified_email_field',
     'core',
     'ac',
     'android',
@@ -84,19 +90,19 @@ DATABASES = {
         'USER': 'super',
         'PASSWORD': 'qwertyuiop',
         'HOST': 'acumenit-690.postgres.pythonanywhere-services.com',
-        'PORT': '10690',
+		'PORT': '10690',
     }
 }
 
-
+"""
 #Testing Purupose
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+ }
+"""
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 

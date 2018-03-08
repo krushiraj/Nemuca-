@@ -1,5 +1,8 @@
-from django.urls import path, include
+from django.urls import path, include,re_path
 from . import views
+from django.contrib import admin
+from django.conf.urls import url,include
+
 
 urlpatterns = [
     path('', views.index, name = 'index'),
@@ -16,4 +19,6 @@ urlpatterns = [
     path('events/', views.events , name = 'events'),
     path('signup/', views.signup , name = 'signup'),
     path('secretpath/',views.secret, name = 'secret'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
 ]

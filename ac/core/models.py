@@ -54,3 +54,11 @@ class Media(Model):
 
 class Profile(Model):
     QId = models.CharField(max_length=5)
+"""
+class User(Model):
+	email = models.EmailField(max_length=70,blank=True)
+	username = models.CharField(max_length=25,blank=True)
+	password1 = models.CharField(max_length=25,blank=True)
+	password2 = models.CharField(max_length=25,blank=True)
+	is_active = models.BooleanField(default = False)
+"""
