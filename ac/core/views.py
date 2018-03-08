@@ -1,17 +1,10 @@
 from django.shortcuts import render, redirect
-<<<<<<< HEAD
 
-from django.http import Http404, HttpResponseRedirect,HttpResponse
 
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from .models import Profile
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.utils.crypto import get_random_string
-||||||| merged common ancestors
-from django.http import Http404, HttpResponseRedirect
-=======
-from django.http import Http404, HttpResponseRedirect, HttpResponse
->>>>>>> f5d0bea2cb5b4676893e1611d4479cdc789f8a2f
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
