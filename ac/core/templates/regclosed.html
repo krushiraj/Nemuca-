@@ -47,8 +47,7 @@
 							<input class="fs-anim-lower" id="q5" name="password1" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
 							<label class="fs-field-label fs-anim-upper" for="q6" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Re-enter Password</label>
 							<input class="fs-anim-lower" id="q6" name="password2" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
-						</li>
-<!--						
+						</li>						
 						<li data-input-trigger>
 							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">What events are you looking to register yourself in?</label>
 							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
@@ -78,7 +77,7 @@
 								<option value="#FF0000" data-class="color-FF0000" data-color="#FF0000">IV</option>
 								<option value="#FFFF33" data-class="color-FFFF33" data-color="#FFFF33">V</option>
 							</select>
-						</li>-->
+                        </li>
 					</ol><!-- /fs-fields -->
 					<button class="fs-submit" type="submit">Send answers</button>
 				</form><!-- /fs-form -->
@@ -113,9 +112,9 @@
 			//code for disabling all inputs
 			var inps = document.getElementsByTagName("input");
 			for(var i = 0; i < inps.length; i++){
-				inps[i].disabled = false;
+				inps[i].disabled = true;
 			}
-//			alert("Registrations will be open soon! Please stay tuned.");
+            alert("Registrations will be open soon! Please stay tuned.");
 			//code for disabling all inputs
 		</script>
 	</body>

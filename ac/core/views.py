@@ -65,6 +65,9 @@ def secret(request):
 def signin(request):
 	pass
 
+def registrations(request):
+    return render(request,'regclosed.html',{})
+
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
