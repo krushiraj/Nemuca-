@@ -6,6 +6,7 @@ from .models import (
     RegistrationsAndParticipations,
     Hits,
     Media,
+    Profile,
 )
 # Register your models here.
 
