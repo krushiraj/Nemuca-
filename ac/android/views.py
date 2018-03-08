@@ -187,7 +187,7 @@ def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
-        query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('qId'))
+        query = RegistrationsAndParticipations.objects.filter( qId = request.POST.get('QId'))
         if not query:
             return HttpResponse("Nope",content_type="text/plain")
         #Need to remove participated column
