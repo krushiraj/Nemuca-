@@ -221,18 +221,18 @@ def modifyRegistrationsAndParticipations(request):
         paid = request.POST.get('paid')
         #look and replace the fields
         #Removing Current Data
-        queryset.paid = []
-        queryset.registered = []
+        queryset.paid = paid.split(',')
+        queryset.registered = registered.split(',')
         #Adding new data
         #queryset.paid = paid
         #queryset.registered = registered
+        #paid_list = paid.split(',')
+        #registered_list = registered.split(',')
 
-
-
-        for s in paid:
-            queryset.paid.append(s)
-        for s in registered:
-            queryset.registered.append(s)
+        #for s in paid_list:
+        #   queryset.paid.append(s)
+        #for s in registered_list:
+        #   queryset.registered.append(s)
 
         #all operations done
         queryset.save()
