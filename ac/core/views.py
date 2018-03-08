@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 
 from django.http import Http404, HttpResponseRedirect,HttpResponse
 
@@ -6,6 +7,11 @@ from django.http import Http404, HttpResponseRedirect
 from .models import Profile
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.utils.crypto import get_random_string
+||||||| merged common ancestors
+from django.http import Http404, HttpResponseRedirect
+=======
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+>>>>>>> f5d0bea2cb5b4676893e1611d4479cdc789f8a2f
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -99,6 +105,7 @@ def signup(request):
 		form = SignupForm()
 	return render(request, 'registrations.html', {'form': form})
 
+<<<<<<< HEAD
 def activate(request, uidb64, token):
 	try:
 		uid = force_text(urlsafe_base64_decode(uidb64))
@@ -123,6 +130,11 @@ def test(request):
 	return HttpResponse(error_message, content_type='text/plain') 
 def signupconfirm(request):
     return HttpResponse("success")
+||||||| merged common ancestors
+=======
+def signupconfirm(request):
+    return HttpResponse("success")
+>>>>>>> f5d0bea2cb5b4676893e1611d4479cdc789f8a2f
 #@login_required(redirect_field_name='loginpage')
 def social(request):
 	return render(request, 'social.html',{})
