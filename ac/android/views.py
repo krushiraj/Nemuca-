@@ -212,9 +212,11 @@ def getUserEvent(request):
 def modifyRegistrationsAndParticipations(request):
     message = 'Err'
     if request.method == 'POST':
-        profile = Profile.objects.get(QId= request.POST.get('qId'))
-        kp = profile.pk
-        queryset = RegistrationsAndParticipations.objects.filter( QId = kp)
+        #profile = Profile.objects.get(QId= request.POST.get('qId'))
+        #kp = profile.pk
+        
+        #QId can directly be fetched here.
+        queryset = RegistrationsAndParticipations.objects.filter( QId = request.POST.get('QId'))
         #Fetch request Data
         #pariticapted = request.post.get('participated')
         registered = request.POST.get('registered')
