@@ -98,7 +98,6 @@ def signup(request):
 		form = SignupForm()
 	return render(request, 'registrations.html', {'form': form})
 
-<<<<<<< HEAD
 def activate(request, uidb64, token):
 	try:
 		uid = force_text(urlsafe_base64_decode(uidb64))
@@ -120,14 +119,11 @@ def activate(request, uidb64, token):
 		return HttpResponse('Activation link is invalid!')
 def test(request):
 	error_message = get_random_string(5).lower()
+
 	return HttpResponse(error_message, content_type='text/plain') 
 def signupconfirm(request):
     return HttpResponse("success")
-||||||| merged common ancestors
-=======
-def signupconfirm(request):
-    return HttpResponse("success")
->>>>>>> f5d0bea2cb5b4676893e1611d4479cdc789f8a2f
+
 #@login_required(redirect_field_name='loginpage')
 def social(request):
 	return render(request, 'social.html',{})
