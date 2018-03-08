@@ -13,6 +13,7 @@ from itertools import chain
 from django.core import serializers
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ObjectDoesNotExist
 #-----------------------------------------------------------------------------------------------------------------------------------------
 #EVENT-IDS
 
@@ -190,7 +191,10 @@ def validateGame(eId,qID):
 def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
-        profile = Profile.objects.get(QId= request.POST.get('qId'))
+        try:
+            profile = Profile.objects.get(QId= request.POST.get('qId'))
+        except ObjectDoesNotExist:
+            return HttpResponse("QR Code is not valid",content_type="text/plain")
         kp = profile.pk
         query = RegistrationsAndParticipations.objects.filter(QId = kp)
         if not query:
