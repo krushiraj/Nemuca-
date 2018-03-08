@@ -186,7 +186,7 @@ def validateGame(eId,qID):
 def getUserEvent(request):
     message = 'Err'
     if request.method == 'POST':
-        profile = Profile.objects.get(QId= request.POST['qID'])
+        profile = Profile.objects.get(QId= request.POST.get('qID'))
         kp = profile.pk
         query = RegistrationsAndParticipations.objects.filter(QId = kp)
         if not query:
