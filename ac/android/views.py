@@ -188,10 +188,11 @@ def getUserEvent(request):
     if request.method == 'POST':
         # Fetch Registrations and participations for paid registered and participated
         query = RegistrationsAndParticipations.objects.filter( QId = request.POST.get('qId'))
+        print(query)
         if not query:
             return HttpResponse("Nope",content_type="text/plain")
         #Need to remove participated column
-
+        
         json_data = serializers.serialize('json',query)
         return HttpResponse(json_data,content_type = "application/json")
     else:
