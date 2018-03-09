@@ -128,7 +128,7 @@ def endGame(request):
 @csrf_exempt
 def generateGID(eID):
     game = Event.objects.get(eId = eID)
-    game.eCount = F('eCount')+1
+    game.eCount = game.eCount+1
     game.save()
     return "%s%s" %(eID,game.eCount)
 
@@ -141,28 +141,34 @@ def newGame(request):
     if request.method == 'POST':
         eId = request.POST.get('eId')
         qId = request.POST.get('qId')
+        print("Hii")
         #Collected Required Data
         #Checking for valid QID for this game
         if validateGame(eId,qId):
             #Generating New Game ID
             print("Validate Worked fine")
-            detail = Details.objects.get(gId = 'TTX2')
-            print(detail.eId)
+            #detail = Details.objects.get(gId = 'TTX2')
+            #print(detail.eId)
             gId = generateGID(eId)
             #Creating New Row
             event = Event.objects.get(eId=eId)
-            eventId = event.eName
-            obj = Details( eId = eventId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            eventId = event.eId
+
+            obj = Details( eId = Event.objects.get(eId=eId), QId = list(qId), Total = 0, gId = gId, status_choice = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
+            
+
+           
+
             user = Profile.objects.get(QId = qId)
-            json_data = sorted(chain(user, obj))
+            json1 = serializers.serialize('json',[obj,user])
             #json_data = user | obj
-            json_data = serializers.serialize('json',json_data)
-            return HttpResponse(json_data, content_type = "application/json")
+            return HttpResponse(json1, content_type = "application/json")
         else:
             message = 'User cannot play this game'
+
     else:
         message = 'Not a Valid Request'
 
@@ -175,6 +181,7 @@ def newGame(request):
 #Checks if the user is playing for the first time or not! ^.^
 @csrf_exempt
 def validateGame(eId,qId):
+    print('abc')
     flag = False
     #Get the row in this model for the corresponding user
     profile = Profile.objects.get(QId= qId)
