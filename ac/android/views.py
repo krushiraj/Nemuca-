@@ -146,13 +146,13 @@ def newGame(request):
         if validateGame(eId,qId):
             #Generating New Game ID
             print("Validate Worked fine")
-            gID = generateGID(eId)
+            gId = generateGID(eId)
             #Creating New Row
             obj = Details( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
-            user = Profile.objects.get(QId = qID)
+            user = Profile.objects.get(QId = qId)
             json_data = sorted(chain(user, obj))
             #json_data = user | obj
             json_data = serializers.serialize('json',json_data)
