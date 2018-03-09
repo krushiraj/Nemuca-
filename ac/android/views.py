@@ -216,31 +216,17 @@ def modifyRegistrationsAndParticipations(request):
         #kp = profile.pk
         
         #QId can directly be fetched here.
-        queryset = RegistrationsAndParticipations.objects.filter( QId = request.POST.get('QId'))
+        queryset = RegistrationsAndParticipations.objects.get( QId = request.POST.get('QId'))
         #Fetch request Data
-        #pariticapted = request.post.get('participated')
         registered = request.POST.get('registered')
         paid = request.POST.get('paid')
         #look and replace the fields
         #Removing Current Data
         
-        for item in queryset:
-            item.paid = paid.split(',')
-            item.registered = registered.split(',')
-            item.save()
-        #Adding new data
-        #queryset.paid = paid
-        #queryset.registered = registered
-        #paid_list = paid.split(',')
-        #registered_list = registered.split(',')
-
-        #for s in paid_list:
-        #   queryset.paid.append(s)
-        #for s in registered_list:
-        #   queryset.registered.append(s)
-
-        #all operations done
-        #queryset.save()
+        queryset.paid = paid.split(,)
+        queryset.registered = registered.split(,)
+        
+        queryset.save()
 
         message = 'Success'
 
