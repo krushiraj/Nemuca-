@@ -139,25 +139,26 @@ def generateGID(eID):
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
-        eID = request.POST.get('eId')
-        qID = request.POST.get('qId')
+        eId = request.POST.get('eId')
+        qId = request.POST.get('qId')
         #Collected Required Data
         #Checking for valid QID for this game
-        if validateGame(qId,eId):
+        if validateGame(eId,qId):
             #Generating New Game ID
-            gID = generateGID(eID)
+            print("Validate Worked fine")
+            gID = generateGID(eId)
             #Creating New Row
-            obj = Details( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
+            obj = Details( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
-            user = Profile.objects.get(qId = qID)
+            user = Profile.objects.get(QId = qID)
             json_data = sorted(chain(user, obj))
             #json_data = user | obj
-            json_data = serializers.serialize('json',user)
-            return HttpResponse(user, content_type = "application/json")
+            json_data = serializers.serialize('json',json_data)
+            return HttpResponse(json_data, content_type = "application/json")
         else:
-            message = 'Not Applicable'
+            message = 'User cannot play this game'
     else:
         message = 'Not a Valid Request'
 
@@ -169,10 +170,10 @@ def newGame(request):
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
 @csrf_exempt
-def validateGame(eId,qID):
+def validateGame(eId,qId):
     flag = False
     #Get the row in this model for the corresponding user
-    profile = Profile.objects.get(QId= request.POST.get('qId'))
+    profile = Profile.objects.get(QId= qId)
     kp = profile.pk
     check = RegistrationsAndParticipations.objects.get(QId = kp)
 
