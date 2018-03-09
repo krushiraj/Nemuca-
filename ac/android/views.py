@@ -223,8 +223,8 @@ def modifyRegistrationsAndParticipations(request):
         #look and replace the fields
         #Removing Current Data
         
-        queryset.paid = paid.split(,)
-        queryset.registered = registered.split(,)
+        queryset.paid = paid.split(',')
+        queryset.registered = registered.split(',')
         
         queryset.save()
 
