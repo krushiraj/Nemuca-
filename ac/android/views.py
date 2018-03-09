@@ -148,7 +148,9 @@ def newGame(request):
             print("Validate Worked fine")
             gId = generateGID(eId)
             #Creating New Row
-            obj = Details( eId = eId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            event = Event.objects.get(eId=eId)
+            eventId = event.pk
+            obj = Details( eId = eventId, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
@@ -176,10 +178,9 @@ def validateGame(eId,qId):
     profile = Profile.objects.get(QId= qId)
     kp = profile.pk
     check = RegistrationsAndParticipations.objects.get(QId = kp)
-    eventId = Event.objects.get(eId=eId)
     #Check if user elgible ie. paid and not participated and registered
-    if eventId in check.paid and eventId in check.registered:
-        if eventId not in check.participated:
+    if eId in check.paid and eId in check.registered:
+        if eId not in check.participated:
             flag = True
 
     return flag
