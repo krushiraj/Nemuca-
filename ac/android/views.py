@@ -147,7 +147,7 @@ def newGame(request):
             #Generating New Game ID
             print("Validate Worked fine")
             detail = Details.objects.get(gId = 'TTX2')
-            print(detail)
+            print(detail.eId)
             gId = generateGID(eId)
             #Creating New Row
             event = Event.objects.get(eId=eId)
