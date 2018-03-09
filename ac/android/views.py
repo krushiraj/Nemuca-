@@ -150,7 +150,7 @@ def newGame(request):
             #Creating New Row
             event = Event.objects.get(eId=eId)
             eventId = event.pk
-            obj = Details( eId = 'Anwesha', qId = qId, Total = 0, gId = gId, status = 'Waiting' )
+            obj = Details( eId = 3, qId = qId, Total = 0, gId = gId, status = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
