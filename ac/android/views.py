@@ -179,7 +179,7 @@ def validateGame(eId,qId):
 
     #Check if user elgible ie. paid and not participated and registered
     if eId in check.paid and eId in check.registered:
-        if eID not in check.participated:
+        if eId not in check.participated:
             flag = True
 
     return flag
