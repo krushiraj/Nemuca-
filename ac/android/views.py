@@ -128,7 +128,7 @@ def endGame(request):
 @csrf_exempt
 def generateGID(eID):
     game = Event.objects.get(eId = eID)
-    game.eCount = F('eCount')+1
+    game.eCount = game.eCount+1
     game.save()
     return "%s%s" %(eID,game.eCount)
 
@@ -139,25 +139,36 @@ def generateGID(eID):
 def newGame(request):
     message = 'Err'
     if request.method == 'POST':
-        eID = request.POST.get('eId')
-        qID = request.POST.get('qId')
+        eId = request.POST.get('eId')
+        qId = request.POST.get('qId')
+        print("Hii")
         #Collected Required Data
         #Checking for valid QID for this game
-        if validateGame(qId,eId):
+        if validateGame(eId,qId):
             #Generating New Game ID
-            gID = generateGID(eID)
+            print("Validate Worked fine")
+            #detail = Details.objects.get(gId = 'TTX2')
+            #print(detail.eId)
+            gId = generateGID(eId)
             #Creating New Row
-            obj = Details( eId = eID, qId = qID, Total = 0, gId = gID, status = 'Waiting' )
+            event = Event.objects.get(eId=eId)
+            eventId = event.eId
+
+            obj = Details( eId = Event.objects.get(eId=eId), QId = list(qId), Total = 0, gId = gId, status_choice = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
-            user = Profile.objects.get(qId = qID)
-            json_data = sorted(chain(user, obj))
+            
+
+           
+
+            user = Profile.objects.get(QId = qId)
+            json1 = serializers.serialize('json',[obj,user])
             #json_data = user | obj
-            json_data = serializers.serialize('json',user)
-            return HttpResponse(user, content_type = "application/json")
+            return HttpResponse(json1, content_type = "application/json")
         else:
-            message = 'Not Applicable'
+            message = 'User cannot play this game'
+
     else:
         message = 'Not a Valid Request'
 
@@ -169,16 +180,16 @@ def newGame(request):
 #Authenticates user to the game
 #Checks if the user is playing for the first time or not! ^.^
 @csrf_exempt
-def validateGame(eId,qID):
+def validateGame(eId,qId):
+    print('abc')
     flag = False
     #Get the row in this model for the corresponding user
-    profile = Profile.objects.get(QId= request.POST.get('qId'))
+    profile = Profile.objects.get(QId= qId)
     kp = profile.pk
     check = RegistrationsAndParticipations.objects.get(QId = kp)
-
     #Check if user elgible ie. paid and not participated and registered
     if eId in check.paid and eId in check.registered:
-        if eID not in check.participated:
+        if eId not in check.participated:
             flag = True
 
     return flag
@@ -216,31 +227,17 @@ def modifyRegistrationsAndParticipations(request):
         #kp = profile.pk
         
         #QId can directly be fetched here.
-        queryset = RegistrationsAndParticipations.objects.filter( QId = request.POST.get('QId'))
+        queryset = RegistrationsAndParticipations.objects.get( QId = request.POST.get('QId'))
         #Fetch request Data
-        #pariticapted = request.post.get('participated')
         registered = request.POST.get('registered')
         paid = request.POST.get('paid')
         #look and replace the fields
         #Removing Current Data
         
-        for item in queryset:
-            item.paid = paid.split(',')
-            item.registered = registered.split(',')
-            item.save()
-        #Adding new data
-        #queryset.paid = paid
-        #queryset.registered = registered
-        #paid_list = paid.split(',')
-        #registered_list = registered.split(',')
-
-        #for s in paid_list:
-        #   queryset.paid.append(s)
-        #for s in registered_list:
-        #   queryset.registered.append(s)
-
-        #all operations done
-        #queryset.save()
+        queryset.paid = paid.split(',')
+        queryset.registered = registered.split(',')
+        
+        queryset.save()
 
         message = 'Success'
 

@@ -27,7 +27,7 @@ class Details(Model):
 		STATUS_CHOICES=((Running,'Running'),(Played,'Played'),(Waiting,'Waiting'))
 
 		status_choice = models.CharField(max_length=8, choices=STATUS_CHOICES)
-		eId=models.OneToOneField('Event', max_length=5,on_delete='CASCADE')
+		eId=models.ForeignKey('Event', max_length=5,on_delete='CASCADE')
 		gId=models.CharField(max_length=5)
 		QId=ArrayField(models.CharField(max_length = 5))
 		Total=models.IntegerField(default = 0)

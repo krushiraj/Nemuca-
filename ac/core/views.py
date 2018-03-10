@@ -47,7 +47,9 @@ def loginpage(request):
 def loginvalidate(request):
 	if request.method == 'POST':
 		user = request.POST.get('user')
+		print(user)
 		password = request.POST.get('password')
+		print(password)
 		user = authenticate(username = user, password = password)
 		if user is not None:
 			login(request, user)
@@ -60,7 +62,7 @@ def loginvalidate(request):
 		return render(request,'error.html',{'error_message':error_message})
 
 def secret(request):
-	pass
+	return render(request, 'll.html',{})
 
 def signin(request):
 	pass
