@@ -72,11 +72,8 @@ def registrations(request):
 def signup(request):
 	if request.method == 'POST':
 		form = SignupForm(data=request.POST)
-		print (request.POST.get('username'))
-		print (form['username'].value())
-		print (form.data['username'])
 		print (form.is_valid())
-		print (form.errors)
+		print(form.errors)
 		if form.is_valid():
 			print (form.data['username'])
 			user = form.save(commit=False)
@@ -85,18 +82,26 @@ def signup(request):
 			current_site = get_current_site(request)
 			domain = current_site.domain
 			uid = urlsafe_base64_encode(force_bytes(user.pk))
+			uid1 = force_text(urlsafe_base64_decode(uid))
 			token = account_activation_token.make_token(user)
+			userobj = User.objects.get(pk=uid1)
+			qrcode = get_random_string(5).lower()
+			obj = Profile(QId = qrcode,user = userobj,)
+			obj.save()
 			mail_subject = 'Activate your AccumenIT account.'
 			message = render_to_string('acc_active_email.html', {
-				'activate_url' : 'http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)
+				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
+				'qrcode' : qrcode
 			})
 			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
-			to_email = form.cleaned_data.get('email')
+			to_email = form.cleaned_data.get('username')
 			email = EmailMessage(
 						mail_subject, message, to=[to_email]
 			)
 			email.send()
 			return HttpResponse("Check your email")
+		else:
+			return HttpResponse(form.errors)
 	else:
 		form = SignupForm()
 	return render(request, 'registrations.html', {'form': form})
@@ -112,9 +117,6 @@ def activate(request, uidb64, token):
 	if user is not None and account_activation_token.check_token(user, token):
 		user.is_active = True
 		user.save()
-		error_message = get_random_string(5).lower()
-		obj = Profile(QId = error_message)
-		obj.save()
 		login(request, user)
 		#return redirect('home')
 		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')

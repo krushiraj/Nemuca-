@@ -54,8 +54,6 @@ class Media(Model):
 		link = models.TextField()
 
 class Profile(Model):
-    QId = models.CharField(max_length=5)
-"""
     I = 'I'
     II = 'II'
     III = 'III'
@@ -82,17 +80,14 @@ class Profile(Model):
     MGIT = 'MGIT'
     
     COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
-    
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null = True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE ,null= True)
     QId = models.CharField(max_length=5, default = "NOQID")
-    Name = models.CharField(max_length=20, default = "No Name Given")
-    email = models.CharField(max_length=50, default = "noemail@entered.com")
-    roll = models.CharField(max_length= 12, default = "1602-70-700-777")
+    roll = models.CharField(max_length= 20, default = "1602-70-700-777")
     Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, default = "I")
     Branch = models.CharField(max_length=50,choices = BRANCH_CHOICES, default = "IT")
     College = models.CharField(max_length=50,choices = COLLEGE_CHOICES, default = "VCE")
     Phone_number =models.CharField(max_length=10, default ="NoNumber")
-"""
+
 # @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
 # def save_profile(sender, instance, created, **kwargs):
 #     user = instance
