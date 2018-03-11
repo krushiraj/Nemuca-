@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 
 from django.http import Http404
-from .models import Profile
+from .models import Profile,Details,RegistrationsAndParticipations
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.utils.crypto import get_random_string
 from django.contrib.auth import authenticate, login, logout
@@ -16,6 +16,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+
+
 #Create your views here.
 #@login_required(redirect_field_name='loginpage')
 def events(request):
@@ -53,7 +55,7 @@ def loginvalidate(request):
 		user = authenticate(username = user, password = password)
 		if user is not None:
 			login(request, user)
-			return HttpResponseRedirect(reverse('index'))
+			return HttpResponseRedirect(reverse('user'))
 		else:
 			error_message = 'invalid credentials'
 			return render(request,'error.html',{'error_message':error_message})
@@ -68,8 +70,11 @@ def signin(request):
 	pass
 
 def registrations(request):
-    return render(request,'regclosed.html',{})
-
+	if not request.user.is_active():
+    	return render(request,'regclosed.html',{})
+	else:
+		return render(request,'dash.html',{})
+		
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
@@ -121,7 +126,8 @@ def activate(request, uidb64, token):
 		user.save()
 		login(request, user)
 		#return redirect('home')
-		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+		#return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+		return redirect(reverse('dash'))
 	else:
 		return HttpResponse('Activation link is invalid!')
 def test(request):
@@ -142,3 +148,40 @@ def sponsors(request):
 #@login_required(redirect_field_name='loginpage')
 def team(request):
 	return render(request, 'team.html',{})
+
+@login_required(redirect_field_name = "loginpage")
+def dash(request):
+	userdetails = Profile.object.filter(user = request.user)
+	if not userdetails:
+		QrCode = userdetails.QId
+		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
+		FirstName = request.user.first_name
+		Year = userdetails.Year
+		Phone = userdetails.Phone_Number
+		Branch = userdetails.Branch
+		College = userdetails.College
+		paid = eventdetails.paid  
+		registered = eventdetails.registered
+		# Not needed participated = eventdetails.participated
+
+		return render(request, 'dash.html',{'FirstName':FirstName
+		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'paid':paid,'registered':registered})
+	else:
+		return HttpResponseRedirect(reverse('loginpage'))
+
+def usersubmit(request):
+	if request.method == 'POST':
+		if request.user is not none and request.user.is_active():
+			UserDetails = Profile.object.filter(user = request.user)
+			RegistrationStatus =RegistrationsAndParticipations.objects.filter(QId = UserDetails.QId )
+			RegistrationStatus.registered  = request.POST.get('registered') 
+			RegistrationStatus.save()
+			return redirect(reverse('dash'))
+		else:
+			return redirect(reverse('loginpage'))
+	else:
+		return HttpResponse("Invalid Response Type")
+
+def Pay(request):
+	#this is where payment goes to
+	pass

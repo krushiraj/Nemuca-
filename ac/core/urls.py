@@ -23,4 +23,7 @@ urlpatterns = [
     path('getqr/',views.test,name ='test'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
+    path('accounts/user/dash', views.dash, name ="dash"),
+    path('accounts/user/submit',views.usersubmit, name = "usersubmit"),
+    path('accounts/user/pay',views.Pay, name = "Pay"),
 ]
