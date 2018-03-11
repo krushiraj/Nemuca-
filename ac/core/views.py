@@ -75,6 +75,8 @@ def registrations(request):
 	else:
 		return render(request,'dash.html',{})
 		
+def checkpay(request):
+	pass
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
@@ -184,4 +186,4 @@ def usersubmit(request):
 
 def Pay(request):
 	#this is where payment goes to
-	pass
+	return render(request,'payment.html',{})

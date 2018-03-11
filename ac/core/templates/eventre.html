@@ -116,6 +116,9 @@
 								<li><a href="#Dextra">Dextra</a></li></ul><ul>
 
 								</ul> -->
+								<form action="{% url 'payment' %}" method="POST">{% csrf_token %}
+								<button class="fs-submit" type="submit">Pay For Events</button>
+								</form>
 								<ul>
 									<li><a href="#paper">Paper Presentation</a></li>
 									<li><a href="#poster">Poster Presentation</a></li>
