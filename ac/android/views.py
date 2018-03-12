@@ -162,8 +162,9 @@ def newGame(request):
 
            
 
-            user = Profile.objects.get(QId = qId)
-            json1 = serializers.serialize('json',[obj,user])
+            userP = Profile.objects.get(QId = qId)
+          
+            json1 = serializers.serialize('json',[obj,userP.user])
             #json_data = user | obj
             return HttpResponse(json1, content_type = "application/json")
         else:
