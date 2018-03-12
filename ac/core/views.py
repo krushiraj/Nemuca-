@@ -159,7 +159,7 @@ def dash(request):
 	except Profile.DoesNotExist:
 		queryset = None
 
-	if not queryset:
+	if queryset:
 		QrCode = queryset.QId
 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
 		FirstName = request.user.first_name
