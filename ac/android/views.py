@@ -110,7 +110,7 @@ def endGame(request):
         queryset.Total = score
         queryset.save()
         #append to participated list
-        EID = queryset.eId
+        EID = queryset.eId.eId
         lists = queryset.QId
         for q in lists:
             profile = Profile.objects.get(QId= q)
