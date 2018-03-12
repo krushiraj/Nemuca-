@@ -170,6 +170,8 @@ def team(request):
 # 		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'paid':paid,'registered':registered})
 # 	else:
 # 		return HttpResponseRedirect(reverse('loginpage'))
+def dash(request):
+	pass
 
 # def usersubmit(request):
 # 	if request.method == 'POST':
@@ -183,7 +185,11 @@ def team(request):
 # 			return redirect(reverse('loginpage'))
 # 	else:
 # 		return HttpResponse("Invalid Response Type")
+def usersubmit(request):
+	pass
 
 # def Pay(request):
 # 	#this is where payment goes to
 # 	return render(request,'payment.html',{})
+def Pay(request):
+	pass
