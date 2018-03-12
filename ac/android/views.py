@@ -76,10 +76,10 @@ def appendPlayers(request):
 
         
         if not validateGame(queryset.eId.eId,qID):
-#             user = Profile.objects.get(qId = qID)
+            
 #             json_data = sorted(chain(user, queryset))
 #             #json_data = user | obj
-#             json_data = serializers.serialize('json',user)
+#             json_data = serializers.serialize('json',[user,])
             message = 'Not a valid player'
             return HttpResponse(message, content_type = "text/plain")
 #             message.append(s)
@@ -88,10 +88,13 @@ def appendPlayers(request):
         # Append qID ( list ) to queryset
         else:
             queryset.QId.append(qID)
-
+        
         queryset.status = 'Running'
         queryset.save()
-        message = 'Success'
+       
+        user = Profile.objects.get(qId = qID)
+        json_data = serializers.serialize('json',[user,])
+        return HttpResponse(json_data, content_type = "application/json")
         #Anthe I guess
         
     else:
