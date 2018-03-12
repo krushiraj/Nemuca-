@@ -106,18 +106,21 @@ def endGame(request):
         queryset = Details.objects.get(gId = GID)
         #update status and score
         #queryset.update(status = 'Played',Total = score)
-        queryset.status = 'Played'
+        queryset.status_choice = 'Played'
         queryset.Total = score
         queryset.save()
         #append to participated list
-        EID = queryset.eId
+        EID = queryset.eId.eId
         lists = queryset.QId
         for q in lists:
             profile = Profile.objects.get(QId= q)
             kp = profile.pk
             c = RegistrationsAndParticipations.objects.get(QId = kp)
+            print("EID : ",EID)
+            print("Participated : ",c.participated)
             c.participated.append(EID)
             c.save()
+            print("updated : ",c.participated)
 
         #queryset.save()
         message = 'Done'

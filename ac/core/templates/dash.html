@@ -12,6 +12,7 @@
         <h2>{{College}}</h2>
         <img src="/static/qrs/qrcode_{{QrCode}}.jpg">
         <form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'usersubmit' %}">
+            {% csrf_token %}
             <li data-input-trigger>
                 <label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Events you registered yourself in?</label>
                 <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
@@ -20,26 +21,50 @@
                     <span><input id="CHL" name="q3" type="checkbox" value="conversion"/><label for="CHL" class="radio-CHL">Challengica</label></span>
                     <span><input id="BYC" name="q3" type="checkbox" value="social"/><label for="BYC" class="radio-BYC">BeyCode</label></span>
                     <span><input id="ANW" name="q3" type="checkbox" value="mobile"/><label for="ANW" class="radio-ANW">Anwesha</label></span>
-                    <span><input id="e3" name="q3" type="checkbox" value="conversion"/><label for="e3" class="radio-e3">Deal or No Deal</label></span>
                     <span><input id="ALP" name="q3" type="checkbox" value="social"/><label for="ALP" class="radio-ALP">Al'Patch'ino</label></span>
                     <span><input id="TTX" name="q3" type="checkbox" value="mobile"/><label for="TTX" class="radio-TTX">TechTrix</label></span>
                     <span><input id="AER" name="q3" type="checkbox" value="social"/><label for="AER" class="radio-AER">Aeroplane Chess</label></span>
                     <span><input id="CRP" name="q3" type="checkbox" value="mobile"/><label for="CRP" class="radio-CRP">Cryptothon</label></span>
                     <span><input id="KOT" name="q3" type="checkbox" value="mobile"/><label for="KOT" class="radio-KOT">Knock Off Tournament</label></span>
-                    <span><input id="CRC" name="q3" type="checkbox" value="social"/><label for="CRC" class="radio-CRC">Criminal Case</label></span>
                     <span><input id="AWD" name="q3" type="checkbox" value="conversion"/><label for="AWD" class="radio-AWD">A Walk in the Dark</label></span>
                     <span><input id="DXT" name="q3" type="checkbox" value="mobile"/><label for="DXT" class="radio-DXT">Dextra</label></span>
                 </div>
             </li>
+            <input id="c_edits" type="submit"><label for="c_edits">Confirm edits</label>
         </form>
+        <button onclick="enableedits()">Edit Registrations</button>
         <script type="text/javascript">
+            function disableedits(){
+                var inps = document.getElementsByTagName("input");
+                for(var i = 0; i<inps.length; i++){
+                    inps[i].disabled = true;
+                }
+            }
+
+            disableedits();
+
+            function enableedits(){
+                var inps = document.getElementsByTagName("input");
+                for(var i = 0; i<inps.length; i++){
+                    inps[i].disabled = false;
+                }
+            }
+            
+            function hideall(){
+                var inps = document.getElementsByTagName("input");
+                for(var i = 0; i<inps.length; i++){
+                    inps[i].style.visibility = "hidden";
+                }
+            }
+
             var events_reg = [];
             {%for event in registered %}
                 events_reg.push("{{event}}");
-            {% end for %}
+            {% endfor %}
             for(var i = 0; i < events_reg.length; i++){
                 var event_id = document.getElementById(events_reg[i]);
                 event_id.checked = true;
+               // event_id.style.visibility = "hidden";//"visible" to make it viewable
             } 
         </script>
     </body>
