@@ -158,8 +158,8 @@ def dash(request):
 		queryset = Profile.objects.get(user = user_set)
 	except Profile.DoesNotExist:
 		queryset = None
-			
-	if queryset:
+
+	if not queryset:
 		QrCode = queryset.QId
 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
 		FirstName = request.user.first_name
