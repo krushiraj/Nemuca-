@@ -30,8 +30,9 @@
                     <span><input id="DXT" name="q3" type="checkbox" value="mobile"/><label for="DXT" class="radio-DXT">Dextra</label></span>
                 </div>
             </li>
-            <button onclick="enableedits()">Edit Registrations</button>
+            <input id="c_edits" type="submit"><label for="c_edits">Confirm edits</label>
         </form>
+        <button onclick="enableedits()">Edit Registrations</button>
         <script type="text/javascript">
             function disableedits(){
                 var inps = document.getElementsByTagName("input");
