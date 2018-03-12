@@ -158,6 +158,7 @@ def newGame(request):
             obj.save()
             #commiting the row
             message = 'Success'
+            userP = Profile.objects.get(QId = qId)
             k = userP.user.pk
             mainuser = User.objects.filter(pk = k)
             
