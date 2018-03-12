@@ -161,12 +161,16 @@ def dash(request):
 
 	if queryset:
 		QrCode = queryset.QId
-		eventdetails = RegistrationsAndParticipations.objects.filter(QId = queryset )
+		
 		FirstName = request.user.first_name
 		Year = queryset.Year
 		Phone = queryset.Phone_number
 		Branch = queryset.Branch
 		College = queryset.College
+		try:
+			eventdetails = RegistrationsAndParticipations.objects.get(QId = queryset )
+		except eventdetails.DoesNotExist:
+			return HttpResponseRedirect(reverse('sponsors'))
 		Paid = eventdetails.paid  
 		registered = eventdetails.registered
 		# Not needed participated = eventdetails.participated
