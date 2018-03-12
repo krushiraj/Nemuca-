@@ -12,6 +12,7 @@
         <h2>{{College}}</h2>
         <img src="/static/qrs/qrcode_{{QrCode}}.jpg">
         <form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'usersubmit' %}">
+            {% csrf_token %}
             <li data-input-trigger>
                 <label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Events you registered yourself in?</label>
                 <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
