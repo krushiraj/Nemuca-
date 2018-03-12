@@ -12,8 +12,8 @@ class Event(Model):
 		eName = models.CharField(max_length=50)
 		eCount = models.IntegerField(default = 0)
 
-		def __str__(self):
-			return self.eName
+# 		def __str__(self):
+# 			return self.eId
                 
         #def get_gameId(self):
             #return "%s %s" %(self.eId,self.eCount)
