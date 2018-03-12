@@ -151,27 +151,27 @@ def sponsors(request):
 def team(request):
 	return render(request, 'team.html',{})
 
-# @login_required(redirect_field_name = "loginpage")
-# def dash(request):
-# 	userdetails = Profile.object.filter(user = request.user)
-# 	if not userdetails:
-# 		QrCode = userdetails.QId
-# 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
-# 		FirstName = request.user.first_name
-# 		Year = userdetails.Year
-# 		Phone = userdetails.Phone_Number
-# 		Branch = userdetails.Branch
-# 		College = userdetails.College
-# 		paid = eventdetails.paid  
-# 		registered = eventdetails.registered
-# 		# Not needed participated = eventdetails.participated
-
-# 		return render(request, 'dash.html',{'FirstName':FirstName
-# 		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'paid':paid,'registered':registered})
-# 	else:
-# 		return HttpResponseRedirect(reverse('loginpage'))
+@login_required(redirect_field_name = "loginpage")
 def dash(request):
-	pass
+	userdetails = Profile.object.filter(user = request.user)
+	if not userdetails:
+		QrCode = userdetails.QId
+		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
+		FirstName = request.user.first_name
+		Year = userdetails.Year
+		Phone = userdetails.Phone_Number
+		Branch = userdetails.Branch
+		College = userdetails.College
+		paid = eventdetails.paid  
+		registered = eventdetails.registered
+		# Not needed participated = eventdetails.participated
+
+		return render(request, 'dash.html',{'FirstName':FirstName
+		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'paid':paid,'registered':registered})
+	else:
+		return HttpResponseRedirect(reverse('loginpage'))
+# def dash(request):
+# 	pass
 
 # def usersubmit(request):
 # 	if request.method == 'POST':

@@ -8,9 +8,9 @@
 		<script src="{% static 'js/r-modernizr.custom.js' %}"></script>
     </head>
     <body>
-        <h2>{{username}}</h2>
-        <h2>{{email}}</h2>
-        <img src="/static/qrs/qrcode_{{qrid}}.jpg">
+        <h2>{{FirstName}}</h2>
+        <h2>{{College}}</h2>
+        <img src="/static/qrs/qrcode_{{QrCode}}.jpg">
         <form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'usersubmit' %}">
             <li data-input-trigger>
                 <label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Events you registered yourself in?</label>
@@ -34,7 +34,7 @@
         </form>
         <script type="text/javascript">
             var events_reg = [];
-            {%for event in events%}
+            {%for event in registered %}
                 events_reg.push("{{event}}");
             {% end for %}
             for(var i = 0; i < events_reg.length; i++){
