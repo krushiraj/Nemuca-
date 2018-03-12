@@ -154,7 +154,7 @@ def newGame(request):
             event = Event.objects.get(eId=eId)
             eventId = event.eId
 
-            obj = Details( eId = Event.objects.get(eId=eId), QId = list(qId), Total = 0, gId = gId, status_choice = 'Waiting' )
+            obj = Details( eId = Event.objects.get(eId=eId), QId = [qId,], Total = 0, gId = gId, status_choice = 'Waiting' )
             obj.save()
             #commiting the row
             message = 'Success'
