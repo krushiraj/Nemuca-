@@ -164,7 +164,7 @@ def dash(request):
 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = queryset )
 		FirstName = request.user.first_name
 		Year = queryset.Year
-		Phone = queryset.Phone_Number
+		Phone = queryset.Phone_number
 		Branch = queryset.Branch
 		College = queryset.College
 		paid = eventdetails.paid  
