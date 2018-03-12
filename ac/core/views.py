@@ -154,9 +154,12 @@ def team(request):
 @login_required(redirect_field_name = "loginpage")
 def dash(request):
 	user_set = User.objects.get( username = request.user )
-	queryset = Profile.objects.get(user = user_set)
-	
-	if not queryset:
+	try:
+		queryset = Profile.objects.get(user = user_set)
+	except Profile.DoesNotExist:
+		queryset = None
+			
+	if queryset:
 		QrCode = queryset.QId
 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
 		FirstName = request.user.first_name
