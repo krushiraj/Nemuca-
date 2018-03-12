@@ -49,7 +49,7 @@ def showRegistrationsAndParticipations(request):
     return HttpResponse(json_data, content_type = "application/json")
 
 def showEvent(request):
-    queryset = Event.object.all.order_by('pk')
+    queryset = Event.objects.all.order_by('pk')
     json_data = serializers.serialize('json',queryset)
     return HttpResponse(json_data, content_type = "application/json")
 
@@ -115,7 +115,7 @@ def endGame(request):
         for q in lists:
             profile = Profile.objects.get(QId= q)
             kp = profile.pk
-            c = RegistrationsAndParticipations.object.get(QId = kp)
+            c = RegistrationsAndParticipations.objects.get(QId = kp)
             c.participated.append(EID)
             c.save()
 
