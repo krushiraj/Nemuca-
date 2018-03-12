@@ -38,18 +38,18 @@
                 <li data-input-trigger>
                     <label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Events you registered yourself in?</label>
                     <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
-                        <span><input onclick="changecount(e)" id="q3b" name="q3" type="checkbox" value="conversion"/><label for="q3b" class="radio-conversion">Paper Presentation</label></span>
-                        <span><input onclick="changecount(e)" id="q3c" name="q3" type="checkbox" value="social"/><label for="q3c" class="radio-social">Poster Presentation</label></span>
-                        <span><input onclick="changecount(e)" id="CHL" name="q3" type="checkbox" value="conversion"/><label for="CHL" class="radio-CHL">Challengica</label></span>
-                        <span><input onclick="changecount(e)" id="BYC" name="q3" type="checkbox" value="social"/><label for="BYC" class="radio-BYC">BeyCode</label></span>
-                        <span><input onclick="changecount(e)" id="ANW" name="q3" type="checkbox" value="mobile"/><label for="ANW" class="radio-ANW">Anwesha</label></span>
-                        <span><input onclick="changecount(e)" id="ALP" name="q3" type="checkbox" value="social"/><label for="ALP" class="radio-ALP">Al'Patch'ino</label></span>
-                        <span><input onclick="changecount(e)" id="TTX" name="q3" type="checkbox" value="mobile"/><label for="TTX" class="radio-TTX">TechTrix</label></span>
-                        <span><input onclick="changecount(e)" id="AER" name="q3" type="checkbox" value="social"/><label for="AER" class="radio-AER">Aeroplane Chess</label></span>
-                        <span><input onclick="changecount(e)" id="CRP" name="q3" type="checkbox" value="mobile"/><label for="CRP" class="radio-CRP">Cryptothon</label></span>
-                        <span><input onclick="changecount(e)" id="KOT" name="q3" type="checkbox" value="mobile"/><label for="KOT" class="radio-KOT">Knock Off Tournament</label></span>
-                        <span><input onclick="changecount(e)" id="AWD" name="q3" type="checkbox" value="conversion"/><label for="AWD" class="radio-AWD">A Walk in the Dark</label></span>
-                        <span><input onclick="changecount(e)" id="DXT" name="q3" type="checkbox" value="mobile"/><label for="DXT" class="radio-DXT">Dextra</label></span>
+                        <span><input onclick="changecount()" id="q3b" name="q3" type="checkbox" value="conversion"/><label for="q3b" class="radio-conversion">Paper Presentation</label></span>
+                        <span><input onclick="changecount()" id="q3c" name="q3" type="checkbox" value="social"/><label for="q3c" class="radio-social">Poster Presentation</label></span>
+                        <span><input onclick="changecount()" id="CHL" name="q3" type="checkbox" value="conversion"/><label for="CHL" class="radio-CHL">Challengica</label></span>
+                        <span><input onclick="changecount()" id="BYC" name="q3" type="checkbox" value="social"/><label for="BYC" class="radio-BYC">BeyCode</label></span>
+                        <span><input onclick="changecount()" id="ANW" name="q3" type="checkbox" value="mobile"/><label for="ANW" class="radio-ANW">Anwesha</label></span>
+                        <span><input onclick="changecount()" id="ALP" name="q3" type="checkbox" value="social"/><label for="ALP" class="radio-ALP">Al'Patch'ino</label></span>
+                        <span><input onclick="changecount()" id="TTX" name="q3" type="checkbox" value="mobile"/><label for="TTX" class="radio-TTX">TechTrix</label></span>
+                        <span><input onclick="changecount()" id="AER" name="q3" type="checkbox" value="social"/><label for="AER" class="radio-AER">Aeroplane Chess</label></span>
+                        <span><input onclick="changecount()" id="CRP" name="q3" type="checkbox" value="mobile"/><label for="CRP" class="radio-CRP">Cryptothon</label></span>
+                        <span><input onclick="changecount()" id="KOT" name="q3" type="checkbox" value="mobile"/><label for="KOT" class="radio-KOT">Knock Off Tournament</label></span>
+                        <span><input onclick="changecount()" id="AWD" name="q3" type="checkbox" value="conversion"/><label for="AWD" class="radio-AWD">A Walk in the Dark</label></span>
+                        <span><input onclick="changecount()" id="DXT" name="q3" type="checkbox" value="mobile"/><label for="DXT" class="radio-DXT">Dextra</label></span>
                     </div>
                 </li>
                 <input id="p_edits" type="submit"><label for="p_edits">Pay for events</label>
@@ -57,7 +57,7 @@
         <script type="text/javascript">
             var checked_count = 0;
             function changecount(e){
-                var el = e.target;
+                var el = this;
                 if(el.checked){
                     checked_count--;
                 }
@@ -68,7 +68,7 @@
             }
 
             function checkcount(){
-                if(!(checked_count < 3)){
+                if(checked_count == 3){
                     var inps = document.getElementsByTagName("input");
                     for(var i = 0; i<inps.length; i++){
                         if(!inps[i].checked){inps[i].disabled = true;}
