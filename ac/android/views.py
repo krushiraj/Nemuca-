@@ -106,7 +106,7 @@ def endGame(request):
         queryset = Details.objects.get(gId = GID)
         #update status and score
         #queryset.update(status = 'Played',Total = score)
-        queryset.status = 'Played'
+        queryset.status_choice = 'Played'
         queryset.Total = score
         queryset.save()
         #append to participated list
