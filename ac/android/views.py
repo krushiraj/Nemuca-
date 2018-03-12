@@ -75,7 +75,7 @@ def appendPlayers(request):
             #Check for list of qID's are valid or not
 
         
-        if not validateGame(queryset.eId.eId,s):
+        if not validateGame(queryset.eId.eId,qID):
 #             user = Profile.objects.get(qId = qID)
 #             json_data = sorted(chain(user, queryset))
 #             #json_data = user | obj
@@ -87,7 +87,7 @@ def appendPlayers(request):
 
         # Append qID ( list ) to queryset
         else:
-            queryset.QId.append(s)
+            queryset.QId.append(qID)
 
         queryset.status = 'Running'
         queryset.save()
