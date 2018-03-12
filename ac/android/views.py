@@ -92,7 +92,7 @@ def appendPlayers(request):
         queryset.status = 'Running'
         queryset.save()
        
-        user = Profile.objects.get(qId = qID)
+        user = Profile.objects.get(QId = qID)
         json_data = serializers.serialize('json',[user,])
         return HttpResponse(json_data, content_type = "application/json")
         #Anthe I guess
