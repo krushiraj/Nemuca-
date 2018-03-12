@@ -55,7 +55,7 @@ def loginvalidate(request):
 		user = authenticate(username = user, password = password)
 		if user is not None:
 			login(request, user)
-			return HttpResponseRedirect(reverse('user'))
+			return HttpResponseRedirect(reverse('dash'))
 		else:
 			error_message = 'invalid credentials'
 			return render(request,'error.html',{'error_message':error_message})
