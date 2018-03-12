@@ -36,7 +36,7 @@
             var events_reg = [];
             {%for event in registered %}
                 events_reg.push("{{event}}");
-            {% end for %}
+            {% endfor %}
             for(var i = 0; i < events_reg.length; i++){
                 var event_id = document.getElementById(events_reg[i]);
                 event_id.checked = true;
