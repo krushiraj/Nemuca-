@@ -159,10 +159,8 @@ def newGame(request):
             #commiting the row
             message = 'Success'
             userP = Profile.objects.get(QId = qId)
-            k = userP.user.pk
-            mainuser = User.objects.filter(pk = k)
-            
-            json1 = serializers.serialize('json',[obj,mainuser])
+           
+            json1 = serializers.serialize('json',[obj,userP])
             #json_data = user | obj
             return HttpResponse(json1, content_type = "application/json")
         else:
