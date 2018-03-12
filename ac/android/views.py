@@ -62,33 +62,40 @@ def showEvent(request):
 def appendPlayers(request):
     message = 'Err '
     if request.method == 'POST':
-        qID = request.POST.get('qId').split(',')
+        qID = request.POST.get('qId')
         gID = request.POST.get('gId')
         # Got data
-        queryset = Details.objects.filter(gId = gID)
+        try:
+            queryset = Details.objects.get(gId = gID)
+        except:
+            message = 'Game Not valid'
+            return HttpResponse(message,content_type='text/plain')
         #If this game even exists
-        if queryset:
+       
             #Check for list of qID's are valid or not
-            for s in qID:
-                if not validateGame(queryset.eID,s):
-                    user = Profile.objects.get(qId = qID)
-                    json_data = sorted(chain(user, queryset))
-                    #json_data = user | obj
-                    json_data = serializers.serialize('json',user)
-                    return HttpResponse(user, content_type = "application/json")
-                    message.append(s)
-                    #return HttpResponse(message, content_type = "text/plain")
 
-            # Append qID ( list ) to queryset
-                else:
-                    queryset.QId.append(s)
+        
+        if not validateGame(queryset.eId.eId,s):
+#             user = Profile.objects.get(qId = qID)
+#             json_data = sorted(chain(user, queryset))
+#             #json_data = user | obj
+#             json_data = serializers.serialize('json',user)
+            message = 'Not a valid player'
+            return HttpResponse(user, content_type = "text/plain")
+#             message.append(s)
+            #return HttpResponse(message, content_type = "text/plain")
 
-            queryset.status = 'Running'
-            queryset.save()
-            message = 'Success'
-            #Anthe I guess
+        # Append qID ( list ) to queryset
+        else:
+            queryset.QId.append(s)
+
+        queryset.status = 'Running'
+        queryset.save()
+        message = 'Success'
+        #Anthe I guess
+        
     else:
-        message = 'Invalid Request'
+        message='Not a valid request'
 
     return HttpResponse(message, content_type = "text/plain")
 
