@@ -1,0 +1,46 @@
+{% load static %}
+<html>
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/r-normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-component.css' %}" />
+		<script src="{% static 'js/r-modernizr.custom.js' %}"></script>
+    </head>
+    <body>
+        <h2>{{username}}</h2>
+        <h2>{{email}}</h2>
+        <img src="/static/qrs/qrcode_{{qrid}}.jpg">
+        <form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'usersubmit' %}">
+            <li data-input-trigger>
+                <label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Events you registered yourself in?</label>
+                <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+                    <span><input id="q3b" name="q3" type="checkbox" value="conversion"/><label for="q3b" class="radio-conversion">Paper Presentation</label></span>
+                    <span><input id="q3c" name="q3" type="checkbox" value="social"/><label for="q3c" class="radio-social">Poster Presentation</label></span>
+                    <span><input id="q3a" name="q3" type="checkbox" value="conversion"/><label for="q3a" class="radio-mobile">Challengica</label></span>
+                    <span><input id="e1" name="q3" type="checkbox" value="social"/><label for="e1" class="radio-e1">BeyCode</label></span>
+                    <span><input id="e2" name="q3" type="checkbox" value="mobile"/><label for="e2" class="radio-e2">Anwesha</label></span>
+                    <span><input id="e3" name="q3" type="checkbox" value="conversion"/><label for="e3" class="radio-e3">Deal or No Deal</label></span>
+                    <span><input id="e4" name="q3" type="checkbox" value="social"/><label for="e4" class="radio-e4">Al'Patch'ino</label></span>
+                    <span><input id="e5" name="q3" type="checkbox" value="mobile"/><label for="e5" class="radio-e5">TechTrix</label></span>
+                    <span><input id="e6" name="q3" type="checkbox" value="social"/><label for="e6" class="radio-e6">Aeroplane Chess</label></span>
+                    <span><input id="e7" name="q3" type="checkbox" value="mobile"/><label for="e7" class="radio-e7">Cryptothon</label></span>
+                    <span><input id="e8" name="q3" type="checkbox" value="mobile"/><label for="e8" class="radio-e8">Knock Off Tournament</label></span>
+                    <span><input id="e9" name="q3" type="checkbox" value="social"/><label for="e9" class="radio-e9">Criminal Case</label></span>
+                    <span><input id="e10" name="q3" type="checkbox" value="conversion"/><label for="e10" class="radio-e10">A Walk in the Dark</label></span>
+                    <span><input id="e11" name="q3" type="checkbox" value="mobile"/><label for="e11" class="radio-e11">Dextra</label></span>
+                </div>
+            </li>
+        </form>
+        <script type="text/javascript">
+            var events_reg = Array();
+            {%for event in events%}
+                events_reg.push("{{event}}");
+            {% end for %}
+            for(var i = 0; i < events_reg.length; i++){
+                var event_id = document.getElementById(events_reg[i].toLowerCase());
+                event_id.checked = true;
+            } 
+        </script>
+    </body>
+</html>
