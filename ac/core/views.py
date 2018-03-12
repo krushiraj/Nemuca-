@@ -158,10 +158,10 @@ def dash(request):
 		QrCode = queryset.QId
 		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
 		FirstName = request.user.first_name
-		Year = userdetails.Year
-		Phone = userdetails.Phone_Number
-		Branch = userdetails.Branch
-		College = userdetails.College
+		Year = queryset.Year
+		Phone = queryset.Phone_Number
+		Branch = queryset.Branch
+		College = queryset.College
 		paid = eventdetails.paid  
 		registered = eventdetails.registered
 		# Not needed participated = eventdetails.participated
