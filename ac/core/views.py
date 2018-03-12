@@ -167,12 +167,12 @@ def dash(request):
 		Phone = queryset.Phone_number
 		Branch = queryset.Branch
 		College = queryset.College
-		paid = eventdetails.paid  
+		Paid = eventdetails.paid  
 		registered = eventdetails.registered
 		# Not needed participated = eventdetails.participated
 
 		return render(request, 'dash.html',{'FirstName':FirstName
-		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'paid':paid,'registered':registered})
+		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'Paid':Paid,'registered':registered})
 	else:
 		return HttpResponseRedirect(reverse('loginpage'))
 # def dash(request):
