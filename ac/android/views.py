@@ -81,7 +81,7 @@ def appendPlayers(request):
 #             #json_data = user | obj
 #             json_data = serializers.serialize('json',user)
             message = 'Not a valid player'
-            return HttpResponse(user, content_type = "text/plain")
+            return HttpResponse(message, content_type = "text/plain")
 #             message.append(s)
             #return HttpResponse(message, content_type = "text/plain")
 
