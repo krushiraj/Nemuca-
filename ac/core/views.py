@@ -161,7 +161,7 @@ def dash(request):
 
 	if queryset:
 		QrCode = queryset.QId
-		eventdetails = RegistrationsAndParticipations.objects.filter(QId = QrCode )
+		eventdetails = RegistrationsAndParticipations.objects.filter(QId = queryset )
 		FirstName = request.user.first_name
 		Year = queryset.Year
 		Phone = queryset.Phone_Number
