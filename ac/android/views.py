@@ -105,7 +105,10 @@ def endGame(request):
         #fetch the row with give gId
         queryset = Details.objects.get(gId = GID)
         #update status and score
-        queryset.update(status = 'Played',Total = score)
+        #queryset.update(status = 'Played',Total = score)
+        queryset.status = 'Played'
+        queryset.Total = score
+        queryset.save()
         #append to participated list
         EID = queryset.eId
         lists = queryset.QId
@@ -116,7 +119,7 @@ def endGame(request):
             c.participated.append(EID)
             c.save()
 
-        queryset.save()
+        #queryset.save()
         message = 'Done'
         pass
     else:
