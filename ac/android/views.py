@@ -116,8 +116,11 @@ def endGame(request):
             profile = Profile.objects.get(QId= q)
             kp = profile.pk
             c = RegistrationsAndParticipations.objects.get(QId = kp)
+            print("EID : ",EID)
+            print("Participated : ",c.participated)
             c.participated.append(EID)
             c.save()
+            print("updated : ",c.participated)
 
         #queryset.save()
         message = 'Done'
