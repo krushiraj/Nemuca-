@@ -153,18 +153,15 @@ def newGame(request):
             #Creating New Row
             event = Event.objects.get(eId=eId)
             eventId = event.eId
-
+        
             obj = Details( eId = Event.objects.get(eId=eId), QId = [qId,], Total = 0, gId = gId, status_choice = 'Waiting' )
             obj.save()
             #commiting the row
-            message = 'Success'
+            message = 'Success
+            k = userP.user.pk
+            mainuser = User.objects.filter(pk = k)
             
-
-           
-
-            userP = Profile.objects.get(QId = qId)
-          
-            json1 = serializers.serialize('json',[obj,userP.user])
+            json1 = serializers.serialize('json',[obj,mainuser])
             #json_data = user | obj
             return HttpResponse(json1, content_type = "application/json")
         else:
