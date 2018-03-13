@@ -129,7 +129,7 @@ def signup(request):
 			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
 			nobj.save()
 
-
+			return HttpResponseRedirect(reverse('loginpage'))
 			
 		else:
 			messages.info(request, 'User/Email already Exists')
