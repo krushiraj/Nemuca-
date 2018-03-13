@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<title>REGISTRATIONS|ACUMEN IT</title>
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-component.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-cs-select.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-cs-skin-boxes.css' %}" />
+		<script src="{% static 'js/r-modernizr.custom.js' %}"></script>
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Roboto");
+			#branch input[type=radio] {
+			position: absolute;
+			visibility: hidden;
+			display: none; }
+
+			#branch label {
+			color: #9a929e;
+			display: inline-block;
+			cursor: pointer;
+			font-weight: bold;
+			padding: 5px 20px; }
+
+			#branch input[type=radio]:checked + label {
+			color: #ccc8ce;
+			background: #675f6b; }
+
+			#branch label + #branch input[type=radio] + label {
+			border-left: solid 3px #675f6b; }
+
+			.radio-group {
+			border: solid 3px #675f6b;
+			display: inline-block;
+			margin: 20px;
+			border-radius: 10px;
+			overflow: hidden; }
+
+			.customcontainer {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #333; }
+
+				.custom-radios div {
+				display: inline-block; }
+				.custom-radios input[type="radio"] {
+				display: none; }
+				.custom-radios input[type="radio"] + label {
+					color: #333;
+					font-family: Arial, sans-serif;
+					font-size: 14px; }
+					.custom-radios input[type="radio"] + label span {
+					display: inline-block;
+					width: 40px;
+					height: 40px;
+					margin: -1px 4px 0 0;
+					vertical-align: middle;
+					cursor: pointer;
+					border-radius: 50%;
+					border: 2px solid #FFFFFF;
+					box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+					background-repeat: no-repeat;
+					background-position: center;
+					text-align: center;
+					line-height: 44px; }
+					.custom-radios input[type="radio"] + label span img {
+						opacity: 0;
+						transition: all .3s ease; }
+				.custom-radios input[type="radio"]#color-1 + label span {
+					background-color: #2ecc71; }
+				.custom-radios input[type="radio"]#color-2 + label span {
+					background-color: #3498db; }
+				.custom-radios input[type="radio"]#color-3 + label span {
+					background-color: #f1c40f; }
+				.custom-radios input[type="radio"]#color-4 + label span {
+					background-color: #e74c3c; }
+				.custom-radios input[type="radio"]:checked + label span img {
+					opacity: 1; }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="fs-form-wrap" id="fs-form-wrap">
+				<div class="fs-title">
+					<h1>Registration</h1>
+				</div>
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" method="POST">{% csrf_token %}
+					<ol class="fs-fields">
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your Name?</label>
+							<input class="fs-anim-lower" id="q2" name="username" type="text" placeholder="John Doe" required pattern="[a-zA-Z0-9_ ]*"/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We need it to send you your QR code">What's your email id?</label>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your email id?</label>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">(Needed to send QR)</label>
+							<input class="fs-anim-lower" id="q2" name="email" type="email" placeholder="abc@gmail.com" required pattern="[A-Za-z][A-Za-z0-9._]+@[A-Za-z]+.[A-Za-z]+"/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q4">Mobile no.</label>
+							<input class="fs-anim-lower" id="q4"  name = "phone" type="tel" placeholder="9876543210" required/>
+						</li>
+						<!-- <li>
+							<label class="fs-field-label fs-anim-upper" for="q5" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Enter Password</label>
+							<input class="fs-anim-lower" id="q5" name="password1" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+							<label class="fs-field-label fs-anim-upper" for="q6" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Re-enter Password</label>
+							<input class="fs-anim-lower" id="q6" name="password2" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+						</li> -->
+
+                        <li>
+							<label class="fs-field-label fs-anim-upper" for="q4">College Name</label>
+							<input class="fs-anim-lower" id="q7"  type="text" name = "college" placeholder="Vasavi College of Engg." required/>
+						</li><li>
+							<label class="fs-field-label fs-anim-upper" for="q4">Roll no.</label>
+							<input class="fs-anim-lower" id="q8"  type="text" name = "roll" placeholder="1602-1X-XXX-XXX" required/>
+						</li>
+                        <li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Your branch</label>
+							<!-- <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+								<span><input id="br1" name="branch" type="radio" value="it"/><label for="br1" class="radio-it">IT</label></span>
+								<span><input id="br2" name="branch" type="radio" value="cse"/><label for="br2" class="radio-cse">CSE</label></span>
+								<span><input id="br3" name="branch" type="radio" value="ece"/><label for="br3" class="radio-ece">ECE</label></span>
+                                <span><input id="br4" name="branch" type="radio" value="eee"/><label for="br4" class="radio-eee">EEE</label></span>
+                                <span><input id="br5" name="branch" type="radio" value="civil"/><label for="br5" class="radio-civil">CIVIL</label></span>
+                                <span><input id="br6" name="branch" type="radio" value="mech"/><label for="br6" class="radio-mech">MECH</label></span>
+                                <span><input id="br7" name="branch" type="radio" value="other"/><label for="br7" class="radio-other">OTHER</label></span>
+							</div> -->
+							
+							<div class="radio-group" id="branch">
+								<input type="radio" id="option-one" name="selector"><label for="option-one" value="it">IT</label>
+								<input type="radio" id="option-two" name="selector"><label for="option-two" value="cse">CSE</label>
+								<input type="radio" id="option-three" name="selector"><label for="option-three" value="ece">ECE</label>
+								<input type="radio" id="option-one" name="selector"><label for="option-one" value="eee">EEE</label>
+								<input type="radio" id="option-two" name="selector"><label for="option-two" value="civil">CIVIL</label>
+								<input type="radio" id="option-three" name="selector"><label for="option-three" value="mech">MECH</label>
+								<input type="radio" id="option-three" name="selector"><label for="option-three" value="other">OTHER</label>
+
+							</div>
+								
+						</li>
+                        <li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Your year</label>
+						<div class="customcontainer">	
+							<div class="custom-radios">
+								<div>
+								  <input type="radio" id="color-1" name="color" value="1">
+								  <label for="color-1">
+									<span>
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									  I
+									</span>
+								  </label>
+								</div>
+								
+								<div>
+								  <input type="radio" id="color-2" name="color" value="2">
+								  <label for="color-2">
+									<span>
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									  II
+									</span>
+								  </label>
+								</div>
+								
+								<div>
+								  <input type="radio" id="color-3" name="color" value="3">
+								  <label for="color-3">
+									<span>
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									  III
+									</span>
+								  </label>
+								</div>
+							  
+								<div>
+								  <input type="radio" id="color-4" name="color" value="4">
+								  <label for="color-4">
+									<span>
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									  IV
+									</span>
+								  </label>
+								</div>
+							  </div>			
+							</div>
+						</li>
+                        <li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">Your year</label>
+							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+								<span><input id="yr1" name="year" type="radio" value="1"/><label for="yr1" class="radio-first">1</label></span>
+								<span><input id="yr2" name="year" type="radio" value="2"/><label for="yr2" class="radio-second">2</label></span>
+								<span><input id="yr3" name="year" type="radio" value="3"/><label for="yr3" class="radio-third">3</label></span>
+                                <span><input id="yr4" name="year" type="radio" value="4"/><label for="yr4" class="radio-fourth">4</label></span>
+                                <span><input id="yr5" name="year" type="radio" value="5"/><label for="yr5" class="radio-fifth">5</label></span>
+							</div>
+						</li>
+						<li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">What events are you looking to register yourself in?</label>
+							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+								<!-- <span><input id="q3b" name="q3" type="checkbox" value="PPR"/><label for="q3b" class="radio-conversion">Paper Presentation</label></span> -->
+								<!-- <span><input id="q3c" name="q3" type="checkbox" value="POR"/><label for="q3c" class="radio-social">Poster Presentation</label></span> -->
+								<span><input id="q3a" name="q3" type="checkbox" value="CHL"/><label for="q3a" class="radio-e0">Challengica</label></span>
+								<span><input id="q3a" name="q3" type="checkbox" value="CHL"/><label for="q3a" class="radio-mobile">Challengica</label></span>
+								<span><input id="e1" name="q3" type="checkbox" value="BYC"/><label for="e1" class="radio-e1">BeyCode</label></span>
+								<span><input id="e2" name="q3" type="checkbox" value="ANW"/><label for="e2" class="radio-e2">Anwesha</label></span>
+								<!-- <span><input id="e3" name="q3" type="checkbox" value="DDL"/><label for="e3" class="radio-e3">Deal or No Deal</label></span> -->
+								<span><input id="e4" name="q3" type="checkbox" value="ALP"/><label for="e4" class="radio-e4">Al'Patch'ino</label></span>
+								<span><input id="e5" name="q3" type="checkbox" value="TTX"/><label for="e5" class="radio-e5">TechTrix</label></span>
+								<span><input id="e6" name="q3" type="checkbox" value="AER"/><label for="e6" class="radio-e6">Aeroplane Chess</label></span>
+								<span><input id="e7" name="q3" type="checkbox" value="CRP"/><label for="e7" class="radio-e7">Cryptothon</label></span>
+								<span><input id="e8" name="q3" type="checkbox" value="KOT"/><label for="e8" class="radio-e8">Knock Off Tournament</label></span>
+								<!-- <span><input id="e9" name="q3" type="checkbox" value="CRC"/><label for="e9" class="radio-e9">Criminal Case</label></span>								 -->
+								<span><input id="e10" name="q3" type="checkbox" value="AWD"/><label for="e10" class="radio-e10">A Walk in the Dark</label></span>
+								<span><input id="e11" name="q3" type="checkbox" value="DXT"/><label for="e11" class="radio-e11">Dextra</label></span>
+							</div>
+						</li>
+<!--						<li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" data-info="We are always interested in statistics">Choose your year of study.</label>
+							<select class="cs-select cs-skin-boxes fs-anim-lower">
+								<option value="" disabled selected>Pick a year</option>
+								<option value="#32CD32" data-class="color-32CD32" data-color="#32CD32">I</option>
+								<option value="#006400" data-class="color-006400" data-color="#006400">II</option>
+								<option value="#00BFFF" data-class="color-00BFFF" data-color="#00BFFF">III</option>
+								<option value="#FF0000" data-class="color-FF0000" data-color="#FF0000">IV</option>
+								<option value="#FFFF33" data-class="color-FFFF33" data-color="#FFFF33">V</option>
+							</select>
+						</li>-->
+					</ol><!-- /fs-fields -->
+					<button class="fs-submit" type="submit">Send answers</button>
+				</form><!-- /fs-form -->
+			</div><!-- /fs-form-wrap -->
+		</div><!-- /container -->
+		<script src="{% static 'js/r-classie.js' %}"></script>
+		<script src="{% static 'js/r-selectFx.js' %}"></script>
+		<script src="{% static 'js/r-fullscreenForm.js' %}"></script>
+		<script>
+			(function() {
+				var formWrap = document.getElementById( 'fs-form-wrap' );
+
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx( el, {
+						stickyPlaceholder: true,
+						onChange: function(val){
+							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+						}
+					});
+				} );
+
+				new FForm( formWrap, {
+					onReview : function() {
+						classie.add( document.body, 'overview' ); // for demo purposes only
+					}
+				} );
+			})();
+			function validate()
+			{
+				
+			}
+			//code for disabling all inputs
+			var inps = document.getElementsByTagName("input");
+			for(var i = 0; i < inps.length; i++){
+				inps[i].disabled = false;
+			}
+//			alert("Registrations will be open soon! Please stay tuned.");
+			//code for disabling all inputs
+		</script>
+	</body>
+</html>
