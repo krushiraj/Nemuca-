@@ -98,7 +98,7 @@ def signup(request):
 		
 			
 			username = request.POST.get('username')
-			email = request.POST.get('email')
+			emailid = request.POST.get('email')
 			phone = request.POST.get('phone')
 			college = request.POST.get('college')
 			roll  = request.POST.get('roll')
@@ -111,7 +111,7 @@ def signup(request):
 				'qrcode' : qrcode
 			})
 			email = EmailMessage(
-						mail_subject, message, to=[email]
+						mail_subject, message, to=[emailid]
 			)
 
 			# email.attach(qrcode+'.png',sample.png(qrcode+'.png',scale=6),'image/png')
