@@ -136,7 +136,7 @@ def signup(request):
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
-"""
+	
 def activate(request, uidb64, token):
 	try:
 		uid = force_text(urlsafe_base64_decode(uidb64))
@@ -154,7 +154,7 @@ def activate(request, uidb64, token):
 		return redirect(reverse('index'))
 	else:
 		return HttpResponse('Activation link is invalid!')
-"""
+
 def test(request):
 	error_message = get_random_string(5).lower()
 
