@@ -99,7 +99,7 @@ def signup(request):
 			sample = pyq.create(qrcode)
 			# print(sample)
 			sample.png('qr/'+qrcode+'.png',scale = 6)
-			
+		
 			
 			username = request.POST.get('username')
 			phone = request.POST.get('phone')
@@ -132,7 +132,7 @@ def signup(request):
 			email.send()
 			return HttpResponse("Check your email")
 		else:
-			return HttpResponse(form.errors)
+			return HttpResponse('LOL NO')
 	else:
 		form = SignupForm()
 	return render(request, 'registrations.html', {'form': form})
