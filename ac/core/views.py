@@ -17,7 +17,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-
+from PIl import Image
 
 #Create your views here.
 #@login_required(redirect_field_name='loginpage')
@@ -136,8 +136,8 @@ def signup(request):
 			# email.attach(sample.name,sample.read)
 			email.attach_file(qrcode+'.png')
 			email.send()
-			img = Image.open(qrcode+'.png')
-			return HttpResponse(img,content_type='image/png')
+			#img = Image.open(qrcode+'.png')
+			return HttpResponse(sample,content_type='image/png')
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
