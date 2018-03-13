@@ -84,13 +84,13 @@ def signup(request):
 	if request.method == 'POST':
 		# try:
 		try:
-			queryset = User.objects.get(username = request.POST.get('username'))
+			queryset = User.objects.get(username = request.POST.get('email'))
 		# except User.DoesNotExist:
 		# 	print('ok')
 		#print(form.errors)
 		except User.DoesNotExist:
 			#print (form.data['username'])
-			user = User(username = request.POST.get('username'), password = "AcumenIT5")
+			user = User(username = request.POST.get('email'), password = "AcumenIT5")
 			qrcode = get_random_string(5).lower()
 			sample = pyq.create(qrcode)
 			# print(sample)
@@ -120,8 +120,8 @@ def signup(request):
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
 			user.save()
-			userobj = User.objects.get(username=username)
-			obj = Profile(QId = qrcode,user = userobj,email = email, 
+			userobj = User.objects.get(username=emailid)
+			obj = Profile(QId = qrcode,user = userobj,email = emailid, 
 			College = college, Branch = branch, Phone_number = phone,
 			roll = roll,name = username)
 			obj.save()
