@@ -125,7 +125,6 @@ def signup(request):
 				'qrcode' : qrcode
 			})
 			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
-			to_email = form.cleaned_data.get('username')
 			email = EmailMessage(
 						mail_subject, message, to=[to_email]
 			)
