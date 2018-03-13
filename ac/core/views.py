@@ -80,14 +80,12 @@ def checkpay(request):
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
-		form = SignupForm(data=request.POST)
-		print (form.is_valid())
-		print(form.errors)
-		if form.is_valid():
-			print (form.data['username'])
-			user = form.save(commit=False)
-			user.is_active = False
+		user = User(username = request.POST.get('username'), password = "AcumenIT5")
+		#print(form.errors)
+		if True:
+			#print (form.data['username'])
 			user.save()
+			user.is_active = False
 			current_site = get_current_site(request)
 			domain = current_site.domain
 			uid = urlsafe_base64_encode(force_bytes(user.pk))
