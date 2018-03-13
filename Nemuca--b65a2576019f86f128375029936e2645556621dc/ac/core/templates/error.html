@@ -1,0 +1,16 @@
+<html>
+<head>
+  <title>
+    Title ERROR
+  </title>
+</head>
+<body>
+<h3>ERROR MESSAGE</h3>
+{% if error_message %}
+  {{error_message}}
+{% else %}
+  <h5>There was no query passed</h5>
+{% endif %}
+
+</body>
+</html>

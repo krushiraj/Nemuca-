@@ -17,7 +17,6 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-from django.contrib import messages
 # from PIl import Image
 
 #Create your views here.
@@ -91,6 +90,7 @@ def signup(request):
 		except User.DoesNotExist:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
+			user.save()
 			user.is_active = False
 			current_site = get_current_site(request)
 			domain = current_site.domain
@@ -105,7 +105,6 @@ def signup(request):
 		
 			
 			username = request.POST.get('username')
-			email = request.POST.get('email')
 			phone = request.POST.get('phone')
 			college = request.POST.get('college')
 			roll  = request.POST.get('roll')
@@ -113,6 +112,16 @@ def signup(request):
 			year = request.POST.get('year')
 			events = request.POST.getlist('q3')
 			#print(events)
+
+			
+			obj = Profile(QId = qrcode,user = userobj,name = username, 
+			College = college, Branch = branch, Phone_number = phone,
+			roll = roll)
+			obj.save()
+
+			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
+			nobj.save()
+
 			mail_subject = 'Activate your AcumenIT account.'
 			message = render_to_string('acc_active_email.html', {
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
@@ -128,20 +137,7 @@ def signup(request):
 			email.attach_file(qrcode+'.png')
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
-			user.save()
-			obj = Profile(QId = qrcode,user = userobj,email = email, 
-			College = college, Branch = branch, Phone_number = phone,
-			roll = roll)
-			obj.save()
-
-			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
-			nobj.save()
-
-
 			return HttpResponse(image_data,content_type='image/png')
-		else:
-			messages.info(request, 'User/Email already Exists')
-			return render(request, 'registrations.html',{})
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
