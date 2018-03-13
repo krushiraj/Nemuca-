@@ -80,15 +80,13 @@ def checkpay(request):
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
+		# try:
 		try:
-			queryset = User.objects.get(username = request.POST.get('username')).count()
-		except User.DoesNotExist:
-			print('ok')
-		if queryset != 0:
-			return HttpResponse("Exists")
+			queryset = User.objects.get(username = request.POST.get('username'))
+		# except User.DoesNotExist:
+		# 	print('ok')
 		#print(form.errors)
-		
-		else:
+		except User.DoesNotExist:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
 			user.save()
