@@ -130,7 +130,7 @@ def signup(request):
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
 			user.save()
-			obj = Profile(QId = qrcode,user = userobj,name = username, 
+			obj = Profile(QId = qrcode,user = userobj,email = email, 
 			College = college, Branch = branch, Phone_number = phone,
 			roll = roll)
 			obj.save()
