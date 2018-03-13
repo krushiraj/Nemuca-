@@ -10,7 +10,7 @@
     <body>
         <h2>{{FirstName}}</h2>
         <h2>{{College}}</h2>
-        <img src="/static/qrs/qrcode_{{QrCode}}.jpg">
+        <img src="/qr/{{QrCode}}.jpg">
         <form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'usersubmit' %}">
             {% csrf_token %}
             <li data-input-trigger>

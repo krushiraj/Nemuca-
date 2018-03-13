@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-
-
+import pyqrcode as pyq
+import png
 from django.http import Http404
 from .models import Profile,Details,RegistrationsAndParticipations
 from django.http import Http404, HttpResponseRedirect, HttpResponse
@@ -95,8 +95,29 @@ def signup(request):
 			token = account_activation_token.make_token(user)
 			userobj = User.objects.get(pk=uid1)
 			qrcode = get_random_string(5).lower()
-			obj = Profile(QId = qrcode,user = userobj,)
+			sample = pyq.create(qrcode)
+			# print(sample)
+			sample.png('qr/'+qrcode+'.png',scale = 6)
+			
+			
+			username = request.POST.get('username')
+			phone = request.POST.get('phone')
+			college = request.POST.get('college')
+			roll  = request.POST.get('roll')
+			branch = request.POST.get('branch')
+			year = request.POST.get('year')
+			events = request.POST.getList('q3')
+
+
+			
+			obj = Profile(QId = qrcode,user = userobj,name = username, 
+			College = college, Branch = branch, Phone_number = phone,
+			roll = roll)
 			obj.save()
+
+			nobj = RegistrationsAndParticipations(Qid = obj, registered = events)
+			nobj.save()
+
 			mail_subject = 'Activate your AccumenIT account.'
 			message = render_to_string('acc_active_email.html', {
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
