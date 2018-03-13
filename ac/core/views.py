@@ -89,15 +89,8 @@ def signup(request):
 		# 	print('ok')
 		#print(form.errors)
 		except User.DoesNotExist:
-			#print (form.data['username'])
+			#print (form.data['us'ername'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
-			user.is_active = False
-			current_site = get_current_site(request)
-			domain = current_site.domain
-			uid = urlsafe_base64_encode(force_bytes(user.pk))
-			uid1 = force_text(urlsafe_base64_decode(uid))
-			token = account_activation_token.make_token(user)
-			userobj = User.objects.get(pk=uid1)
 			qrcode = get_random_string(5).lower()
 			sample = pyq.create(qrcode)
 			# print(sample)
@@ -115,10 +108,8 @@ def signup(request):
 			#print(events)
 			mail_subject = 'Activate your AcumenIT account.'
 			message = render_to_string('acc_active_email.html', {
-				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
-			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
 			email = EmailMessage(
 						mail_subject, message, to=[username]
 			)
@@ -128,6 +119,7 @@ def signup(request):
 			email.attach_file(qrcode+'.png')
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
+			user.is_active = True
 			user.save()
 			obj = Profile(QId = qrcode,user = userobj,email = email, 
 			College = college, Branch = branch, Phone_number = phone,
