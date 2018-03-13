@@ -98,7 +98,7 @@ def signup(request):
 		
 			
 			username = request.POST.get('username')
-			emailid = request.POST.get('email')
+			email = request.POST.get('email')
 			phone = request.POST.get('phone')
 			college = request.POST.get('college')
 			roll  = request.POST.get('roll')
