@@ -17,7 +17,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-from PIl import Image
+# from PIl import Image
 
 #Create your views here.
 #@login_required(redirect_field_name='loginpage')
