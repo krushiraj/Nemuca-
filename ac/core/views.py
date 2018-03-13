@@ -91,13 +91,6 @@ def signup(request):
 		except User.DoesNotExist:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
-			user.is_active = False
-			current_site = get_current_site(request)
-			domain = current_site.domain
-			uid = urlsafe_base64_encode(force_bytes(user.pk))
-			uid1 = force_text(urlsafe_base64_decode(uid))
-			token = account_activation_token.make_token(user)
-			userobj = User.objects.get(pk=uid1)
 			qrcode = get_random_string(5).lower()
 			sample = pyq.create(qrcode)
 			# print(sample)
@@ -115,10 +108,8 @@ def signup(request):
 			#print(events)
 			mail_subject = 'Activate your AcumenIT account.'
 			message = render_to_string('acc_active_email.html', {
-				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
-			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
 			email = EmailMessage(
 						mail_subject, message, to=[username]
 			)
@@ -145,7 +136,7 @@ def signup(request):
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
-
+"""
 def activate(request, uidb64, token):
 	try:
 		uid = force_text(urlsafe_base64_decode(uidb64))
@@ -163,6 +154,7 @@ def activate(request, uidb64, token):
 		return redirect(reverse('index'))
 	else:
 		return HttpResponse('Activation link is invalid!')
+"""
 def test(request):
 	error_message = get_random_string(5).lower()
 
