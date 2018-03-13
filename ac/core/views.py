@@ -91,7 +91,6 @@ def signup(request):
 		except User.DoesNotExist:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('email'), password = request.POST.get('password'))
-			user.save()
 			qrcode = get_random_string(5).lower()
 			user.is_active = False
 			current_site = get_current_site(request)
@@ -128,6 +127,7 @@ def signup(request):
 			email.attach_file(qrcode+'.png')
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
+			user.save()
 			userobj = User.objects.get(username=emailid)
 			obj = Profile(QId = qrcode,user = userobj,email = emailid, 
 			College = college, Branch = branch, Phone_number = phone,
