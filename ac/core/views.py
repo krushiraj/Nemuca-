@@ -89,7 +89,7 @@ def signup(request):
 		# except User.DoesNotExist:
 		# 	print('ok')
 		#print(form.errors)
-		except User.DoesNotExist or Profile.DoesNotExist:
+		except (User.DoesNotExist,Profile.DoesNotExist) as e:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
 			user.is_active = False
