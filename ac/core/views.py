@@ -116,7 +116,7 @@ def signup(request):
 			roll = roll)
 			obj.save()
 
-			nobj = RegistrationsAndParticipations(Qid = obj, registered = events)
+			nobj = RegistrationsAndParticipations(QId = obj, registered = events)
 			nobj.save()
 
 			mail_subject = 'Activate your AccumenIT account.'
