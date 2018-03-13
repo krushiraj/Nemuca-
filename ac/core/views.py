@@ -15,7 +15,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, EmailMultiAlternatives
 
 
 #Create your views here.
@@ -122,17 +122,23 @@ def signup(request):
 			nobj.save()
 
 			mail_subject = 'Activate your AcumenIT account.'
-			message = render_to_string('acc_active_email.html', {
+			html_content = render_to_string('acc_active_email.html',context)
+			message = render_to_string({
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
-			message.attach(sample.png(qrcode+'.png',scale = 6))
-			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
-			email = EmailMessage(
-						mail_subject, message, to=[username]
-			)
-			email.send()
-			return HttpResponse("Check your email")
+			msg = EmailMultiAlternatives(mail_subject,message,to=[username])
+			msg.attach(sample.png(qrcode+'.png',scale = 6))
+			msg.attach_alternative(html_content,"text/html")
+			msg.send()
+			# print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
+			# email = EmailMessage(
+			# 			mail_subject, message, to=[username]
+			# )
+			# email.send()
+			# return HttpResponse("Check your email")to=[username]
+			# )
+			# email.send()
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
