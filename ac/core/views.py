@@ -123,7 +123,7 @@ def signup(request):
 			userobj = User.objects.get(username=username)
 			obj = Profile(QId = qrcode,user = userobj,email = email, 
 			College = college, Branch = branch, Phone_number = phone,
-			roll = roll)
+			roll = roll,name = name)
 			obj.save()
 
 			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
