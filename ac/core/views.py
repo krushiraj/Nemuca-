@@ -81,8 +81,8 @@ def checkpay(request):
 def signup(request):
 	if request.method == 'POST':
 		
-		queryset = User.objects.get(username = request.POST.get('username'))
-		if not queryset.DoesNotExist:
+		queryset = User.objects.get(username = request.POST.get('username')).count()
+		if queryset != 0:
 			return HttpResponse("Exists")
 		#print(form.errors)
 		
