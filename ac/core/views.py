@@ -98,7 +98,7 @@ def signup(request):
 			qrcode = get_random_string(5).lower()
 			sample = pyq.create(qrcode)
 			# print(sample)
-			sample.png('qr/'+qrcode+'.png',scale = 6)
+			sample.png(qrcode+'.png',scale = 6)
 		
 			
 			username = request.POST.get('username')
