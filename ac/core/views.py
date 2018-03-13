@@ -108,7 +108,7 @@ def signup(request):
 			branch = request.POST.get('branch')
 			year = request.POST.get('year')
 			events = request.POST.getlist('q3')
-			print(events)
+			#print(events)
 
 			
 			obj = Profile(QId = qrcode,user = userobj,name = username, 
@@ -116,7 +116,7 @@ def signup(request):
 			roll = roll)
 			obj.save()
 
-			nobj = RegistrationsAndParticipations(QId = obj, registered = events)
+			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
 			nobj.save()
 
 			mail_subject = 'Activate your AccumenIT account.'
