@@ -107,7 +107,7 @@ def signup(request):
 			roll  = request.POST.get('roll')
 			branch = request.POST.get('branch')
 			year = request.POST.get('year')
-			events = request.POST.get('q3')
+			events = request.POST.getlist('q3')
 			print(events)
 
 			
