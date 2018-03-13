@@ -111,7 +111,7 @@ def signup(request):
 				'qrcode' : qrcode
 			})
 			email = EmailMessage(
-						mail_subject, message, to=[username]
+						mail_subject, message, to=[email]
 			)
 
 			# email.attach(qrcode+'.png',sample.png(qrcode+'.png',scale=6),'image/png')
