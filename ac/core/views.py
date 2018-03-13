@@ -131,8 +131,10 @@ def signup(request):
 			email = EmailMessage(
 						mail_subject, message, to=[username]
 			)
-			email.attach(qrcode+'.png',qrcode,'image/png')
+
+			# email.attach(qrcode+'.png',sample.png(qrcode+'.png',scale=6),'image/png')
 			# email.attach(sample.name,sample.read)
+			email.attach_file(qrcode+'.png')
 			email.send()
 			return HttpResponse("Check your email")
 	else:
