@@ -90,7 +90,7 @@ def signup(request):
 		#print(form.errors)
 		except User.DoesNotExist:
 			#print (form.data['username'])
-			user = User(username = request.POST.get('email'), password = "AcumenIT5")
+			user = User(username = request.POST.get('email'), password = request.POST.get('password'))
 			qrcode = get_random_string(5).lower()
 			sample = pyq.create(qrcode)
 			# print(sample)
@@ -130,7 +130,7 @@ def signup(request):
 			nobj.save()
 
 
-			return HttpResponse(image_data,content_type='image/png')
+			
 		else:
 			messages.info(request, 'User/Email already Exists')
 			return render(request, 'registrations.html',{})
@@ -177,32 +177,11 @@ def team(request):
 
 @login_required(redirect_field_name = "loginpage")
 def dash(request):
-	user_set = User.objects.get( username = request.user )
-	try:
-		queryset = Profile.objects.get(user = user_set)
-	except Profile.DoesNotExist:
-		queryset = None
-
-	if queryset:
-		QrCode = queryset.QId
-		
-		FirstName = request.user.first_name
-		Year = queryset.Year
-		Phone = queryset.Phone_number
-		Branch = queryset.Branch
-		College = queryset.College
-		try:
-			eventdetails = RegistrationsAndParticipations.objects.get(QId = queryset )
-		except eventdetails.DoesNotExist:
-			return HttpResponseRedirect(reverse('sponsors'))
-		Paid = eventdetails.paid  
-		registered = eventdetails.registered
-		# Not needed participated = eventdetails.participated
-
-		return render(request, 'dash.html',{'FirstName':FirstName
-		,'Year':Year,'Phone':Phone,'Branch':Branch,'College':College,'Paid':Paid,'registered':registered})
-	else:
-		return HttpResponseRedirect(reverse('loginpage'))
+	user_set = User.objects.get(username = request.user)
+	queryset = Profile.objects.get(user = user_set)
+	qrcode = queryset.QId
+	image_data = open(qrcode+'.png', "rb").read()
+	return HttpResponse(image_data,content_type='image/png')
 # def dash(request):
 # 	pass
 
