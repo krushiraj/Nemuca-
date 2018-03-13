@@ -102,7 +102,7 @@ def signup(request):
 			# print(sample)
 			sample.png(qrcode+'.png',scale = 6)
 		
-			
+			print(uid)
 			username = request.POST.get('username')
 			emailid = request.POST.get('email')
 			phone = request.POST.get('phone')
@@ -117,6 +117,7 @@ def signup(request):
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
+			print(str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)))
 			email = EmailMessage(
 						mail_subject, message, to=[emailid]
 			)
