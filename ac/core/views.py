@@ -131,10 +131,8 @@ def signup(request):
 			)
 			email.send()
 			return HttpResponse("Check your email")
-		else:
-			return HttpResponse('LOL NO')
 	else:
-		form = SignupForm()
+		#form = SignupForm()
 	return render(request, 'registrations.html', {'form': form})
 
 def activate(request, uidb64, token):
