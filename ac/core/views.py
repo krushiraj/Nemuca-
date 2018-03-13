@@ -133,7 +133,7 @@ def signup(request):
 			return HttpResponse("Check your email")
 	else:
 		#form = SignupForm()
-		return render(request, 'registrations.html', {'form': form})
+		return render(request, 'registrations.html', {})
 
 def activate(request, uidb64, token):
 	try:
