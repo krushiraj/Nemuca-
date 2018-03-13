@@ -10,4 +10,4 @@ class SignupForm(UserCreationForm):
 #    year = forms.ChoiceField(choices=Year, widget = forms.RadioSelect(),required=True)
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2')
+        fields = ('username')
