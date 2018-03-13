@@ -82,6 +82,7 @@ def signup(request):
 	if request.method == 'POST':
 		try:
 			queryset = User.objects.get(username = request.POST.get('username'))
+			return HttpResponse("Invalid")
 		#print(form.errors)
 		except User.DoesNotExist:
 		
@@ -119,20 +120,20 @@ def signup(request):
 			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
 			nobj.save()
 
-			mail_subject = 'Activate your AccumenIT account.'
+			mail_subject = 'Activate your AcumenIT account.'
 			message = render_to_string('acc_active_email.html', {
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
 			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
 			email = EmailMessage(
-						mail_subject, message, to=[to_email]
+						mail_subject, message, to=[username]
 			)
 			email.send()
 			return HttpResponse("Check your email")
 	else:
 		#form = SignupForm()
-		return render(request, 'registrations.html', {})
+		return HttpResponse("Invalid")
 
 def activate(request, uidb64, token):
 	try:
