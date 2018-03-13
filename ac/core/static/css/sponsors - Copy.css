@@ -1,0 +1,95 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Comfortaa;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.dummy-menu {
+    border: 0;
+    background: none;
+    padding: 0;
+    margin: 1.5em 1.2em 0 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 0.85em;
+    color: var(--color-close);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.icon {
+    display: block;
+    width: 2em;
+    height: 2em;
+    margin: 0 auto;
+    fill: black;
+}
+
+.icon:hover {
+    fill: gray;
+}
+
+.hidden {
+    display: none;
+}
+
+.sponsor-head {
+    margin: 0;
+    background-color: white;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+}
+
+.content {
+    background: black;
+    text-align: center;
+    padding: 0 0 0 10vw;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+}
+
+.sponsor {
+    padding: 0.1em;
+    border: 2px solid gray;
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.sponsor-title {
+    color: white;
+    font-size: 2.5em;
+}
+
+.sponsor-img {
+    height: auto;
+    width: 18vw;
+    margin: 1em 0;
+}
+
+.sponsor-des {
+    color: white;
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 40em) {
+    .sponsor {
+        margin: 1em 0;
+    }
+    .sponsor-title {}
+    .sponsor-img {
+        height: auto;
+        width: 10em;
+    }
+    .sponsor-head {
+        font-size: 1em;
+    }
+    .sponsor-des {}
+}

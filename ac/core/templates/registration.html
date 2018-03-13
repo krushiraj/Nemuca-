@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Event Registration | Acumen IT 2K18</title>
+		<meta name="description" content="Simple ideas for enhancing text input interactions" />
+		<meta name="keywords" content="input, text, effect, focus, transition, interaction, inspiration, web design" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reg-normalize.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/reg-demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reg-styles.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reg-radchk-component.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/reg-buttons.css' %}" />
+        <script src="{% static 'js/reg-modernizr.custom.js' %}"></script>
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+        <svg class="hidden">
+			<symbol id="icon-cross" viewBox="0 0 24 24">
+				<title>cross</title>
+				<path d="M 5.5,2.5 C 5.372,2.5 5.244,2.549 5.146,2.646 L 2.646,5.146 C 2.451,5.341 2.451,5.659 2.646,5.854 L 8.793,12 2.646,18.15 C 2.451,18.34 2.451,18.66 2.646,18.85 L 5.146,21.35 C 5.341,21.55 5.659,21.55 5.854,21.35 L 12,15.21 18.15,21.35 C 18.24,21.45 18.37,21.5 18.5,21.5 18.63,21.5 18.76,21.45 18.85,21.35 L 21.35,18.85 C 21.55,18.66 21.55,18.34 21.35,18.15 L 15.21,12 21.35,5.854 C 21.55,5.658 21.55,5.342 21.35,5.146 L 18.85,2.646 C 18.66,2.451 18.34,2.451 18.15,2.646 L 12,8.793 5.854,2.646 C 5.756,2.549 5.628,2.5 5.5,2.5 Z"/>
+			</symbol>
+			<symbol id="icon-menu" viewBox="0 0 125.9 125.9">
+				<title>menu</title>
+				<g transform="scale(1)">
+                    <path id="XMLID_11_" class="st0" d="M62.9,0C28.2,0,0,28.2,0,62.9s28.2,62.9,62.9,62.9s62.9-28.2,62.9-62.9S97.7,0,62.9,0z
+	 M63,116.5c-29.5,0-53.5-24-53.5-53.5S33.5,9.5,63,9.5s53.5,24,53.5,53.5S92.6,116.5,63,116.5z"/>
+<circle id="XMLID_12_" fill="transparent" class="st1" cx="63" cy="63" r="53.5"/>
+<path id="XMLID_5_" class="st0" d="M49.3,59c14.1,0,28.2,0,42.3,0c0.4,1,0.9,1,1.4,1.8c0.3,0.5,0.6,1.1,0.7,1.9
+	c0,0.1,0.1,1.8-0.8,2.9c0,0-0.1,0.4-1.4,1.4H49.3l15.9,16.3c0.2,0.3,0.8,1.2,0.7,2.5c0,0.4-0.1,1.5-1,2.5c-1.1,1.1-2.7,0.9-3,0.9
+	c-1.5-0.1-2.5-1.2-2.7-1.4c-3.8-3.6-7.6-7.4-11.4-11.2c-3.8-3.8-7.5-7.6-11.1-11.4c-0.2-0.3-0.8-1.2-0.8-2.5c0-0.4,0.1-1.5,0.7-2.5
+	c7.8-7.7,15.7-15.5,23.6-23.2c0.4-0.2,1.3-0.6,2.5-0.4c1.6,0.3,2.5,1.4,2.7,1.7c0.2,0.2,0.7,0.8,0.7,1.8c0.1,1.1-0.4,1.8-0.6,2
+	C60.3,47.7,54.8,54,49.3,59z"/>
+                </g>
+			</symbol>
+			<!-- Magnifier by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar -->
+    </svg>
+		<div class="container">
+			<header class="codrops-header">
+				<h1>Register here for the events of Acumen IT</h1>
+                <button class="dummy-menu" onclick="window.location.href='/#nav'"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
+                </button>
+			</header>
+            
+            <section class="content bgcolor-4" disabled>
+                <h3><strong>Registrations will be open soon!</strong></h3>
+                <h2>Just need some details to continue.</h2>
+                <span class="input input--akira">
+					<input class="input__field input__field--akira" type="text" id="input-22" />
+					<label class="input__label input__label--akira" for="input-22">
+						<span class="input__label-content input__label-content--akira">Your Name</span>
+					</label>
+				</span>
+                
+                <span class="input input--akira">
+					<input class="input__field input__field--akira" type="text" id="input-22" />
+					<label class="input__label input__label--akira" for="input-22">
+						<span class="input__label-content input__label-content--akira">College Name</span>
+					</label>
+                </span>
+                
+                <span class="input input--akira">
+					<input class="input__field input__field--akira" type="email" id="input-22" />
+					<label class="input__label input__label--akira" for="input-22">
+						<span class="input__label-content input__label-content--akira">Email Id</span>
+					</label>
+                </span>
+                <span class="input input--akira">
+					<input class="input__field input__field--akira" type="tel" id="input-22" />
+					<label class="input__label input__label--akira" for="input-22">
+						<span class="input__label-content input__label-content--akira">Mobile no.</span>
+					</label>
+                </span>
+                <form class="ac-custom ac-radio ac-fill" autocomplete="off">
+                    <br>
+					<h2>Year of study?</h2>
+                    
+					<ul>
+						<li><input id="y1" name="year" type="radio" value="1"><label for="y1">1</label></li>
+						<li><input id="y2" name="year" type="radio" value="2"><label for="y2">2</label></li>
+                        <li><input id="y3" name="year" type="radio" value="3"><label for="y3">3</label></li>
+						<li><input id="y4" name="year" type="radio" value="4"><label for="y4">4</label></li>
+					</ul>
+				</form>
+                <form class="ac-custom ac-checkbox ac-boxfill" autocomplete="off">
+                    <br>
+					<h2>Events interested in?</h2>
+                    
+					<ul>
+						<li><input id="e1" name="event" type="checkbox" value="1"><label for="e1">Event 1</label></li>
+						<li><input id="e2" name="event" type="checkbox" value="2"><label for="e2">Event 2</label></li>
+                        <li><input id="e3" name="event" type="checkbox" value="3"><label for="e3">Event 3</label></li>
+						<li><input id="e4" name="event" type="checkbox" value="4"><label for="e4">Event 4</label></li>
+                        <li><input id="e1a" name="event" type="checkbox" value="1a"><label for="e1a">Event 1</label></li>
+						<li><input id="e2a" name="event" type="checkbox" value="2a"><label for="e2a">Event 2</label></li>
+                        <li><input id="e3a" name="event" type="checkbox" value="3a"><label for="e3a">Event 3</label></li>
+						<li><input id="e4a" name="event" type="checkbox" value="4a"><label for="e4a">Event 4</label></li>
+                        <li><input id="e1b" name="event" type="checkbox" value="1b"><label for="e1b">Event 1</label></li>
+						<li><input id="e2b" name="event" type="checkbox" value="2b"><label for="e2b">Event 2</label></li>
+                        <li><input id="e3b" name="event" type="checkbox" value="3b"><label for="e3b">Event 3</label></li>
+						<li><input id="e4b" name="event" type="checkbox" value="4b"><label for="e4b">Event 4</label></li>
+					</ul>
+				</form>
+                <div class="box bg-3">
+					<button class="button button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">Submit</button>
+				</div>
+            </section>
+            
+		</div><!-- /container -->
+		<script src="{% static 'js/reg-classie.js' %}"></script>
+        <script src="{% static 'js/reg-svgcheckbx.js' %}"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+            var inputs = document.getElementsByTagName('input');
+            /*for(var i = 0; i<inputs.length;i++)
+            {
+                inputs[i].disabled = true;
+            }
+            alert("Registrations will be opened soon! Please stay tuned.");*/
+		</script>
+	</body>
+</html>

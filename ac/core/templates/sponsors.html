@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Sponsors</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'assets1/css/main.css'%}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<style>
+				.dummy-menu {
+					border: 0;
+					background: none;
+					padding: 0;
+					margin: 0.2em 0.2em 0 0;
+					position: fixed;
+					top: 0;
+					right: 0;
+					font-size: 1.4em;
+					cursor: pointer;
+					z-index: 1000;
+					box-shadow: none;
+				}
+				button:focus {
+					outline: none !important;
+					border: none;
+				}
+				.icon- {
+					display: block;
+					width: 2em;
+					height: 2em;
+					margin: 0 auto;
+					fill: #fff;
+				}
+				.icon:hover {
+					fill: gray;
+				}
+				
+				.hidden {
+					display: none;
+				}
+				
+				@media screen and (max-width: 40em) {
+					.dummy-menu{
+						font-size: 0.7em;
+					}
+				}
+		</style>
+	</head>
+	<body id="top">
+			<svg class="hidden">
+				<symbol id="icon-menu" viewBox="0 0 125.9 125.9">
+					<title>menu</title>
+					<g transform="scale(1)">
+						<path id="XMLID_11_" class="st0" d="M62.9,0C28.2,0,0,28.2,0,62.9s28.2,62.9,62.9,62.9s62.9-28.2,62.9-62.9S97.7,0,62.9,0z
+						M63,116.5c-29.5,0-53.5-24-53.5-53.5S33.5,9.5,63,9.5s53.5,24,53.5,53.5S92.6,116.5,63,116.5z"/>
+						<circle id="XMLID_12_" fill="transparent" class="st1" cx="63" cy="63" r="53.5"/>
+						<path id="XMLID_5_" class="st0" d="M49.3,59c14.1,0,28.2,0,42.3,0c0.4,1,0.9,1,1.4,1.8c0.3,0.5,0.6,1.1,0.7,1.9
+							c0,0.1,0.1,1.8-0.8,2.9c0,0-0.1,0.4-1.4,1.4H49.3l15.9,16.3c0.2,0.3,0.8,1.2,0.7,2.5c0,0.4-0.1,1.5-1,2.5c-1.1,1.1-2.7,0.9-3,0.9
+							c-1.5-0.1-2.5-1.2-2.7-1.4c-3.8-3.6-7.6-7.4-11.4-11.2c-3.8-3.8-7.5-7.6-11.1-11.4c-0.2-0.3-0.8-1.2-0.8-2.5c0-0.4,0.1-1.5,0.7-2.5
+							c7.8-7.7,15.7-15.5,23.6-23.2c0.4-0.2,1.3-0.6,2.5-0.4c1.6,0.3,2.5,1.4,2.7,1.7c0.2,0.2,0.7,0.8,0.7,1.8c0.1,1.1-0.4,1.8-0.6,2
+							C60.3,47.7,54.8,54,49.3,59z"/>
+					</g>
+				</symbol>
+			</svg>
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+					<h1><strong>Acumen IT</strong>, the most happening<br />
+					fest in the city<br />
+					<button class="dummy-menu" onclick="window.location.href=`{% url 'home' %}`"><svg class="icon- icon--menu"><use xlink:href="#icon-menu"></use></svg>
+					</button>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>Meet our sponsors!</h2>
+						</header>
+						<p style="font-size:1.2rem;">Companies that have put their trust in the collective vision of the fest</p>
+						<ul class="actions">
+						</ul>
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<!-- <h2>Sponsors</h2> -->
+						<div class="row">
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/yuvathafull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/yuvathathumb.jpg'%}" alt="" /></a>
+								<h3>Yuvatha NGO</h3>
+								<p>We all know that it is ideas that drag and lead the world to betterment, not machine and money. Likewise, Yuvatha started as a small idea to create a large impact. An impact that would awaken a generation. Driven by passion and motivated by change, a group of 200 commited volunteers work around the clock towards the goal of bringing about change. Yuvatha works in multiple verticals.
+
+</p>
+							</article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/oberois.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/oberoisthumb.jpg'%}" alt="" /></a>
+								<h3>Oberois Educational Link</h3>
+								<p>Developed as a genuine Professional Consultancy, Oberai is a known leader for Global Education across the globe</p>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/jambofull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/jamboreethumb.jpg'%}" alt="" /></a>
+								<h3>Jamboree</h3>
+								<p>Jamboree, the most trusted Institute for GMAT/ GRE/ SAT/ IELTS/ TOEFL Preparation, coaching, classes & training in Delhi/NCR(Gurgaon, Noida, Faridabad), Mumbai, Bangalore, Chennai, Hyderabad, Kolkata, Pune, Jaipur, Indore & Ahmedabad.</p>
+							</article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/princetonfull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/princetonthumb.jpg'%}" alt="" /></a>
+								<h3>The Princeton Review</h3>
+								<p>The Princeton Review offers test preparation for standardized tests including SAT, ACT and graduate school entrance exams. The Princeton Review also provides private tutoring and college admissions counseling.</p></article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/manhattanfull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/manhattanthumb.jpg'%}" alt="" /></a>
+								<h3>Manhattan Review</h3>
+								<p>One of the oldest and most trusted names in GRE and TOEFL preparation</p></article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/leaffull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/leafthumb.jpg'%}" alt="" /></a>
+								<h3>Leaf the Studio</h3>
+								<p>If you want photos, go to a photo studio. If you want memories, go to Leaf The Studio.</p>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/snehafull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/snehathumb.jpg'%}" alt="" /></a>
+								<h3>Sneha TV</h3>
+								<p>Sneha tv 24/7 telugu news channel with all its potential strives hard to expose all the problems and concerns of the society to the nation.</p></article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/prajafull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/prajathumb.jpg'%}" alt="" /></a>
+								<h3>Prajapalana News</h3>
+								<p>A trending name in journalism, committed to bring the truth to the masses.</p>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/eenadufull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/eenaduthumb.jpg'%}" alt="" /></a>
+								<h3>Eenadu News</h3>
+								<p>Eenadu is an Indian Telugu language daily newspaper which is the largest circulated Telugu newspaper in Andhra Pradesh and in Telangana, India.</p>
+							</article>
+							<article class="6u$ 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/i20feverfull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/i20feverthumb.jpg'%}" alt="" /></a>
+								<h3>i20Fever GRE Centres</h3>
+								<p>The only GRE institute that takes care of students from registration to admission in the international college of your choice with its best in class counseling</p>
+							</article>
+							<article class="6u 12u$(xsmall) work-item">
+								<a href="{% static 'images/fulls/smartfull.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/smartthumb.jpg'%}" alt="" /></a>
+								<h3>The Smart Interviews</h3>
+								<p>Learn the smart way to crack technical interviews. Smart Interviews is a one stop solution for the college students and graduates to get their dream jobs.</p>
+							</article>
+
+						</div>
+						</section>
+
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://twitter.com/AcumenIT1?lang=en" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.instagram.com/acumen_it_2k18/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://www.facebook.com/acumenit18/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Department of Information Technology</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets1/js/jquery.min.js'%}"></script>
+			<script src="{% static 'assets1/js/jquery.poptrox.min.js'%}"></script>
+			<script src="{% static 'assets1/js/skel.min.js'%}"></script>
+			<script src="{% static 'assets1/js/util.js'%}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'assets1/js/main.js'%}"></script>
+
+	</body>
+</html>
