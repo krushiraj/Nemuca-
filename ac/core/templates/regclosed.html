@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<title>REGISTRATIONS|ACUMEN IT</title>
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-component.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-cs-select.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/r-cs-skin-boxes.css' %}" />
+		<script src="{% static 'js/r-modernizr.custom.js' %}"></script>
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="fs-form-wrap" id="fs-form-wrap">
+				<div class="fs-title">
+					<h1>Registration</h1>
+				</div>
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" method="POST">{% csrf_token %}
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'signup' %}">
+
+				<form id="myform" class="fs-form fs-form-full" autocomplete="off" onsubmit="validate()" method="POST" action="{% url 'signupconfirm' %}">
+
+					<ol class="fs-fields">
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
+							<input class="fs-anim-lower" id="q1" name="username" type="text" placeholder="Your Name" required/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q4">Mobile no.</label>
+							<input class="fs-anim-lower" id="q4"  type="tel" placeholder="9876543210" required/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your email address?</label>
+							<input class="fs-anim-lower" id="q2" name="email" type="email" placeholder="abc@gmail.com" required pattern="[A-Za-z][A-Za-z0-9._]+@[A-Za-z]+.[A-Za-z]+"/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q5" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Enter Password</label>
+							<input class="fs-anim-lower" id="q5" name="password1" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+							<label class="fs-field-label fs-anim-upper" for="q6" data-info="Password can only contain numbers and alphabet, with at least 8 characters.">Re-enter Password</label>
+							<input class="fs-anim-lower" id="q6" name="password2" type="password" placeholder="secret" required pattern="([a-zA-Z0-9]+){8,}"/>
+						</li>						
+						<li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="This will faciliate easier access to the events">What events are you looking to register yourself in?</label>
+							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
+								<span><input id="q3b" name="q3" type="checkbox" value="conversion"/><label for="q3b" class="radio-conversion">Paper Presentation</label></span>
+								<span><input id="q3c" name="q3" type="checkbox" value="social"/><label for="q3c" class="radio-social">Poster Presentation</label></span>
+								<span><input id="q3a" name="q3" type="checkbox" value="conversion"/><label for="q3a" class="radio-mobile">Challengica</label></span>
+								<span><input id="e1" name="q3" type="checkbox" value="social"/><label for="e1" class="radio-e1">BeyCode</label></span>
+								<span><input id="e2" name="q3" type="checkbox" value="mobile"/><label for="e2" class="radio-e2">Anwesha</label></span>
+								<span><input id="e3" name="q3" type="checkbox" value="conversion"/><label for="e3" class="radio-e3">Deal or No Deal</label></span>
+								<span><input id="e4" name="q3" type="checkbox" value="social"/><label for="e4" class="radio-e4">Al'Patch'ino</label></span>
+								<span><input id="e5" name="q3" type="checkbox" value="mobile"/><label for="e5" class="radio-e5">TechTrix</label></span>
+								<span><input id="e6" name="q3" type="checkbox" value="social"/><label for="e6" class="radio-e6">Aeroplane Chess</label></span>
+								<span><input id="e7" name="q3" type="checkbox" value="mobile"/><label for="e7" class="radio-e7">Cryptothon</label></span>
+								<span><input id="e8" name="q3" type="checkbox" value="mobile"/><label for="e8" class="radio-e8">Knock Off Tournament</label></span>
+								<span><input id="e9" name="q3" type="checkbox" value="social"/><label for="e9" class="radio-e9">Criminal Case</label></span>								
+								<span><input id="e10" name="q3" type="checkbox" value="conversion"/><label for="e10" class="radio-e10">A Walk in the Dark</label></span>
+								<span><input id="e11" name="q3" type="checkbox" value="mobile"/><label for="e11" class="radio-e11">Dextra</label></span>
+							</div>
+						</li>
+						<li data-input-trigger>
+							<label class="fs-field-label fs-anim-upper" data-info="We are always interested in statistics">Choose your year of study.</label>
+							<select class="cs-select cs-skin-boxes fs-anim-lower">
+								<option value="" disabled selected>Pick a year</option>
+								<option value="#32CD32" data-class="color-32CD32" data-color="#32CD32">I</option>
+								<option value="#006400" data-class="color-006400" data-color="#006400">II</option>
+								<option value="#00BFFF" data-class="color-00BFFF" data-color="#00BFFF">III</option>
+								<option value="#FF0000" data-class="color-FF0000" data-color="#FF0000">IV</option>
+								<option value="#FFFF33" data-class="color-FFFF33" data-color="#FFFF33">V</option>
+							</select>
+                        </li>
+					</ol><!-- /fs-fields -->
+					<button class="fs-submit" type="submit">Send answers</button>
+				</form><!-- /fs-form -->
+			</div><!-- /fs-form-wrap -->
+		</div><!-- /container -->
+		<script src="{% static 'js/r-classie.js' %}"></script>
+		<script src="{% static 'js/r-selectFx.js' %}"></script>
+		<script src="{% static 'js/r-fullscreenForm.js' %}"></script>
+		<script>
+			(function() {
+				var formWrap = document.getElementById( 'fs-form-wrap' );
+
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx( el, {
+						stickyPlaceholder: true,
+						onChange: function(val){
+							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+						}
+					});
+				} );
+
+				new FForm( formWrap, {
+					onReview : function() {
+						classie.add( document.body, 'overview' ); // for demo purposes only
+					}
+				} );
+			})();
+			function validate()
+			{
+				
+			}
+			//code for disabling all inputs
+			var inps = document.getElementsByTagName("input");
+			for(var i = 0; i < inps.length; i++){
+				inps[i].disabled = true;
+			}
+            alert("Registrations will be open soon! Please stay tuned.");
+			//code for disabling all inputs
+		</script>
+	</body>
+</html>

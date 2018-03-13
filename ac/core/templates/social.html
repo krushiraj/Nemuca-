@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Social | Acumen IT 2K18</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sponsors.css' %}">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Varela+Round|Comfortaa:400,700,300);
+        html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia;
+    background-color : #00264d;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.dummy-menu {
+    border: 0;
+    background: none;
+    padding: 0;
+    margin: 1.5em 1.2em 0 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 0.85em;
+    color: var(--color-close);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.icon {
+    display: block;
+    width: 2em;
+    height: 2em;
+    margin: 0 auto;
+    fill: #bcbcbc;
+}
+
+.icon:hover {
+    fill: gray;
+}
+
+.hidden {
+    display: none;
+}
+
+.head {
+    margin: 0;
+    background-color: white;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+}
+        .content {
+            text-align: center;
+        }
+        .twitter {
+            width: 35vw;
+            display: inline-block;
+            margin: 1.5em 0;
+        }
+        .insta {
+            margin: 1.5em 0;
+            display: inline-block;
+            width: 35vw;
+        }
+        .fb 
+        {
+            margin: 1.5em 0;
+            display: inline-block;
+            width: 35vw;
+            padding: 0;
+        }
+        .fb>iframe {
+            width: 35vw;
+        }
+        
+        @media screen and (max-width: 40em) {
+            .twitter {
+                width: 90vw;
+            }
+            .insta {
+                width: 90vw;
+            }
+            
+            .fb {
+                width: 90vw;
+            }
+            .fb>iframe {
+                width: 90vw;
+            }
+            .head {
+                font-size: 1em;
+                margin-top: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12&appId=275085722982591&autoLogAppEvents=1';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <svg class="hidden">
+			<symbol id="icon-cross" viewBox="0 0 24 24">
+				<title>cross</title>
+				<path d="M 5.5,2.5 C 5.372,2.5 5.244,2.549 5.146,2.646 L 2.646,5.146 C 2.451,5.341 2.451,5.659 2.646,5.854 L 8.793,12 2.646,18.15 C 2.451,18.34 2.451,18.66 2.646,18.85 L 5.146,21.35 C 5.341,21.55 5.659,21.55 5.854,21.35 L 12,15.21 18.15,21.35 C 18.24,21.45 18.37,21.5 18.5,21.5 18.63,21.5 18.76,21.45 18.85,21.35 L 21.35,18.85 C 21.55,18.66 21.55,18.34 21.35,18.15 L 15.21,12 21.35,5.854 C 21.55,5.658 21.55,5.342 21.35,5.146 L 18.85,2.646 C 18.66,2.451 18.34,2.451 18.15,2.646 L 12,8.793 5.854,2.646 C 5.756,2.549 5.628,2.5 5.5,2.5 Z"/>
+			</symbol>
+			<symbol id="icon-menu" viewBox="0 0 125.9 125.9">
+				<title>menu</title>
+				<g transform="scale(1)">
+                    <path id="XMLID_11_" class="st0" d="M62.9,0C28.2,0,0,28.2,0,62.9s28.2,62.9,62.9,62.9s62.9-28.2,62.9-62.9S97.7,0,62.9,0z
+	 M63,116.5c-29.5,0-53.5-24-53.5-53.5S33.5,9.5,63,9.5s53.5,24,53.5,53.5S92.6,116.5,63,116.5z"/>
+<circle id="XMLID_12_" fill="transparent" class="st1" cx="63" cy="63" r="53.5"/>
+<path id="XMLID_5_" class="st0" d="M49.3,59c14.1,0,28.2,0,42.3,0c0.4,1,0.9,1,1.4,1.8c0.3,0.5,0.6,1.1,0.7,1.9
+	c0,0.1,0.1,1.8-0.8,2.9c0,0-0.1,0.4-1.4,1.4H49.3l15.9,16.3c0.2,0.3,0.8,1.2,0.7,2.5c0,0.4-0.1,1.5-1,2.5c-1.1,1.1-2.7,0.9-3,0.9
+	c-1.5-0.1-2.5-1.2-2.7-1.4c-3.8-3.6-7.6-7.4-11.4-11.2c-3.8-3.8-7.5-7.6-11.1-11.4c-0.2-0.3-0.8-1.2-0.8-2.5c0-0.4,0.1-1.5,0.7-2.5
+	c7.8-7.7,15.7-15.5,23.6-23.2c0.4-0.2,1.3-0.6,2.5-0.4c1.6,0.3,2.5,1.4,2.7,1.7c0.2,0.2,0.7,0.8,0.7,1.8c0.1,1.1-0.4,1.8-0.6,2
+	C60.3,47.7,54.8,54,49.3,59z"/>
+                </g>
+			</symbol>
+			<!-- Magnifier by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar -->
+    </svg>
+    <header class="head">
+        <h1>Acumen IT on Social Media</h1>
+        <button class="dummy-menu" onclick="window.location.href=`{% url 'home' %}`"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
+        </button>
+    </header>
+    <div class="content">
+        <div class="twitter">
+            <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Here’s to the crazy ones, the rebels, the round pegs in the square holes…<br>Heres the rebel who pushed tech frontiers.<br>Happy Birthday Steve Jobs <a href="https://twitter.com/SteveJobsFilm?ref_src=twsrc%5Etfw">@SteveJobsFilm</a>  <a href="https://twitter.com/ssttevejobsss?ref_src=twsrc%5Etfw">@ssttevejobsss</a> !! <a href="https://twitter.com/hashtag/HappyBirthdaySteveJobs?src=hash&amp;ref_src=twsrc%5Etfw">#HappyBirthdaySteveJobs</a>  <a href="https://twitter.com/hashtag/AcumenIT2k18?src=hash&amp;ref_src=twsrc%5Etfw">#AcumenIT2k18</a> <a href="https://twitter.com/hashtag/HyderabadTechFest?src=hash&amp;ref_src=twsrc%5Etfw">#HyderabadTechFest</a> <a href="https://t.co/0P9BX8uUz9">pic.twitter.com/0P9BX8uUz9</a></p>&mdash; Acumen IT (@AcumenIT1) <a href="https://twitter.com/AcumenIT1/status/967461449592385543?ref_src=twsrc%5Etfw">February 24, 2018</a></blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <br>
+        <div class="insta">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/Bfif11Ih8fO/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:28.194444444444443% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/Bfif11Ih8fO/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Here is the much awaited Acumen IT 2K18 promo !!! #GoIT #AcumenIT2k18</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/acumen_it_2k18/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Acumen IT - 2K18</a> (@acumen_it_2k18) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-02-23T12:29:20+00:00">Feb 23, 2018 at 4:29am PST</time></p></div></blockquote> <script async defer src="http://www.instagram.com/embed.js"></script>
+        </div>
+        <br>
+        <div class="insta">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/Bfh6Kfyh_KV/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/Bfh6Kfyh_KV/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Promo wil be out today at 6 pm.Stay tuned! #AcumenIT2k18 #Weareback</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/acumen_it_2k18/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Acumen IT - 2K18</a> (@acumen_it_2k18) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-02-23T06:52:39+00:00">Feb 22, 2018 at 10:52pm PST</time></p></div></blockquote> <script async defer src="http://www.instagram.com/embed.js"></script>
+        </div>
+        <br>
+        <div class="fb">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D157920418243396%26id%3D157441931624578&width=500" width="500" height="614" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

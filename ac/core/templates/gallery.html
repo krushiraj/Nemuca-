@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!--{% load staticfiles %}-->
+<html lang="en">
+    <head>
+		<meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Gallery | ACUMEN IT</title>
+        <meta name="description" content="Gallery Acumen IT 2K18"/>
+        <meta name="keywords" content="html5, responsive, image gallery, masonry, picture, images, sizes, fluid, history api, visibility api"/>
+        <meta name="author" content="Krushi Mahendra"/>
+        <link rel="shortcut icon" href="{% static '/favicon.ico' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+		<style>
+				@import url(https://fonts.googleapis.com/css?family=Varela+Round|Comfortaa:400,700,300);
+				body,
+				html {
+				  display: -webkit-box;
+				  display: -ms-flexbox;
+				  display: flex;
+				  -webkit-box-pack: center;
+					  -ms-flex-pack: center;
+						  justify-content: center;
+				  -webkit-box-align: center;
+					  -ms-flex-align: center;
+						  align-items: center;
+				  position: relative;
+				  width: 100%;
+				  height: 100%;
+				  background: black;
+				  font-size: 13px;
+				  font-family: Comfortaa;
+				  padding: 0;
+				  margin: 0;
+				}
+				@supports (display: grid) {
+				  body,
+				  html {
+					display: block;
+				  }
+				}
+				
+				.message {
+				  border: 1px solid #d2d0d0;
+				  padding: 2em;
+				  font-size: 1.7vw;
+				  -webkit-box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+						  box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+				}
+				@supports (display: grid) {
+				  .message {
+					display: none;
+				  }
+				}
+				
+				.section {
+				  display: none;
+				  padding: 2rem;
+				}
+				@media screen and (min-width: 768px) {
+				  .section {
+					padding: 4rem;
+				  }
+				}
+				@supports (display: grid) {
+				  .section {
+					display: block;
+				  }
+				}
+				
+				h1 {
+				  font-size: 2rem;
+				  margin: 0 0 1.5em;
+				}
+				
+				.grid {
+				  display: grid;
+				  grid-gap: 30px;
+				  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				  grid-auto-rows: 150px;
+				  grid-auto-flow: row dense;
+				}
+				
+				.item {
+				  position: relative;
+				  display: -webkit-box;
+				  display: -ms-flexbox;
+				  display: flex;
+				  -webkit-box-orient: vertical;
+				  -webkit-box-direction: normal;
+					  -ms-flex-direction: column;
+						  flex-direction: column;
+				  -webkit-box-pack: end;
+					  -ms-flex-pack: end;
+						  justify-content: flex-end;
+				  -webkit-box-sizing: border-box;
+						  box-sizing: border-box;
+				  background: #0c9a9a;
+				  color: #fff;
+				  grid-column-start: auto;
+				  grid-row-start: auto;
+				  color: #fff;
+				  background: url("https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+				  background-size: cover;
+				  background-position: center;
+				  -webkit-box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+						  box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+				  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+				  transition: -webkit-transform 0.3s ease-in-out;
+				  transition: transform 0.3s ease-in-out;
+				  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+				  cursor: pointer;
+				  counter-increment: item-counter;
+				}
+                .item:nth-of-type(1) {
+				  background-image: url("../static/img/gallery/2.jpg");
+				}
+             .item:nth-of-type(2) {
+				  background-image: url("../static/img/gallery/1.jpg");
+				}
+				.item:nth-of-type(3) {
+				  background-image: url("../static/img/gallery/10.jpg");
+				}
+				.item:nth-of-type(4) {background-image: url("../static/img/gallery/4.jpg");
+				}
+				.item:nth-of-type(5) {
+				  background-image: url("../static/img/gallery/5.jpg");
+				}
+				.item:nth-of-type(6) {
+				  background-image: url("../static/img/gallery/6.jpg");
+				}
+                .item:nth-of-type(7) {
+				  background-image: url("../static/img/gallery/7.jpg");
+				}
+                .item:nth-of-type(13)
+            {
+                background-image: url("../static/img/gallery/13.jpg");
+            }
+            .item:nth-of-type(8)
+            {
+                background-image: url("../static/img/gallery/8.jpg");
+						}
+						.item:nth-of-type(9)
+            {
+                background-image: url("../static/img/gallery/9.jpg");
+						}
+						.item:nth-of-type(10)
+            {
+                background-image: url("../static/img/gallery/3.jpg");
+						}
+						.item:nth-of-type(11)
+            {
+                background-image: url("../static/img/gallery/11.jpg");
+						}
+						.item:nth-of-type(12)
+            {
+                background-image: url("../static/img/gallery/12.jpg");
+						}
+						.item:nth-of-type(14)
+            {
+                background-image: url("../static/img/gallery/14.jpg");
+						}
+            .item:nth-of-type(15)
+            {
+                background-image: url("../static/img/gallery/15.jpeg");
+            }
+            .item:nth-of-type(16)
+            {
+                background-image: url("../static/img/gallery/16.jpeg");
+            }
+            .item:nth-of-type(17)
+            {
+                background-image: url("../static/img/gallery/17.jpeg");
+            }
+            .item:nth-of-type(18)
+            {
+                background-image: url("../static/img/gallery/18.jpeg");
+            }
+            .item:nth-of-type(19)
+            {
+                background-image: url("../static/img/gallery/19.jpeg");
+            }
+            .item:nth-of-type(20)
+            {
+                background-image: url("../static/img/gallery/20.jpeg");
+            }
+            .item:nth-of-type(21)
+            {
+                background-image: url("../static/img/gallery/21.jpeg");
+            }
+            .item:nth-of-type(22)
+            {
+                background-image: url("../static/img/gallery/22.jpeg");
+            }
+            .item:nth-of-type(23)
+            {
+                background-image: url("../static/img/gallery/23.jpeg");
+            }
+				.item:after {
+				  content: '';
+				  position: absolute;
+				  width: 100%;
+				  height: 100%;
+				  background-color: black;
+				  opacity: 0.3;
+				  -webkit-transition: opacity 0.3s ease-in-out;
+				  transition: opacity 0.3s ease-in-out;
+				}
+				.item:hover {
+				  -webkit-transform: scale(1.05);
+						  transform: scale(1.05);
+				}
+				.item:hover:after {
+				  opacity: 0;
+				}
+				.item--medium {
+				  grid-row-end: span 2;
+				}
+				.item--large {
+				  grid-row-end: span 3;
+				}
+				.item--full {
+				  grid-column-end: auto;
+				}
+				@media screen and (min-width: 768px) {
+				  .item--full {
+					grid-column: 1/-1;
+					grid-row-end: span 2;
+				  }
+				}
+				.item__details {
+				  position: relative;
+				  z-index: 1;
+				  padding: 15px;
+				  color: #444;
+				  background: #fff;
+				  text-transform: lowercase;
+				  letter-spacing: 1px;
+				  color: #828282;
+				}
+				.item__details:before {
+				  
+				  font-weight: bold;
+				  font-size: 1.1rem;
+				  padding-right: 0.5em;
+				  color: #444;
+				}
+				
+				#head {
+					margin: 0;
+					background-color: white;
+					text-align: center;
+					font-size: 2em;
+					padding: 1em;
+				}
+	
+				.hidden {
+					display: none;
+				}
+				
+				button:focus {
+					outline: none !important;
+				}
+	
+				.dummy-menu {
+					border: 0;
+					background: none;
+					padding: 0;
+					margin: 1.5em 1em 0 0;
+					position: fixed;
+					top: 0;
+					right: 0;
+					font-size: 0.85em;
+					color: white;
+					cursor: pointer;
+					z-index: 1000;
+				}
+	
+				.icon {
+					display: block;
+					width: 2em;
+					height: 2em;
+					margin: 0 auto;
+					fill: #bcbcbc;
+				}
+				.block {
+					margin: 0.5em;
+					padding: 0.5em;
+				}
+				.icon:hover {
+					fill: gray;
+				}
+				@media screen and (max-width:40em){
+					.dummy-menu {
+						font-size: 0.5em;
+					}	
+				}
+		</style>
+	</head>
+    <body>
+        <svg class="hidden">
+			<symbol id="icon-cross" viewBox="0 0 24 24">
+				<title>cross</title>
+				<path d="M 5.5,2.5 C 5.372,2.5 5.244,2.549 5.146,2.646 L 2.646,5.146 C 2.451,5.341 2.451,5.659 2.646,5.854 L 8.793,12 2.646,18.15 C 2.451,18.34 2.451,18.66 2.646,18.85 L 5.146,21.35 C 5.341,21.55 5.659,21.55 5.854,21.35 L 12,15.21 18.15,21.35 C 18.24,21.45 18.37,21.5 18.5,21.5 18.63,21.5 18.76,21.45 18.85,21.35 L 21.35,18.85 C 21.55,18.66 21.55,18.34 21.35,18.15 L 15.21,12 21.35,5.854 C 21.55,5.658 21.55,5.342 21.35,5.146 L 18.85,2.646 C 18.66,2.451 18.34,2.451 18.15,2.646 L 12,8.793 5.854,2.646 C 5.756,2.549 5.628,2.5 5.5,2.5 Z"/>
+			</symbol>
+			<symbol id="icon-menu" viewBox="0 0 125.9 125.9">
+				<title>menu</title>
+				<g transform="scale(1)">
+                    <path id="XMLID_11_" class="st0" d="M62.9,0C28.2,0,0,28.2,0,62.9s28.2,62.9,62.9,62.9s62.9-28.2,62.9-62.9S97.7,0,62.9,0z
+	 M63,116.5c-29.5,0-53.5-24-53.5-53.5S33.5,9.5,63,9.5s53.5,24,53.5,53.5S92.6,116.5,63,116.5z"/>
+<circle id="XMLID_12_" fill="transparent" class="st1" cx="63" cy="63" r="53.5"/>
+<path id="XMLID_5_" class="st0" d="M49.3,59c14.1,0,28.2,0,42.3,0c0.4,1,0.9,1,1.4,1.8c0.3,0.5,0.6,1.1,0.7,1.9
+	c0,0.1,0.1,1.8-0.8,2.9c0,0-0.1,0.4-1.4,1.4H49.3l15.9,16.3c0.2,0.3,0.8,1.2,0.7,2.5c0,0.4-0.1,1.5-1,2.5c-1.1,1.1-2.7,0.9-3,0.9
+	c-1.5-0.1-2.5-1.2-2.7-1.4c-3.8-3.6-7.6-7.4-11.4-11.2c-3.8-3.8-7.5-7.6-11.1-11.4c-0.2-0.3-0.8-1.2-0.8-2.5c0-0.4,0.1-1.5,0.7-2.5
+	c7.8-7.7,15.7-15.5,23.6-23.2c0.4-0.2,1.3-0.6,2.5-0.4c1.6,0.3,2.5,1.4,2.7,1.7c0.2,0.2,0.7,0.8,0.7,1.8c0.1,1.1-0.4,1.8-0.6,2
+	C60.3,47.7,54.8,54,49.3,59z"/>
+                </g>
+			</symbol>
+			<!-- Magnifier by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar -->
+	</svg>
+	<header id="head">
+        <h1>Acumen IT Gallery</h1>
+        <button class="dummy-menu" onclick="window.location.href=`{% url 'home' %}`"><svg class="icon icon--menu"><use xlink:href="#icon-menu"></use></svg>
+        </button>
+    </header>
+	<div class="message">
+        Sorry, your browser does not support CSS Grid. 😅
+    </div>
+		  <section class="section">
+			<h1>Acumen IT Gallery</h1>
+			<div class="grid">
+			  <div class="item">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				 
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--full">
+				<div class="item__details">
+				   
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				 
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				 
+				</div>
+			  </div>
+			  <div class="item">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--medium">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			  <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+            <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+                <div class="item item--large">
+				<div class="item__details">
+				  
+				</div>
+			  </div>
+			</div>
+        </section>
+	</body>
+</html>
