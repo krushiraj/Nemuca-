@@ -136,7 +136,8 @@ def signup(request):
 			# email.attach(sample.name,sample.read)
 			email.attach_file(qrcode+'.png')
 			email.send()
-			return HttpResponse("Check your email")
+			img = Image.open(qrcode+'.png')
+			return HttpResponse(img,content_type='image/png')
 	else:
 		#form = SignupForm()
 		return render(request, 'registrations.html',{})
