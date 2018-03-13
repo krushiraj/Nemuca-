@@ -80,8 +80,9 @@ def checkpay(request):
 #@login_required(redirect_field_name='loginpage')
 def signup(request):
 	if request.method == 'POST':
+		
 		queryset = User.objects.get(username = request.POST.get('username'))
-		if queryset:
+		if not queryset.DoesNotExist:
 			return HttpResponse("Exists")
 		#print(form.errors)
 		
