@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import os
 import pyqrcode as pyq
 import png
 from django.http import Http404
@@ -130,7 +131,8 @@ def signup(request):
 			email = EmailMessage(
 						mail_subject, message, to=[username]
 			)
-			email.attach(sample.png(qrcode+'.png',scale = 6))
+			# email.attach(sample.png(qrcode+'.png',scale = 6))
+			email.attach(qrcode+'.png')
 			email.send()
 			return HttpResponse("Check your email")
 	else:
