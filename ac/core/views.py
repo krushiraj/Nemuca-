@@ -84,12 +84,11 @@ def signup(request):
 	if request.method == 'POST':
 		# try:
 		try:
-			query1 = User.objects.get(username = request.POST.get('username'))
-			query2 = Profile.objects.get(email= request.POST.get('email'))
+			queryset = User.objects.get(username = request.POST.get('username'))
 		# except User.DoesNotExist:
 		# 	print('ok')
 		#print(form.errors)
-		except (User.DoesNotExist,Profile.DoesNotExist) as e:
+		except User.DoesNotExist:
 			#print (form.data['username'])
 			user = User(username = request.POST.get('username'), password = "AcumenIT5")
 			user.is_active = False
