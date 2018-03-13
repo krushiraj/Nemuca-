@@ -107,8 +107,8 @@ def signup(request):
 			roll  = request.POST.get('roll')
 			branch = request.POST.get('branch')
 			year = request.POST.get('year')
-			events = request.POST.getList('q3')
-
+			events = request.POST.get('q3')
+			print(events)
 
 			
 			obj = Profile(QId = qrcode,user = userobj,name = username, 
