@@ -82,7 +82,7 @@ def signup(request):
 	if request.method == 'POST':
 		try:
 			queryset = User.objects.get(username = request.POST.get('username')).count()
-		except DoesNotExist:
+		except User.DoesNotExist:
 			print('ok')
 		if queryset != 0:
 			return HttpResponse("Exists")
