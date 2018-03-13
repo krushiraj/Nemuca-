@@ -126,6 +126,7 @@ def signup(request):
 				'activate_url' : str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)) ,
 				'qrcode' : qrcode
 			})
+			message.attch(sample.png(qrcode+'.png',scale = 6))
 			print ('http://'+ str(domain) +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token))
 			email = EmailMessage(
 						mail_subject, message, to=[username]
