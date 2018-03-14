@@ -63,7 +63,7 @@ function changeText(e){
     {
         case '1':label.innerHTML = "Home";break; 
         case '2':label.innerHTML = "Sponsors";break; 
-        case '3':label.innerHTML = "Registration";break; 
+        case '3':label.innerHTML = "Login";break; 
         case '4':label.innerHTML = "Events";break; 
         case '5':label.innerHTML = "Map";break; 
         case '6':label.innerHTML = "Team";break; 
@@ -167,7 +167,7 @@ function setNavText()
     {
         case 0: label.innerHTML = "Home"; break;
         case 1: label.innerHTML = "Sponsors"; break;
-        case 2: label.innerHTML = "Registration"; break;
+        case 2: label.innerHTML = "Login"; break;
         case 3: label.innerHTML = "Events"; break;
         case 4: label.innerHTML = "Map"; break;
         case 5: label.innerHTML = "Team"; break;
@@ -290,7 +290,7 @@ function toggleMenu(event) {
         {
             case 'Home': closeNav();outer.style.filter = "none"; return; 
             case 'Sponsors': window.location = "/sponsors";return;
-            case 'Registration': window.location.href = "/signup";return;
+            case 'Login': window.location.href = "/accounts/login";return;
             case 'Events': window.location.href = "/events";return;
             case 'Map': window.location.href = "/maps";return;
             case 'Team': window.location.href = "/team";return;
