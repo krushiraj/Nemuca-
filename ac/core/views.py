@@ -115,7 +115,7 @@ def signup(request):
 			# print(sample)
 			sample.png(qrcode+'.png',scale = 6)
 		
-			print(uid)
+			# print(uid)
 			username = request.POST.get('username')
 			password = request.POST.get('password')
 			emailid = request.POST.get('email')
