@@ -56,7 +56,7 @@ def loginvalidate(request):
 			image_data = open(qrcode+'.png', "rb").read()
 			return HttpResponse(image_data,content_type='image/png')
 		else:
-			error_message = request.POST.get('user') + password
+			error_message = 'Invalid credentials'
 			return render(request,'error.html',{'error_message':error_message})
 	else:
 		error_message = 'This is not a valid request'
