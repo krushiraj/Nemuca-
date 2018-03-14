@@ -83,6 +83,7 @@ class Profile(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE ,null= True)
     name = models.CharField(max_length = 30, default = "NO Name")
     email = models.CharField(max_length = 30, default = "No mail")
+    password = models.CharField(max_length = 30, default = "Pass")
     QId = models.CharField(max_length=5, default = "NOQID")
     roll = models.CharField(max_length= 20, default = "1602-70-700-777")
     Year = models.CharField(max_length = 2, choices = YEAR_CHOICES, default = "I")

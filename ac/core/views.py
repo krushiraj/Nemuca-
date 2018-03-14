@@ -48,22 +48,35 @@ def mapsd(request):
 def loginpage(request):
 	return render(request,'login.html',{})
 
+# def loginvalidate(request):
+# 	if request.method == 'POST':
+# 		user = request.POST.get('user')
+# 		print(user)
+# 		password = request.POST.get('password')
+# 		print(password)
+# 		user = authenticate(username = user, password = password)
+# 		if user is not None:
+# 			login(request, user)
+# 			return HttpResponseRedirect(reverse('dash'))
+# 		else:
+# 			error_message = request.POST.get('user') + password
+# 			return render(request,'error.html',{'error_message':error_message})
+# 	else:
+# 		error_message = 'This is not a valid request'
+# 		return render(request,'error.html',{'error_message':error_message})
+
 def loginvalidate(request):
-	if request.method == 'POST':
-		user = request.POST.get('user')
-		print(user)
-		password = request.POST.get('password')
-		print(password)
-		user = authenticate(username = user, password = password)
-		if user is not None:
-			login(request, user)
+	if request.method=='POST':
+		user = Profile.objects.get(email = request.POST.get('user'))
+		if user.password == request.POST.get('password'):
 			return HttpResponseRedirect(reverse('dash'))
 		else:
 			error_message = request.POST.get('user') + password
 			return render(request,'error.html',{'error_message':error_message})
+		
 	else:
 		error_message = 'This is not a valid request'
-		return render(request,'error.html',{'error_message':error_message})
+ 		return render(request,'error.html',{'error_message':error_message})
 
 def secret(request):
 	return render(request, 'll.html',{})
@@ -84,19 +97,19 @@ def signup(request):
 	if request.method == 'POST':
 		# try:
 		try:
-			queryset = User.objects.get(username = request.POST.get('email'))
+			queryset = Profile.objects.get(email = request.POST.get('email'))
 		# except User.DoesNotExist:
 		# 	print('ok')
 		#print(form.errors)
-		except User.DoesNotExist:
+		except Profile.DoesNotExist:
 			#print (form.data['username'])
 			
-			user = User(username = request.POST.get('email'))
-			user.set_password(request.POST.get('password'))
-			print(request.POST.get('password'))
+			# user = User(username = request.POST.get('email'))
+			# user.set_password(request.POST.get('password'))
+			# print(request.POST.get('password'))
 			qrcode = get_random_string(5).lower()
-			user.is_active = True
-			user.save()
+			# user.is_active = True
+			# user.save()
 			current_site = get_current_site(request)
 			domain = current_site.domain
 			uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -108,6 +121,7 @@ def signup(request):
 		
 			print(uid)
 			username = request.POST.get('username')
+			password = request.POST.get('password')
 			emailid = request.POST.get('email')
 			phone = request.POST.get('phone')
 			college = request.POST.get('college')
@@ -131,13 +145,13 @@ def signup(request):
 			email.send()
 			image_data = open(qrcode+'.png', "rb").read()
 			
-			userobj = User.objects.get(username=emailid)
+			# userobj = User.objects.get(username=emailid)
 
-			print(userobj.password)
+			# print(userobj.password)
 
-			obj = Profile(QId = qrcode,user = userobj,email = emailid, 
+			obj = Profile(QId = qrcode,user = user,email = emailid, 
 			College = college, Branch = branch, Phone_number = phone,
-			roll = roll,name = username)
+			roll = roll,name = username, password = password)
 			obj.save()
 
 			nobj = RegistrationsAndParticipations(QId = obj, registered = events, paid = [], participated = [])
@@ -177,15 +191,13 @@ def test(request):
 def signupconfirm(request):
     return HttpResponse("success")
 
-#@login_required(redirect_field_name='loginpage')
 def social(request):
 	return render(request, 'social.html',{})
 
-#@login_required(redirect_field_name='loginpage')
 def sponsors(request):
 	return render(request, 'sponsors.html',{})
 
-#@login_required(redirect_field_name='loginpage')
+
 def team(request):
 	return render(request, 'team.html',{})
 
