@@ -106,11 +106,11 @@ def signup(request):
 			qrcode = get_random_string(5).lower()
 			# user.is_active = True
 			# user.save()
-			current_site = get_current_site(request)
-			domain = current_site.domain
-			uid = urlsafe_base64_encode(force_bytes(user.pk))
-			uid1 = force_text(urlsafe_base64_decode(uid))
-			token = account_activation_token.make_token(user)
+			# current_site = get_current_site(request)
+			# domain = current_site.domain
+			# uid = urlsafe_base64_encode(force_bytes(user.pk))
+			# uid1 = force_text(urlsafe_base64_decode(uid))
+			# token = account_activation_token.make_token(user)
 			sample = pyq.create(qrcode)
 			# print(sample)
 			sample.png(qrcode+'.png',scale = 6)
@@ -130,7 +130,7 @@ def signup(request):
 			message = render_to_string('acc_active_email.html', {
 				'qrcode' : qrcode
 			})
-			print(str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)))
+			# print(str('http://'+ "www.acumenit.in" +"/" +"activate" + "/" + str(uid.decode('utf-8')) + "/" + str(token)))
 			email = EmailMessage(
 						mail_subject, message, to=[emailid]
 			)
