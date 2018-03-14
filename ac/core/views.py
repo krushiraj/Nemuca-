@@ -102,7 +102,7 @@ def signup(request):
 		except Profile.DoesNotExist:
 			#print (form.data['username'])
 			
-			user = User.objects.get_or_create(username=request.POST.get('email'))
+			user = User(username=request.POST.get('email'), password = 'AcumenItfest')
 
 			qrcode = get_random_string(5).lower()
 			# user.is_active = True
