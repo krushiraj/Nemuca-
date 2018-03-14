@@ -839,12 +839,6 @@ span input[type="radio"]:checked+label
 	color: #ffffff !important;
 }
 
-span input[type="radio"]+label
-{
-	opacity: 0.4;
-	color: #rgba(0,0,0,0.4) !important;
-}
-
 
 /* Remove IE clear cross */
 input[type=text]::-ms-clear {
