@@ -833,9 +833,9 @@ button.fs-continue:hover {
 	from { opacity: 0; -webkit-transform: translate3d(0,-500px,0); transform: translate3d(0,-500px,0); }
 }
 
-input[type="radio"]:checked+label
+span input[type="radio"]:checked+label
 {
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 /* Remove IE clear cross */
