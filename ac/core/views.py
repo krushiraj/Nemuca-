@@ -94,7 +94,7 @@ def signup(request):
 			user = User(username = request.POST.get('email'), password = request.POST.get('password'))
 			print(request.POST.get('password'))
 			qrcode = get_random_string(5).lower()
-			user.is_active = False
+			#user.is_active = False
 			user.save()
 			current_site = get_current_site(request)
 			domain = current_site.domain
@@ -131,7 +131,9 @@ def signup(request):
 			image_data = open(qrcode+'.png', "rb").read()
 			
 			userobj = User.objects.get(username=emailid)
+
 			print(userobj.password)
+
 			obj = Profile(QId = qrcode,user = userobj,email = emailid, 
 			College = college, Branch = branch, Phone_number = phone,
 			roll = roll,name = username)
