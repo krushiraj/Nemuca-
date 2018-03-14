@@ -82,7 +82,7 @@ class Profile(Model):
     COLLEGE_CHOICES=((VCE,'Vasavi College of Engineering'),(GRIET,'Gokaraju Rangaraju'),(CBIT,'Chaitanya Bharathi Institute'),(VNR,'Vignan Jyothi'),(MGIT,'Mahatma Gandhi Institute'))
     user = models.OneToOneField(User, on_delete=models.CASCADE ,null= True)
     name = models.CharField(max_length = 30, default = "NO Name")
-    email = models.CharField(max_length = 30, default = "No mail")
+    email = models.CharField(max_length = 50, default = "No mail")
     password = models.CharField(max_length = 30, default = "Pass")
     QId = models.CharField(max_length=5, default = "NOQID")
     roll = models.CharField(max_length= 20, default = "1602-70-700-777")
