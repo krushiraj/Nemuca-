@@ -131,6 +131,7 @@ def signup(request):
 			image_data = open(qrcode+'.png', "rb").read()
 			
 			userobj = User.objects.get(username=emailid)
+			print(userobj.password)
 			obj = Profile(QId = qrcode,user = userobj,email = emailid, 
 			College = college, Branch = branch, Phone_number = phone,
 			roll = roll,name = username)
