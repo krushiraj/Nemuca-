@@ -197,7 +197,6 @@ def sponsors(request):
 def team(request):
 	return render(request, 'team.html',{})
 
-@login_required(redirect_field_name = "loginpage")
 def dash(request):
 	user_set = User.objects.get(username = request.user)
 	queryset = Profile.objects.get(user = user_set)
