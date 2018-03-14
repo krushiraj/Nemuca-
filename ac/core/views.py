@@ -103,9 +103,9 @@ def signup(request):
 			#print (form.data['username'])
 			
 			user = User.objects.get_or_create(username=request.POST.get('email'))
-			
+
 			qrcode = get_random_string(5).lower()
-			user.is_active = True
+			# user.is_active = True
 			user.save()
 			# current_site = get_current_site(request)
 			# domain = current_site.domain
