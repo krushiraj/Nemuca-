@@ -59,7 +59,7 @@ def loginvalidate(request):
 			login(request, user)
 			return HttpResponseRedirect(reverse('dash'))
 		else:
-			error_message = 'invalid credentials'
+			error_message = user+' ' + password
 			return render(request,'error.html',{'error_message':error_message})
 	else:
 		error_message = 'This is not a valid request'
@@ -90,7 +90,9 @@ def signup(request):
 		#print(form.errors)
 		except User.DoesNotExist:
 			#print (form.data['username'])
+			
 			user = User(username = request.POST.get('email'), password = request.POST.get('password'))
+			print(request.POST.get('password'))
 			qrcode = get_random_string(5).lower()
 			user.is_active = False
 			current_site = get_current_site(request)
