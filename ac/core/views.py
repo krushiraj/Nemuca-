@@ -48,35 +48,31 @@ def mapsd(request):
 def loginpage(request):
 	return render(request,'login.html',{})
 
-# def loginvalidate(request):
-# 	if request.method == 'POST':
-# 		user = request.POST.get('user')
-# 		print(user)
-# 		password = request.POST.get('password')
-# 		print(password)
-# 		user = authenticate(username = user, password = password)
-# 		if user is not None:
-# 			login(request, user)
-# 			return HttpResponseRedirect(reverse('dash'))
-# 		else:
-# 			error_message = request.POST.get('user') + password
-# 			return render(request,'error.html',{'error_message':error_message})
-# 	else:
-# 		error_message = 'This is not a valid request'
-# 		return render(request,'error.html',{'error_message':error_message})
-
 def loginvalidate(request):
-	if request.method=='POST':
+	if request.method == 'POST':
 		user = Profile.objects.get(email = request.POST.get('user'))
 		if user.password == request.POST.get('password'):
 			return HttpResponseRedirect(reverse('dash'))
 		else:
 			error_message = request.POST.get('user') + password
 			return render(request,'error.html',{'error_message':error_message})
-		
 	else:
 		error_message = 'This is not a valid request'
- 		return render(request,'error.html',{'error_message':error_message})
+		return render(request,'error.html',{'error_message':error_message})
+
+# def loginvalidate(request):
+# 	if request.method=='POST':
+# 		user = Profile.objects.get(email = request.POST.get('user'))
+# 		if user.password == request.POST.get('password'):
+# 			return HttpResponseRedirect(reverse('dash'))
+# 		else:
+# 			error_message = request.POST.get('user') + password
+# 			return render(request,'error.html',{'error_message':error_message})
+		
+# 	else:
+# 		error_message = 'This is not a valid request'
+# 		return render(request,'error.html',{'error_message':error_message})
+
 
 def secret(request):
 	return render(request, 'll.html',{})
