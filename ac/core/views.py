@@ -59,7 +59,7 @@ def loginvalidate(request):
 			login(request, user)
 			return HttpResponseRedirect(reverse('dash'))
 		else:
-			error_message = user+' ' + password
+			error_message = request.POST.get('user') + password
 			return render(request,'error.html',{'error_message':error_message})
 	else:
 		error_message = 'This is not a valid request'
