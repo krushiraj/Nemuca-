@@ -52,7 +52,9 @@ def loginvalidate(request):
 	if request.method == 'POST':
 		user = Profile.objects.get(email = request.POST.get('user'))
 		if user.password == request.POST.get('password'):
-			return HttpResponseRedirect(reverse('dash'))
+			qrcode = user.QId
+			image_data = open(qrcode+'.png', "rb").read()
+			return HttpResponse(image_data,content_type='image/png')
 		else:
 			error_message = request.POST.get('user') + password
 			return render(request,'error.html',{'error_message':error_message})
